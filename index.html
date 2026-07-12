@@ -1,112 +1,166 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="mk">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Фото Центар - Штип</title>
 
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- CSS -->
-    <link rel="stylesheet" href="assets/css/reset.css">
-    <link rel="stylesheet" href="assets/css/variables.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/responsive.css">
-</head>
+    <link rel="stylesheet" href="assets/css/reset.css" />
+    <link rel="stylesheet" href="assets/css/variables.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/responsive.css" />
+  </head>
 
-<body>
-<header class="header">
-
-    <div class="container">
-
+  <body>
+    <header class="header">
+      <div class="container">
         <nav class="navbar">
+          <a href="#" class="logo">
+            <img src="assets/images/logos/logo.jpg" alt="Фото Центар" />
+          </a>
 
-            <a href="#" class="logo">
-                <img src="assets/images/logos/logo.jpg" alt="Фото Центар">
-            </a>
+          <ul class="nav-menu">
+            <li><a href="#" class="active">Почетна</a></li>
 
-            <ul class="nav-menu">
+            <li><a href="#services">Услуги</a></li>
 
-                <li><a href="#" class="active">Почетна</a></li>
+            <li><a href="#gallery">Галерија</a></li>
 
-                <li><a href="#services">Услуги</a></li>
+            <li><a href="#about">За нас</a></li>
 
-                <li><a href="#gallery">Галерија</a></li>
+            <li><a href="#contact">Контакт</a></li>
+          </ul>
 
-                <li><a href="#about">За нас</a></li>
+          <a href="#contact" class="btn-outline"> Контактирај нè </a>
 
-                <li><a href="#contact">Контакт</a></li>
-
-            </ul>
-
-            <a href="#contact" class="btn-outline">
-                Контактирај нè
-            </a>
-
-            <div class="hamburger">
-
-                <span></span>
-                <span></span>
-                <span></span>
-
-            </div>
-
+          <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         </nav>
+      </div>
+    </header>
+    <section class="hero">
+      <div class="overlay"></div>
 
-    </div>
-
-</header>
-<section class="hero">
-
-    <div class="overlay"></div>
-
-    <div class="container">
-
+      <div class="container">
         <div class="hero-content">
+          <span class="subtitle"> Фото Центар • Штип </span>
 
-            <span class="subtitle">
-                Фото Центар • Штип
-            </span>
+          <h1>
+            Секој момент<br />
+            заслужува да остане<br />
+            вечен.
+          </h1>
 
-            <h1>
+          <p>
+            Професионална фотографија и видеографија за свадби, крштевки, матури
+            и сите ваши најважни моменти.
+          </p>
 
-                Секој момент<br>
-                заслужува да остане<br>
-                вечен.
+          <div class="hero-buttons">
+            <a href="#gallery" class="btn-primary"> Разгледај галерија </a>
 
-            </h1>
+            <a href="#contact" class="btn-secondary"> Контактирај нè </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- services -->
+    <section class="services" id="services">
+      <div class="container">
+        <div class="section-title">
+          <span>НАШИ УСЛУГИ</span>
 
-            <p>
+          <h2>Што ви нудиме</h2>
 
-                Професионална фотографија и видеографија
-                за свадби, крштевки, матури и сите ваши
-                најважни моменти.
-
-            </p>
-
-            <div class="hero-buttons">
-
-                <a href="#gallery" class="btn-primary">
-                    Разгледај галерија
-                </a>
-
-                <a href="#contact" class="btn-secondary">
-                    Контактирај нè
-                </a>
-
-            </div>
-
+          <p>
+            Професионална фотографија и видеографија за сите ваши најважни
+            моменти.
+          </p>
         </div>
 
-    </div>
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fa-solid fa-camera"></i>
+            </div>
 
-</section>
-<script src="assets/js/script.js"></script>
+            <h3>Свадбена фотографија</h3>
 
-</body>
+            <p>Ги фотографираме најубавите моменти од вашиот свадбен ден.</p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fa-solid fa-video"></i>
+            </div>
+
+            <h3>Свадбена видеографија</h3>
+
+            <p>Кинематографско видео кое ќе ја раскажува вашата приказна.</p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fa-solid fa-baby"></i>
+            </div>
+
+            <h3>Крштевки</h3>
+
+            <p>Професионално фотографирање и снимање на крштевки.</p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+
+            <h3>Матури</h3>
+
+            <p>Индивидуални и групни фотографии за матуранти.</p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fa-solid fa-people-group"></i>
+            </div>
+
+            <h3>Фамилијарни снимања</h3>
+
+            <p>Спомени кои ќе останат засекогаш.</p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fa-solid fa-helicopter"></i>
+            </div>
+
+            <h3>Drone снимања</h3>
+
+            <p>Воздушни фотографии и видеа со висок квалитет.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="assets/js/script.js"></script>
+  </body>
 </html>
