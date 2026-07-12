@@ -141,7 +141,7 @@ p{
 
 }
 
-.overlay{
+/* .overlay{
 
     position:absolute;
 
@@ -149,7 +149,7 @@ p{
 
     background:rgba(0,0,0,.55);
 
-}
+} */
 
 .hero-content{
 
@@ -269,8 +269,52 @@ p{
 
 }
 
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+}
 
+.hamburger{
 
-.overlay{
-    display: none;
+    width:30px;
+
+    display:none;
+
+    flex-direction:column;
+
+    gap:6px;
+
+    cursor:pointer;
+
+}
+
+.hamburger span{
+
+    height:3px;
+
+    width:100%;
+
+    background:white;
+
+    transition:.3s;
+
+}
+
+.hamburger.active span:nth-child(1){
+
+    transform:rotate(45deg) translateY(12px);
+
+}
+
+.hamburger.active span:nth-child(2){
+
+    opacity:0;
+
+}
+
+.hamburger.active span:nth-child(3){
+
+    transform:rotate(-45deg) translateY(-12px);
+
 }

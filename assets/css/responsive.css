@@ -33,3 +33,54 @@ h1{
 }
 
 }
+
+@media (max-width: 768px){
+
+    .nav-menu{
+
+        position: fixed;
+
+        top: 90px;
+
+        right: -100%;
+
+        width: 260px;
+
+        height: calc(100vh - 90px);
+
+        background: #000;
+
+        display: flex;
+
+        flex-direction: column;
+
+        justify-content: start;
+
+        align-items: center;
+
+        padding-top: 50px;
+
+        gap: 30px;
+
+        transition: .4s;
+    }
+
+    .nav-menu.active{
+
+        right:0;
+
+    }
+
+    .hamburger{
+
+        display:flex;
+
+    }
+
+    .btn-outline{
+
+        display:none;
+
+    }
+
+}
