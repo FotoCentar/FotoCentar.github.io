@@ -1,4 +1,32 @@
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
+body{
+    font-family:var(--text-font);
+    background:var(--white);
+    color:#222;
+}
+
+.container{
+    width:90%;
+    max-width:var(--container);
+    margin:auto;
+}
+
+section{
+    padding:100px 0;
+}
+
+h1,h2,h3,h4,h5{
+    font-family:var(--heading-font);
+}
+
+h1{
+    font-size:72px;
+    font-weight:700;
+}
+
+h2{
+    font-size:48px;
+}
+
+p{
+    line-height:1.7;
 }

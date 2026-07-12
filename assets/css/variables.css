@@ -1,0 +1,16 @@
+:root{
+
+    --primary:#000000;
+    --secondary:#b68d40;
+    --white:#ffffff;
+    --light:#f8f8f8;
+    --gray:#777777;
+
+    --heading-font:"Cormorant Garamond", serif;
+    --text-font:"Inter", sans-serif;
+
+    --transition:.3s ease;
+
+    --container:1200px;
+
+}
