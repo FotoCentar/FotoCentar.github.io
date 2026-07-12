@@ -30,3 +30,245 @@ h2{
 p{
     line-height:1.7;
 }
+
+.header{
+
+    position:absolute;
+    width:100%;
+    top:0;
+    left:0;
+    z-index:1000;
+}
+
+.navbar{
+
+    height:90px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+}
+
+.logo img{
+
+    width:85px;
+
+}
+
+.nav-menu{
+
+    display:flex;
+
+    gap:45px;
+
+}
+
+.nav-menu a{
+
+    color:white;
+
+    font-size:15px;
+
+    font-weight:500;
+
+    transition:.3s;
+
+    position:relative;
+
+}
+
+.nav-menu a:hover{
+
+    color:var(--secondary);
+
+}
+
+.nav-menu .active{
+
+    color:var(--secondary);
+
+}
+
+.nav-menu .active::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:100%;
+
+    height:2px;
+
+    left:0;
+
+    bottom:-8px;
+
+    background:var(--secondary);
+
+}
+
+.btn-outline{
+
+    padding:14px 28px;
+
+    border:1px solid white;
+
+    color:white;
+
+    transition:.3s;
+
+}
+
+.btn-outline:hover{
+
+    background:white;
+
+    color:black;
+
+}
+
+.hero{
+
+    height:100vh;
+
+    background:url("../images/hero.jpg") center center/cover;
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+}
+
+.overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:rgba(0,0,0,.55);
+
+}
+
+.hero-content{
+
+    position:relative;
+
+    z-index:2;
+
+    max-width:650px;
+
+    color:white;
+
+}
+
+.subtitle{
+
+    display:inline-block;
+
+    margin-bottom:20px;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    color:var(--secondary);
+
+    font-size:14px;
+
+}
+
+.hero h1{
+
+    margin-bottom:25px;
+
+    line-height:1.1;
+
+}
+
+.hero p{
+
+    max-width:500px;
+
+    margin-bottom:40px;
+
+    font-size:18px;
+
+    color:#dddddd;
+
+}
+
+.hero-buttons{
+
+    display:flex;
+
+    gap:20px;
+
+}
+
+.btn-primary{
+
+    background:white;
+
+    color:black;
+
+    padding:16px 35px;
+
+    transition:.3s;
+
+}
+
+.btn-primary:hover{
+
+    background:var(--secondary);
+
+    color:white;
+
+}
+
+.btn-secondary{
+
+    border:1px solid white;
+
+    color:white;
+
+    padding:16px 35px;
+
+    transition:.3s;
+
+}
+
+.btn-secondary:hover{
+
+    background:white;
+
+    color:black;
+
+}
+
+.hamburger{
+
+    display:none;
+
+    flex-direction:column;
+
+    gap:6px;
+
+    cursor:pointer;
+
+}
+
+.hamburger span{
+
+    width:28px;
+
+    height:2px;
+
+    background:white;
+
+}
+
