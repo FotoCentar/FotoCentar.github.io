@@ -1,4 +1,4 @@
-body{
+/* body{
     font-family:var(--text-font);
     background:var(--white);
     color:#222;
@@ -140,16 +140,6 @@ p{
     align-items:center;
 
 }
-
-/* .overlay{
-
-    position:absolute;
-
-    inset:0;
-
-    background:rgba(0,0,0,.55);
-
-} */
 
 .hero-content{
 
@@ -404,10 +394,6 @@ p{
     margin-bottom:25px;
 
 }
-/* ==========================
-   SERVICES
-========================== */
-
 .services{
 
     background:#f8f8f8;
@@ -549,3 +535,4 @@ p{
     line-height:1.7;
 
 }
+ */

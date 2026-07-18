@@ -25,10 +25,87 @@
     <link rel="stylesheet" href="assets/css/variables.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/responsive.css" />
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            font-family:'Poppins',sans-serif;
+            background:#0f0f0f;
+            color:#fff;
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            overflow:hidden;
+        }
+
+        body::before{
+            content:"";
+            position:absolute;
+            inset:0;
+            background:url("background.jpg") center/cover no-repeat;
+            opacity:.18;
+        }
+
+        .container{
+            position:relative;
+            z-index:2;
+            text-align:center;
+            max-width:700px;
+            padding:40px;
+        }
+
+        h1{
+            font-size:4rem;
+            letter-spacing:4px;
+            text-transform:uppercase;
+            margin-bottom:15px;
+        }
+
+        .line{
+            width:90px;
+            height:3px;
+            background:#fff;
+            margin:0 auto 30px;
+            opacity:.8;
+        }
+
+        p{
+            color:#d9d9d9;
+            font-size:1.1rem;
+            line-height:1.8;
+            margin-bottom:40px;
+        }
+
+        .loader{
+            font-size:3rem;
+            margin-bottom:25px;
+        }
+
+        .loader i{
+            animation:spin 1.2s linear infinite;
+        }
+
+        @keyframes spin{
+            from{transform:rotate(0deg);}
+            to{transform:rotate(360deg);}
+        }
+
+        .footer{
+            color:#9b9b9b;
+            font-size:.95rem;
+            letter-spacing:1px;
+        }
+    </style>
   </head>
 
   <body>
-    <header class="header">
+<!-- prvicno -->
+    <!-- <header class="header">
       <div class="container">
         <nav class="navbar">
           <a href="#" class="logo">
@@ -56,8 +133,9 @@
           </div>
         </nav>
       </div>
-    </header>
-    <section class="hero">
+    </header> -->
+    <!-- hero -->
+    <!-- <section class="hero">
       <div class="overlay"></div>
 
       <div class="container">
@@ -82,9 +160,10 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
     <!-- services -->
-    <section class="services" id="services">
+    <!-- <section class="services" id="services">
+
       <div class="container">
         <div class="section-title">
           <span>НАШИ УСЛУГИ</span>
@@ -159,7 +238,31 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
+
+<div class="container">
+
+    <div class="loader">
+        <i class="fa-solid fa-spinner"></i>
+    </div>
+
+    <h1>Coming Soon</h1>
+
+    <div class="line"></div>
+
+    <p>
+        We’re working behind the lens to create a beautiful new experience.<br>
+        Our website will be launching soon.
+    </p>
+
+    <div class="footer">
+        © Foto Centar Štip
+    </div>
+
+</div>
+
+
+    <!-- novo -->
 
     <script src="assets/js/script.js"></script>
   </body>
