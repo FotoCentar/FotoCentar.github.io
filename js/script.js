@@ -83,16 +83,84 @@ document.addEventListener("DOMContentLoaded", () => {
      4. NAVIGATION CLICK
   ===================================================== */
 
-  allNavLinks.forEach((link) => {
-    link.addEventListener("click", () => {
-      const clickedTarget = link.getAttribute("href");
+  const setActiveNavLink = (targetSelector) => {
+    allNavLinks.forEach((navLink) => {
+      navLink.classList.toggle(
+        "active",
+        navLink.getAttribute("href") === targetSelector,
+      );
+    });
+  };
 
-      allNavLinks.forEach((navLink) => {
-        navLink.classList.toggle(
-          "active",
-          navLink.getAttribute("href") === clickedTarget,
+  const scrollToSection = (targetSelector) => {
+    if (!targetSelector || !targetSelector.startsWith("#")) return;
+
+    const targetSection = document.querySelector(targetSelector);
+
+    if (!targetSection) {
+      console.warn(`Не постои секција: ${targetSelector}`);
+      return;
+    }
+
+    const navbarHeight = navbar?.offsetHeight || 0;
+
+    const targetPosition =
+      targetSection.getBoundingClientRect().top +
+      window.scrollY -
+      navbarHeight +
+      1;
+
+    window.scrollTo({
+      top: targetPosition,
+      behavior: "smooth",
+    });
+
+    window.history.replaceState(null, "", targetSelector);
+  };
+
+  /* Desktop navigation */
+
+  desktopNavLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      setActiveNavLink(link.getAttribute("href"));
+    });
+  });
+
+  /* Mobile navigation */
+
+  const mobileMenu = document.getElementById("mobileMenu");
+
+  const mobileOffcanvas =
+    mobileMenu && typeof bootstrap !== "undefined"
+      ? bootstrap.Offcanvas.getOrCreateInstance(mobileMenu)
+      : null;
+
+  const mobileMenuLinks = document.querySelectorAll(
+    ".mobile-nav-link, .mobile-contact-btn, .mobile-menu-logo",
+  );
+
+  mobileMenuLinks.forEach((link) => {
+    link.addEventListener("click", (event) => {
+      const targetSelector = link.getAttribute("href");
+
+      if (!targetSelector || !targetSelector.startsWith("#")) return;
+
+      event.preventDefault();
+      setActiveNavLink(targetSelector);
+
+      if (mobileMenu?.classList.contains("show") && mobileOffcanvas) {
+        mobileMenu.addEventListener(
+          "hidden.bs.offcanvas",
+          () => {
+            scrollToSection(targetSelector);
+          },
+          { once: true },
         );
-      });
+
+        mobileOffcanvas.hide();
+      } else {
+        scrollToSection(targetSelector);
+      }
     });
   });
 
