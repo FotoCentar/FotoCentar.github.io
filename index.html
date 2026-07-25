@@ -336,11 +336,6 @@
       </section>
 
       <!-- =================================================
-         СЛЕДНА СЕКЦИЈА: УСЛУГИ
-         Ќе ја додадеме подоцна
-    ================================================== -->
-
-      <!-- =================================================
      SERVICES SECTION
 ================================================== -->
       <section class="services-section" id="services">
@@ -1666,10 +1661,6 @@
       <!-- =================================================
          СЛЕДНА СЕКЦИЈА: КОНТАКТ
     ================================================== -->
-
-      <!-- =================================================
-     CONTACT SECTION
-================================================== -->
       <section class="contact-section" id="contact">
         <div class="container">
           <!-- Contact heading -->
@@ -1803,246 +1794,77 @@
             </div>
 
             <!-- =================================================
-           CONTACT FORM
+           QUICK CONTACT
       ================================================== -->
             <div class="col-lg-7">
-              <div class="contact-form-wrapper">
-                <div class="contact-form-heading">
+              <div class="contact-quick-wrapper">
+                <div class="contact-quick-content">
                   <p class="contact-form-eyebrow">Закажете термин</p>
 
-                  <h3>Испратете барање</h3>
+                  <h3>Контактирајте нè директно</h3>
 
-                  <p>
-                    Пополнете ја формата и ќе ве контактираме за потврда на
-                    терминот и дополнителни детали.
+                  <p class="contact-quick-description">
+                    За информации, слободен термин или понуда, јавете ни се,
+                    испратете e-mail или пишете ни на социјалните мрежи.
                   </p>
-                </div>
 
-                <form class="contact-form" id="contactForm" novalidate>
-                  <div class="row g-3">
-                    <!-- Name -->
-                    <div class="col-md-6">
-                      <div class="contact-form-group">
-                        <label for="contactName">
-                          Име и презиме
-                          <span>*</span>
-                        </label>
+                  <div class="contact-quick-actions">
+                    <a
+                      href="tel:+38970303670"
+                      class="btn contact-quick-primary"
+                    >
+                      <i class="fa-solid fa-phone"></i>
+                      <span>Јавете се: 070 303 670</span>
+                    </a>
 
-                        <div class="contact-input-wrapper">
-                          <i class="fa-regular fa-user"></i>
-
-                          <input
-                            type="text"
-                            id="contactName"
-                            name="name"
-                            placeholder="Вашето име и презиме"
-                            autocomplete="name"
-                            required
-                          />
-                        </div>
-
-                        <small class="form-error">
-                          Внесете име и презиме.
-                        </small>
-                      </div>
-                    </div>
-
-                    <!-- Phone -->
-                    <div class="col-md-6">
-                      <div class="contact-form-group">
-                        <label for="contactPhone">
-                          Телефон
-                          <span>*</span>
-                        </label>
-
-                        <div class="contact-input-wrapper">
-                          <i class="fa-solid fa-phone"></i>
-
-                          <input
-                            type="tel"
-                            id="contactPhone"
-                            name="phone"
-                            placeholder="07X XXX XXX"
-                            autocomplete="tel"
-                            required
-                          />
-                        </div>
-
-                        <small class="form-error">
-                          Внесете телефонски број.
-                        </small>
-                      </div>
-                    </div>
-
-                    <!-- Email -->
-                    <div class="col-md-6">
-                      <div class="contact-form-group">
-                        <label for="contactEmail"> E-mail </label>
-
-                        <div class="contact-input-wrapper">
-                          <i class="fa-regular fa-envelope"></i>
-
-                          <input
-                            type="email"
-                            id="contactEmail"
-                            name="email"
-                            placeholder="ime@email.com"
-                            autocomplete="email"
-                          />
-                        </div>
-
-                        <small class="form-error">
-                          Внесете правилна e-mail адреса.
-                        </small>
-                      </div>
-                    </div>
-
-                    <!-- Service -->
-                    <div class="col-md-6">
-                      <div class="contact-form-group">
-                        <label for="contactService">
-                          Услуга
-                          <span>*</span>
-                        </label>
-
-                        <div
-                          class="contact-input-wrapper contact-select-wrapper"
-                        >
-                          <i class="fa-solid fa-camera"></i>
-
-                          <select id="contactService" name="service" required>
-                            <option value="" selected disabled>
-                              Изберете услуга
-                            </option>
-
-                            <option value="Свадбена фотографија">
-                              Свадбена фотографија
-                            </option>
-
-                            <option value="Свадбена видеографија">
-                              Свадбена видеографија
-                            </option>
-
-                            <option value="Крштевка">Крштевка</option>
-
-                            <option value="Матура">Матура</option>
-
-                            <option value="Фамилијарно снимање">
-                              Фамилијарно снимање
-                            </option>
-
-                            <option value="Дрон снимање">Дрон снимање</option>
-
-                            <option value="Друго">Друго</option>
-                          </select>
-                        </div>
-
-                        <small class="form-error"> Изберете услуга. </small>
-                      </div>
-                    </div>
-
-                    <!-- Date -->
-                    <div class="col-md-6">
-                      <div class="contact-form-group">
-                        <label for="contactDate"> Посакуван датум </label>
-
-                        <div class="contact-input-wrapper">
-                          <i class="fa-regular fa-calendar"></i>
-
-                          <input type="date" id="contactDate" name="date" />
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- Location -->
-                    <div class="col-md-6">
-                      <div class="contact-form-group">
-                        <label for="contactLocation"> Локација </label>
-
-                        <div class="contact-input-wrapper">
-                          <i class="fa-solid fa-location-dot"></i>
-
-                          <input
-                            type="text"
-                            id="contactLocation"
-                            name="location"
-                            placeholder="Град или локација"
-                          />
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- Message -->
-                    <div class="col-12">
-                      <div class="contact-form-group">
-                        <label for="contactMessage">
-                          Порака
-                          <span>*</span>
-                        </label>
-
-                        <div
-                          class="contact-input-wrapper contact-textarea-wrapper"
-                        >
-                          <i class="fa-regular fa-message"></i>
-
-                          <textarea
-                            id="contactMessage"
-                            name="message"
-                            rows="5"
-                            placeholder="Напишете повеќе информации за настанот..."
-                            required
-                          ></textarea>
-                        </div>
-
-                        <small class="form-error">
-                          Напишете кратка порака.
-                        </small>
-                      </div>
-                    </div>
-
-                    <!-- Consent -->
-                    <div class="col-12">
-                      <label class="contact-checkbox">
-                        <input
-                          type="checkbox"
-                          id="contactConsent"
-                          name="consent"
-                          required
-                        />
-
-                        <span class="contact-checkbox-box">
-                          <i class="fa-solid fa-check"></i>
-                        </span>
-
-                        <span class="contact-checkbox-text">
-                          Се согласувам моите податоци да бидат искористени за
-                          одговор на ова барање.
-                        </span>
-                      </label>
-
-                      <small class="form-error consent-error">
-                        Потребно е да ја прифатите согласноста.
-                      </small>
-                    </div>
-
-                    <!-- Submit -->
-                    <div class="col-12">
-                      <button type="submit" class="btn contact-submit-btn">
-                        <span>Испрати барање</span>
-
-                        <i class="fa-solid fa-arrow-right"></i>
-                      </button>
-                    </div>
+                    <a
+                      href="mailto:fotocentarstip@hotmail.com"
+                      class="btn contact-quick-secondary"
+                    >
+                      <i class="fa-regular fa-envelope"></i>
+                      <span>Испратете e-mail</span>
+                    </a>
                   </div>
 
-                  <!-- Form response -->
-                  <div
-                    class="contact-form-response"
-                    id="contactFormResponse"
-                    role="status"
-                    aria-live="polite"
-                  ></div>
-                </form>
+                  <div class="contact-quick-divider">
+                    <span>или</span>
+                  </div>
+
+                  <a
+                    href="https://www.instagram.com/fotocentarstip"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="contact-instagram-card"
+                  >
+                    <span class="contact-instagram-icon">
+                      <i class="fa-brands fa-instagram"></i>
+                    </span>
+
+                    <span>
+                      <strong>Пишете ни на Instagram</strong>
+                      <small>@fotocentarstip</small>
+                    </span>
+
+                    <i class="fa-solid fa-arrow-right"></i>
+                  </a>
+                </div>
+
+                <div class="contact-quick-benefits">
+                  <div>
+                    <i class="fa-regular fa-clock"></i>
+                    <span>Брз одговор</span>
+                  </div>
+
+                  <div>
+                    <i class="fa-regular fa-calendar-check"></i>
+                    <span>Проверка на слободен термин</span>
+                  </div>
+
+                  <div>
+                    <i class="fa-solid fa-file-signature"></i>
+                    <span>Понуда според вашиот настан</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -2078,9 +1900,6 @@
 
     <!-- Bootstrap JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- EmailJS -->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
     <!-- Custom JavaScript -->
     <script src="./js/script.js"></script>
