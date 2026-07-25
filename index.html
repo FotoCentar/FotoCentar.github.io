@@ -2,268 +2,2087 @@
 <html lang="mk">
   <head>
     <meta charset="UTF-8" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Фото Центар - Штип</title>
+    <meta
+      name="description"
+      content="Фото Центар – Штип. Професионална фотографија и видеографија за свадби, крштевки, матури и останати важни моменти."
+    />
+
+    <title>Фото Центар – Штип</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     />
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="assets/css/reset.css" />
-    <link rel="stylesheet" href="assets/css/variables.css" />
-    <link rel="stylesheet" href="assets/css/style.css" />
-    <link rel="stylesheet" href="assets/css/responsive.css" />
-    <style>
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-        }
-
-        body{
-            font-family:'Poppins',sans-serif;
-            background:#0f0f0f;
-            color:#fff;
-            height:100vh;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            overflow:hidden;
-        }
-
-        body::before{
-            content:"";
-            position:absolute;
-            inset:0;
-            background:url("background.jpg") center/cover no-repeat;
-            opacity:.18;
-        }
-
-        .container{
-            position:relative;
-            z-index:2;
-            text-align:center;
-            max-width:700px;
-            padding:40px;
-        }
-
-        h1{
-            font-size:4rem;
-            letter-spacing:4px;
-            text-transform:uppercase;
-            margin-bottom:15px;
-        }
-
-        .line{
-            width:90px;
-            height:3px;
-            background:#fff;
-            margin:0 auto 30px;
-            opacity:.8;
-        }
-
-        p{
-            color:#d9d9d9;
-            font-size:1.1rem;
-            line-height:1.8;
-            margin-bottom:40px;
-        }
-
-        .loader{
-            font-size:3rem;
-            margin-bottom:25px;
-        }
-
-        .loader i{
-            animation:spin 1.2s linear infinite;
-        }
-
-        @keyframes spin{
-            from{transform:rotate(0deg);}
-            to{transform:rotate(360deg);}
-        }
-
-        .footer{
-            color:#9b9b9b;
-            font-size:.95rem;
-            letter-spacing:1px;
-        }
-    </style>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./css/style.css" />
   </head>
 
   <body>
-<!-- prvicno -->
-    <!-- <header class="header">
-      <div class="container">
-        <nav class="navbar">
-          <a href="#" class="logo">
-            <img src="assets/images/logos/logo.jpg" alt="Фото Центар" />
+    <!-- =================================================
+       HEADER / NAVBAR
+  ================================================== -->
+    <header class="site-header">
+      <nav
+        class="navbar navbar-expand-lg navbar-dark fixed-top"
+        id="mainNavbar"
+      >
+        <div class="container">
+          <!-- Logo -->
+          <a class="navbar-brand" href="#home" aria-label="Фото Центар – Штип">
+            <span class="brand-logo-wrapper">
+              <img
+                src="assets/images/logo2.png"
+                alt="Фото Центар – Штип"
+                class="brand-logo"
+              />
+            </span>
           </a>
 
-          <ul class="nav-menu">
-            <li><a href="#" class="active">Почетна</a></li>
+          <!-- Mobile hamburger button -->
+          <button
+            class="navbar-toggler border-0 shadow-none"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#mobileMenu"
+            aria-controls="mobileMenu"
+            aria-label="Отвори мени"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
 
-            <li><a href="#services">Услуги</a></li>
+          <!-- Desktop navigation -->
+          <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item">
+                <a class="nav-link active" href="#home"> Почетна </a>
+              </li>
 
-            <li><a href="#gallery">Галерија</a></li>
+              <li class="nav-item">
+                <a class="nav-link" href="#services"> Услуги </a>
+              </li>
 
-            <li><a href="#about">За нас</a></li>
+              <li class="nav-item">
+                <a class="nav-link" href="#gallery"> Галерија </a>
+              </li>
 
-            <li><a href="#contact">Контакт</a></li>
+              <li class="nav-item">
+                <a class="nav-link" href="#about"> За нас </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="#contact"> Контакт </a>
+              </li>
+            </ul>
+
+            <a href="#contact" class="btn navbar-contact-btn">
+              Контактирај нè
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      <!-- ===============================================
+         MOBILE OFFCANVAS MENU
+    ================================================ -->
+      <div
+        class="offcanvas offcanvas-end mobile-menu"
+        tabindex="-1"
+        id="mobileMenu"
+        aria-labelledby="mobileMenuLabel"
+      >
+        <div class="offcanvas-header">
+          <a href="#home" class="mobile-menu-logo" data-bs-dismiss="offcanvas">
+            <span class="brand-logo-wrapper">
+              <img
+                src="assets/images/logo2.png"
+                alt="Фото Центар – Штип"
+                class="brand-logo"
+              />
+            </span>
+          </a>
+
+          <button
+            type="button"
+            class="btn-close btn-close-white shadow-none"
+            data-bs-dismiss="offcanvas"
+            aria-label="Затвори мени"
+          ></button>
+        </div>
+
+        <div class="offcanvas-body">
+          <ul class="mobile-nav-list">
+            <li>
+              <a
+                href="#home"
+                class="mobile-nav-link"
+                data-bs-dismiss="offcanvas"
+              >
+                Почетна
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="#services"
+                class="mobile-nav-link"
+                data-bs-dismiss="offcanvas"
+              >
+                Услуги
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="#gallery"
+                class="mobile-nav-link"
+                data-bs-dismiss="offcanvas"
+              >
+                Галерија
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="#about"
+                class="mobile-nav-link"
+                data-bs-dismiss="offcanvas"
+              >
+                За нас
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="#contact"
+                class="mobile-nav-link"
+                data-bs-dismiss="offcanvas"
+              >
+                Контакт
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </li>
           </ul>
 
-          <a href="#contact" class="btn-outline"> Контактирај нè </a>
+          <a
+            href="#contact"
+            class="btn mobile-contact-btn"
+            data-bs-dismiss="offcanvas"
+          >
+            Контактирај нè
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
 
-          <div class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-        </nav>
-      </div>
-    </header> -->
-    <!-- hero -->
-    <!-- <section class="hero">
-      <div class="overlay"></div>
+          <!-- Mobile contact information -->
+          <div class="mobile-contact-info">
+            <a href="tel:+38970123456">
+              <i class="fa-solid fa-phone"></i>
+              <span>070 123 456</span>
+            </a>
 
-      <div class="container">
-        <div class="hero-content">
-          <span class="subtitle"> Фото Центар • Штип </span>
+            <a href="mailto:fotocentarstip@gmail.com">
+              <i class="fa-regular fa-envelope"></i>
+              <span>fotocentarstip@gmail.com</span>
+            </a>
 
-          <h1>
-            Секој момент<br />
-            заслужува да остане<br />
-            вечен.
-          </h1>
+            <p>
+              <i class="fa-solid fa-location-dot"></i>
+              <span>Штип, Македонија</span>
+            </p>
 
-          <p>
-            Професионална фотографија и видеографија за свадби, крштевки, матури
-            и сите ваши најважни моменти.
-          </p>
-
-          <div class="hero-buttons">
-            <a href="#gallery" class="btn-primary"> Разгледај галерија </a>
-
-            <a href="#contact" class="btn-secondary"> Контактирај нè </a>
-          </div>
-        </div>
-      </div>
-    </section> -->
-    <!-- services -->
-    <!-- <section class="services" id="services">
-
-      <div class="container">
-        <div class="section-title">
-          <span>НАШИ УСЛУГИ</span>
-
-          <h2>Што ви нудиме</h2>
-
-          <p>
-            Професионална фотографија и видеографија за сите ваши најважни
-            моменти.
-          </p>
-        </div>
-
-        <div class="services-grid">
-          <div class="service-card">
-            <div class="service-icon">
-              <i class="fa-solid fa-camera"></i>
-            </div>
-
-            <h3>Свадбена фотографија</h3>
-
-            <p>Ги фотографираме најубавите моменти од вашиот свадбен ден.</p>
+            <p>
+              <i class="fa-regular fa-clock"></i>
+              <span>Пон – Нед: 09:00 – 20:00</span>
+            </p>
           </div>
 
-          <div class="service-card">
-            <div class="service-icon">
-              <i class="fa-solid fa-video"></i>
-            </div>
+          <!-- Mobile social links -->
+          <div class="mobile-social-links">
+            <a
+              href="https://www.instagram.com/fotocentarstip"
+              aria-label="Instagram"
+              target="_blank"
+            >
+              <i class="fa-brands fa-instagram"></i>
+            </a>
 
-            <h3>Свадбена видеографија</h3>
+            <a
+              href="https://www.facebook.com/p/Foto-Centar-Stip-100060809630011/"
+              aria-label="Facebook"
+              target="_blank"
+            >
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
 
-            <p>Кинематографско видео кое ќе ја раскажува вашата приказна.</p>
-          </div>
-
-          <div class="service-card">
-            <div class="service-icon">
-              <i class="fa-solid fa-baby"></i>
-            </div>
-
-            <h3>Крштевки</h3>
-
-            <p>Професионално фотографирање и снимање на крштевки.</p>
-          </div>
-
-          <div class="service-card">
-            <div class="service-icon">
-              <i class="fa-solid fa-graduation-cap"></i>
-            </div>
-
-            <h3>Матури</h3>
-
-            <p>Индивидуални и групни фотографии за матуранти.</p>
-          </div>
-
-          <div class="service-card">
-            <div class="service-icon">
-              <i class="fa-solid fa-people-group"></i>
-            </div>
-
-            <h3>Фамилијарни снимања</h3>
-
-            <p>Спомени кои ќе останат засекогаш.</p>
-          </div>
-
-          <div class="service-card">
-            <div class="service-icon">
-              <i class="fa-solid fa-helicopter"></i>
-            </div>
-
-            <h3>Drone снимања</h3>
-
-            <p>Воздушни фотографии и видеа со висок квалитет.</p>
+            <!-- <a href="#" aria-label="TikTok">
+              <i class="fa-brands fa-tiktok"></i>
+            </a> -->
           </div>
         </div>
       </div>
-    </section> -->
+    </header>
 
-<div class="container">
+    <main>
+      <!-- =================================================
+         HERO SECTION
+    ================================================== -->
+      <section class="hero-section" id="home">
+        <!-- Hero background image -->
+        <img
+          src="assets/images/hero-wedding.jpg"
+          alt="Свадбена фотографија од Фото Центар – Штип"
+          class="hero-background"
+          fetchpriority="high"
+        />
 
-    <div class="loader">
-        <i class="fa-solid fa-spinner"></i>
-    </div>
+        <!-- Dark image overlay -->
+        <div class="hero-overlay"></div>
 
-    <h1>Coming Soon</h1>
+        <div class="container hero-container">
+          <div class="row align-items-center min-vh-100">
+            <div class="col-lg-7 col-xl-6">
+              <div class="hero-content">
+                <p class="hero-eyebrow">
+                  Фотографија
+                  <span></span>
+                  Видеографија
+                </p>
 
-    <div class="line"></div>
+                <h1 class="hero-title">
+                  Секој момент
+                  <br />
+                  заслужува да
+                  <br />
+                  остане вечен.
+                </h1>
 
-    <p>
-        We’re working behind the lens to create a beautiful new experience.<br>
-        Our website will be launching soon.
-    </p>
+                <p class="hero-description">
+                  Професионална фотографија и видеографија за свадби и сите
+                  важни моменти од вашиот живот.
+                </p>
 
-    <div class="footer">
-        © Foto Centar Štip
-    </div>
+                <div class="hero-buttons">
+                  <a href="#gallery" class="btn hero-primary-btn">
+                    Разгледај галерија
+                    <i class="fa-solid fa-arrow-right"></i>
+                  </a>
 
-</div>
+                  <a href="#contact" class="btn hero-secondary-btn">
+                    Контактирај нè
+                    <i class="fa-solid fa-arrow-right"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
+        <!-- Desktop social media -->
+        <div class="hero-social-links">
+          <a
+            href="https://www.instagram.com/fotocentarstip"
+            aria-label="Instagram"
+            target="_blank"
+          >
+            <i class="fa-brands fa-instagram"></i>
+          </a>
 
-    <!-- novo -->
+          <a
+            href="https://www.facebook.com/p/Foto-Centar-Stip-100060809630011/"
+            aria-label="Facebook"
+            target="_blank"
+          >
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
 
-    <script src="assets/js/script.js"></script>
+          <!-- <a href="#" aria-label="TikTok">
+            <i class="fa-brands fa-tiktok"></i>
+          </a> -->
+        </div>
+
+        <!-- Scroll indicator -->
+        <a
+          href="#services"
+          class="hero-scroll-indicator"
+          aria-label="Продолжи кон услугите"
+        >
+          <span>Откриј повеќе</span>
+          <i class="fa-solid fa-arrow-down"></i>
+        </a>
+      </section>
+
+      <!-- =================================================
+         СЛЕДНА СЕКЦИЈА: УСЛУГИ
+         Ќе ја додадеме подоцна
+    ================================================== -->
+
+      <!-- =================================================
+     SERVICES SECTION
+================================================== -->
+      <section class="services-section" id="services">
+        <div class="container">
+          <!-- Section heading -->
+          <div class="services-heading">
+            <p class="section-eyebrow">Наши услуги</p>
+
+            <h2 class="section-title">Што ви нудиме</h2>
+
+            <p class="section-description">
+              Професионална фотографија и видеографија за сите важни моменти што
+              сакате да ги зачувате засекогаш.
+            </p>
+          </div>
+
+          <!-- Services grid -->
+          <div class="row g-3 g-lg-4 services-grid">
+            <!-- Service 1 -->
+            <div class="col-6 col-md-4 col-xl-2">
+              <article class="service-card">
+                <div class="service-icon">
+                  <i class="fa-solid fa-camera"></i>
+                </div>
+
+                <h3 class="service-title">Свадбена фотографија</h3>
+
+                <p class="service-text">
+                  Автентични фотографии од вашиот најважен ден.
+                </p>
+
+                <button
+                  type="button"
+                  class="service-link"
+                  data-bs-toggle="modal"
+                  data-bs-target="#weddingPhotographyModal"
+                >
+                  <span>Дознај повеќе</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </article>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="col-6 col-md-4 col-xl-2">
+              <article class="service-card">
+                <div class="service-icon">
+                  <i class="fa-solid fa-video"></i>
+                </div>
+
+                <h3 class="service-title">Свадбена видеографија</h3>
+
+                <p class="service-text">
+                  Филмска приказна исполнета со вистински емоции.
+                </p>
+
+                <button
+                  type="button"
+                  class="service-link"
+                  data-bs-toggle="modal"
+                  data-bs-target="#weddingVideographyModal"
+                >
+                  <span>Дознај повеќе</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </article>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="col-6 col-md-4 col-xl-2">
+              <article class="service-card">
+                <div class="service-icon">
+                  <i class="fa-solid fa-cross"></i>
+                </div>
+
+                <h3 class="service-title">Крштевки</h3>
+
+                <p class="service-text">
+                  Нежни спомени од еден посебен семеен ден.
+                </p>
+
+                <button
+                  type="button"
+                  class="service-link"
+                  data-bs-toggle="modal"
+                  data-bs-target="#christeningModal"
+                >
+                  <span>Дознај повеќе</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </article>
+            </div>
+
+            <!-- Service 4 -->
+            <div class="col-6 col-md-4 col-xl-2">
+              <article class="service-card">
+                <div class="service-icon">
+                  <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+
+                <h3 class="service-title">Матури</h3>
+
+                <p class="service-text">
+                  Модерни фотографии од вашата матурска прослава.
+                </p>
+
+                <button
+                  type="button"
+                  class="service-link"
+                  data-bs-toggle="modal"
+                  data-bs-target="#graduationModal"
+                >
+                  <span>Дознај повеќе</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </article>
+            </div>
+
+            <!-- Service 5 -->
+            <div class="col-6 col-md-4 col-xl-2">
+              <article class="service-card">
+                <div class="service-icon">
+                  <i class="fa-solid fa-people-roof"></i>
+                </div>
+
+                <h3 class="service-title">Фамилијарни снимања</h3>
+
+                <p class="service-text">
+                  Природни семејни моменти исполнети со блискост.
+                </p>
+
+                <button
+                  type="button"
+                  class="service-link"
+                  data-bs-toggle="modal"
+                  data-bs-target="#familyModal"
+                >
+                  <span>Дознај повеќе</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </article>
+            </div>
+
+            <!-- Service 6 -->
+            <div class="col-6 col-md-4 col-xl-2">
+              <article class="service-card">
+                <div class="service-icon">
+                  <i class="fa-solid fa-helicopter"></i>
+                </div>
+
+                <h3 class="service-title">Дрон снимања</h3>
+
+                <p class="service-text">
+                  Атрактивни воздушни фотографии и видеоснимки.
+                </p>
+
+                <button
+                  type="button"
+                  class="service-link"
+                  data-bs-toggle="modal"
+                  data-bs-target="#droneModal"
+                >
+                  <span>Дознај повеќе</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </article>
+            </div>
+          </div>
+
+          <!-- Main services CTA -->
+          <div class="services-button-wrapper">
+            <a href="#contact" class="btn services-main-btn">
+              Побарај понуда
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================
+     SERVICE MODALS
+================================================== -->
+
+      <!-- Wedding Photography Modal -->
+      <div
+        class="modal fade service-modal"
+        id="weddingPhotographyModal"
+        tabindex="-1"
+        aria-labelledby="weddingPhotographyModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <div class="modal-heading-wrapper">
+                <div class="modal-service-icon">
+                  <i class="fa-solid fa-camera"></i>
+                </div>
+
+                <div>
+                  <p class="modal-eyebrow">Фото Центар – Штип</p>
+
+                  <h2 class="modal-title" id="weddingPhotographyModalLabel">
+                    Свадбена фотографија
+                  </h2>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                class="btn-close btn-close-white"
+                data-bs-dismiss="modal"
+                aria-label="Затвори"
+              ></button>
+            </div>
+
+            <div class="modal-body">
+              <p class="modal-intro">
+                Вашиот свадбен ден го претвораме во внимателно раскажана
+                фотографска приказна исполнета со природни моменти, детали и
+                вистински емоции.
+              </p>
+
+              <h3 class="modal-subtitle">Услугата може да вклучува:</h3>
+
+              <ul class="service-modal-list">
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  Фотографирање на подготовките
+                </li>
+
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  Фотографирање на церемонијата
+                </li>
+
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  Свадбена фотосесија
+                </li>
+
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  Фотографирање на прославата
+                </li>
+
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  Професионална обработка на фотографиите
+                </li>
+
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  Дигитална галерија за преземање
+                </li>
+              </ul>
+            </div>
+
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn modal-close-btn"
+                data-bs-dismiss="modal"
+              >
+                Затвори
+              </button>
+
+              <a
+                href="#contact"
+                class="btn modal-contact-btn"
+                data-bs-dismiss="modal"
+              >
+                Побарај понуда
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wedding Videography Modal -->
+      <div
+        class="modal fade service-modal"
+        id="weddingVideographyModal"
+        tabindex="-1"
+        aria-labelledby="weddingVideographyModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <div class="modal-heading-wrapper">
+                <div class="modal-service-icon">
+                  <i class="fa-solid fa-video"></i>
+                </div>
+
+                <div>
+                  <p class="modal-eyebrow">Фото Центар – Штип</p>
+
+                  <h2 class="modal-title" id="weddingVideographyModalLabel">
+                    Свадбена видеографија
+                  </h2>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                class="btn-close btn-close-white"
+                data-bs-dismiss="modal"
+                aria-label="Затвори"
+              ></button>
+            </div>
+
+            <div class="modal-body">
+              <p class="modal-intro">
+                Создаваме свадбен филм кој ги доловува атмосферата, емоциите и
+                најважните моменти од вашиот ден.
+              </p>
+
+              <h3 class="modal-subtitle">Услугата може да вклучува:</h3>
+
+              <ul class="service-modal-list">
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  Снимање на подготовките
+                </li>
+
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  Снимање на церемонијата
+                </li>
+
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  Снимање на прославата
+                </li>
+
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  Краток свадбен highlight филм
+                </li>
+
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  Целосен свадбен филм
+                </li>
+
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  Професионална монтажа и обработка
+                </li>
+              </ul>
+            </div>
+
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn modal-close-btn"
+                data-bs-dismiss="modal"
+              >
+                Затвори
+              </button>
+
+              <a
+                href="#contact"
+                class="btn modal-contact-btn"
+                data-bs-dismiss="modal"
+              >
+                Побарај понуда
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Christening Modal -->
+      <div
+        class="modal fade service-modal"
+        id="christeningModal"
+        tabindex="-1"
+        aria-labelledby="christeningModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <div class="modal-heading-wrapper">
+                <div class="modal-service-icon">
+                  <i class="fa-solid fa-cross"></i>
+                </div>
+
+                <div>
+                  <p class="modal-eyebrow">Фото Центар – Штип</p>
+
+                  <h2 class="modal-title" id="christeningModalLabel">
+                    Крштевки
+                  </h2>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                class="btn-close btn-close-white"
+                data-bs-dismiss="modal"
+                aria-label="Затвори"
+              ></button>
+            </div>
+
+            <div class="modal-body">
+              <p class="modal-intro">
+                Со дискретен и внимателен пристап ги зачувуваме најубавите
+                моменти од крштевката и семејната прослава.
+              </p>
+
+              <h3 class="modal-subtitle">Услугата може да вклучува:</h3>
+
+              <ul class="service-modal-list">
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  Фотографирање во црква
+                </li>
+
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  Фотографирање на семејната прослава
+                </li>
+
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  Семејни портрети
+                </li>
+
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  Фотографии од деталите и декорацијата
+                </li>
+
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  Обработка на избраните фотографии
+                </li>
+              </ul>
+            </div>
+
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn modal-close-btn"
+                data-bs-dismiss="modal"
+              >
+                Затвори
+              </button>
+
+              <a
+                href="#contact"
+                class="btn modal-contact-btn"
+                data-bs-dismiss="modal"
+              >
+                Побарај понуда
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Graduation Modal -->
+      <div
+        class="modal fade service-modal"
+        id="graduationModal"
+        tabindex="-1"
+        aria-labelledby="graduationModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <div class="modal-heading-wrapper">
+                <div class="modal-service-icon">
+                  <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+
+                <div>
+                  <p class="modal-eyebrow">Фото Центар – Штип</p>
+
+                  <h2 class="modal-title" id="graduationModalLabel">Матури</h2>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                class="btn-close btn-close-white"
+                data-bs-dismiss="modal"
+                aria-label="Затвори"
+              ></button>
+            </div>
+
+            <div class="modal-body">
+              <p class="modal-intro">
+                Модерна и креативна матурска фотосесија која ја прикажува вашата
+                личност и атмосферата од прославата.
+              </p>
+
+              <h3 class="modal-subtitle">Услугата може да вклучува:</h3>
+
+              <ul class="service-modal-list">
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  Индивидуална фотосесија
+                </li>
+
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  Групно фотографирање
+                </li>
+
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  Фотографирање на матурската прослава
+                </li>
+
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  Професионална обработка
+                </li>
+
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  Дигитална испорака на фотографиите
+                </li>
+              </ul>
+            </div>
+
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn modal-close-btn"
+                data-bs-dismiss="modal"
+              >
+                Затвори
+              </button>
+
+              <a
+                href="#contact"
+                class="btn modal-contact-btn"
+                data-bs-dismiss="modal"
+              >
+                Побарај понуда
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Family Modal -->
+      <div
+        class="modal fade service-modal"
+        id="familyModal"
+        tabindex="-1"
+        aria-labelledby="familyModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <div class="modal-heading-wrapper">
+                <div class="modal-service-icon">
+                  <i class="fa-solid fa-people-roof"></i>
+                </div>
+
+                <div>
+                  <p class="modal-eyebrow">Фото Центар – Штип</p>
+
+                  <h2 class="modal-title" id="familyModalLabel">
+                    Фамилијарни снимања
+                  </h2>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                class="btn-close btn-close-white"
+                data-bs-dismiss="modal"
+                aria-label="Затвори"
+              ></button>
+            </div>
+
+            <div class="modal-body">
+              <p class="modal-intro">
+                Опуштена и природна фотосесија создадена за вашето семејство, во
+                студио или на избрана локација.
+              </p>
+
+              <h3 class="modal-subtitle">Услугата може да вклучува:</h3>
+
+              <ul class="service-modal-list">
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  Фотосесија во студио
+                </li>
+
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  Фотосесија на отворено
+                </li>
+
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  Индивидуални и групни портрети
+                </li>
+
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  Фотографирање деца и бебиња
+                </li>
+
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  Професионална обработка
+                </li>
+              </ul>
+            </div>
+
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn modal-close-btn"
+                data-bs-dismiss="modal"
+              >
+                Затвори
+              </button>
+
+              <a
+                href="#contact"
+                class="btn modal-contact-btn"
+                data-bs-dismiss="modal"
+              >
+                Побарај понуда
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Drone Modal -->
+      <div
+        class="modal fade service-modal"
+        id="droneModal"
+        tabindex="-1"
+        aria-labelledby="droneModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <div class="modal-heading-wrapper">
+                <div class="modal-service-icon">
+                  <i class="fa-solid fa-helicopter"></i>
+                </div>
+
+                <div>
+                  <p class="modal-eyebrow">Фото Центар – Штип</p>
+
+                  <h2 class="modal-title" id="droneModalLabel">Дрон снимања</h2>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                class="btn-close btn-close-white"
+                data-bs-dismiss="modal"
+                aria-label="Затвори"
+              ></button>
+            </div>
+
+            <div class="modal-body">
+              <p class="modal-intro">
+                Воздушни фотографии и видеоснимки кои му даваат поинаква
+                перспектива на вашиот настан или проект.
+              </p>
+
+              <h3 class="modal-subtitle">Услугата може да вклучува:</h3>
+
+              <ul class="service-modal-list">
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  Воздушно фотографирање
+                </li>
+
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  Воздушно видеоснимање
+                </li>
+
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  Снимање свадби и настани
+                </li>
+
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  Снимање недвижности и локации
+                </li>
+
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  Монтажа и обработка на материјалот
+                </li>
+              </ul>
+            </div>
+
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn modal-close-btn"
+                data-bs-dismiss="modal"
+              >
+                Затвори
+              </button>
+
+              <a
+                href="#contact"
+                class="btn modal-contact-btn"
+                data-bs-dismiss="modal"
+              >
+                Побарај понуда
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- =================================================
+         СЛЕДНА СЕКЦИЈА: ГАЛЕРИЈА
+    ================================================== -->
+
+      <!-- =================================================
+     GALLERY SECTION
+================================================== -->
+      <section class="gallery-section" id="gallery">
+        <div class="container">
+          <!-- Gallery heading -->
+          <div class="gallery-heading-wrapper">
+            <div class="gallery-heading">
+              <p class="gallery-eyebrow">Нашето портфолио</p>
+
+              <h2 class="gallery-title">Нашите најубави моменти</h2>
+
+              <p class="gallery-description">
+                Разгледајте дел од приказните, емоциите и моментите што ги
+                зачувавме преку фотографија и видео.
+              </p>
+            </div>
+
+            <!-- Gallery filters -->
+            <div
+              class="gallery-filters"
+              role="group"
+              aria-label="Филтри за галерија"
+            >
+              <button
+                type="button"
+                class="gallery-filter active"
+                data-filter="all"
+              >
+                Сите
+              </button>
+
+              <button
+                type="button"
+                class="gallery-filter"
+                data-filter="wedding"
+              >
+                Свадби
+              </button>
+
+              <button
+                type="button"
+                class="gallery-filter"
+                data-filter="christening"
+              >
+                Крштевки
+              </button>
+
+              <button
+                type="button"
+                class="gallery-filter"
+                data-filter="graduation"
+              >
+                Матури
+              </button>
+
+              <button type="button" class="gallery-filter" data-filter="family">
+                Фамилијарни
+              </button>
+
+              <button type="button" class="gallery-filter" data-filter="drone">
+                Дрон
+              </button>
+            </div>
+          </div>
+
+          <!-- Gallery grid -->
+          <div class="gallery-grid">
+            <!-- Gallery item 1 -->
+            <article
+              class="gallery-item gallery-item-large"
+              data-category="wedding"
+            >
+              <button
+                type="button"
+                class="gallery-image-button"
+                data-bs-toggle="modal"
+                data-bs-target="#galleryModal"
+                data-image="assets/images/gallery/wedding-1.jpg"
+                data-title="Свадбена приказна"
+                data-category-name="Свадбена фотографија"
+                aria-label="Отвори фотографија од свадба"
+              >
+                <img
+                  src="assets/images/gallery/wedding-1.jpg"
+                  alt="Свадбена фотографија"
+                  loading="lazy"
+                />
+
+                <span class="gallery-overlay">
+                  <span class="gallery-item-content">
+                    <span class="gallery-category"> Свадбена фотографија </span>
+
+                    <span class="gallery-item-title"> Свадбена приказна </span>
+                  </span>
+
+                  <span class="gallery-open-icon">
+                    <i
+                      class="fa-solid fa-up-right-and-down-left-from-center"
+                    ></i>
+                  </span>
+                </span>
+              </button>
+            </article>
+
+            <!-- Gallery item 2 -->
+            <article
+              class="gallery-item gallery-item-tall"
+              data-category="wedding"
+            >
+              <button
+                type="button"
+                class="gallery-image-button"
+                data-bs-toggle="modal"
+                data-bs-target="#galleryModal"
+                data-image="assets/images/gallery/wedding-2.jpg"
+                data-title="Емоции што остануваат"
+                data-category-name="Свадбена фотографија"
+                aria-label="Отвори свадбена фотографија"
+              >
+                <img
+                  src="assets/images/gallery/wedding-2.jpg"
+                  alt="Младоженци на свадбена фотосесија"
+                  loading="lazy"
+                />
+
+                <span class="gallery-overlay">
+                  <span class="gallery-item-content">
+                    <span class="gallery-category"> Свадбена фотографија </span>
+
+                    <span class="gallery-item-title">
+                      Емоции што остануваат
+                    </span>
+                  </span>
+
+                  <span class="gallery-open-icon">
+                    <i
+                      class="fa-solid fa-up-right-and-down-left-from-center"
+                    ></i>
+                  </span>
+                </span>
+              </button>
+            </article>
+
+            <!-- Gallery item 3 -->
+            <article class="gallery-item" data-category="christening">
+              <button
+                type="button"
+                class="gallery-image-button"
+                data-bs-toggle="modal"
+                data-bs-target="#galleryModal"
+                data-image="assets/images/gallery/christening-1.jpg"
+                data-title="Посебен семеен ден"
+                data-category-name="Крштевка"
+                aria-label="Отвори фотографија од крштевка"
+              >
+                <img
+                  src="assets/images/gallery/christening-1.jpg"
+                  alt="Фотографија од крштевка"
+                  loading="lazy"
+                />
+
+                <span class="gallery-overlay">
+                  <span class="gallery-item-content">
+                    <span class="gallery-category"> Крштевка </span>
+
+                    <span class="gallery-item-title"> Посебен семеен ден </span>
+                  </span>
+
+                  <span class="gallery-open-icon">
+                    <i
+                      class="fa-solid fa-up-right-and-down-left-from-center"
+                    ></i>
+                  </span>
+                </span>
+              </button>
+            </article>
+
+            <!-- Gallery item 4 -->
+            <article class="gallery-item" data-category="graduation">
+              <button
+                type="button"
+                class="gallery-image-button"
+                data-bs-toggle="modal"
+                data-bs-target="#galleryModal"
+                data-image="assets/images/gallery/graduation-1.jpg"
+                data-title="Нов почеток"
+                data-category-name="Матурска фотографија"
+                aria-label="Отвори матурска фотографија"
+              >
+                <img
+                  src="assets/images/gallery/graduation-1.jpg"
+                  alt="Матурска фотографија"
+                  loading="lazy"
+                />
+
+                <span class="gallery-overlay">
+                  <span class="gallery-item-content">
+                    <span class="gallery-category"> Матурска фотографија </span>
+
+                    <span class="gallery-item-title"> Нов почеток </span>
+                  </span>
+
+                  <span class="gallery-open-icon">
+                    <i
+                      class="fa-solid fa-up-right-and-down-left-from-center"
+                    ></i>
+                  </span>
+                </span>
+              </button>
+            </article>
+
+            <!-- Gallery item 5 -->
+            <article
+              class="gallery-item gallery-item-wide"
+              data-category="family"
+            >
+              <button
+                type="button"
+                class="gallery-image-button"
+                data-bs-toggle="modal"
+                data-bs-target="#galleryModal"
+                data-image="assets/images/gallery/family-1.jpg"
+                data-title="Семејни спомени"
+                data-category-name="Фамилијарна фотосесија"
+                aria-label="Отвори фамилијарна фотографија"
+              >
+                <img
+                  src="assets/images/gallery/family-1.jpg"
+                  alt="Фамилијарна фотосесија"
+                  loading="lazy"
+                />
+
+                <span class="gallery-overlay">
+                  <span class="gallery-item-content">
+                    <span class="gallery-category">
+                      Фамилијарна фотосесија
+                    </span>
+
+                    <span class="gallery-item-title"> Семејни спомени </span>
+                  </span>
+
+                  <span class="gallery-open-icon">
+                    <i
+                      class="fa-solid fa-up-right-and-down-left-from-center"
+                    ></i>
+                  </span>
+                </span>
+              </button>
+            </article>
+
+            <!-- Gallery item 6 -->
+            <article
+              class="gallery-item gallery-item-tall"
+              data-category="drone"
+            >
+              <button
+                type="button"
+                class="gallery-image-button"
+                data-bs-toggle="modal"
+                data-bs-target="#galleryModal"
+                data-image="assets/images/gallery/drone-1.jpg"
+                data-title="Поглед од височина"
+                data-category-name="Дрон снимање"
+                aria-label="Отвори фотографија снимена со дрон"
+              >
+                <img
+                  src="assets/images/gallery/drone-1.jpg"
+                  alt="Воздушна фотографија снимена со дрон"
+                  loading="lazy"
+                />
+
+                <span class="gallery-overlay">
+                  <span class="gallery-item-content">
+                    <span class="gallery-category"> Дрон снимање </span>
+
+                    <span class="gallery-item-title"> Поглед од височина </span>
+                  </span>
+
+                  <span class="gallery-open-icon">
+                    <i
+                      class="fa-solid fa-up-right-and-down-left-from-center"
+                    ></i>
+                  </span>
+                </span>
+              </button>
+            </article>
+
+            <!-- Gallery item 7 -->
+            <article class="gallery-item" data-category="wedding">
+              <button
+                type="button"
+                class="gallery-image-button"
+                data-bs-toggle="modal"
+                data-bs-target="#galleryModal"
+                data-image="assets/images/gallery/wedding-3.jpg"
+                data-title="Детали од свадбениот ден"
+                data-category-name="Свадбена фотографија"
+                aria-label="Отвори фотографија од свадбени детали"
+              >
+                <img
+                  src="assets/images/gallery/wedding-3.jpg"
+                  alt="Детали од свадбен ден"
+                  loading="lazy"
+                />
+
+                <span class="gallery-overlay">
+                  <span class="gallery-item-content">
+                    <span class="gallery-category"> Свадбена фотографија </span>
+
+                    <span class="gallery-item-title">
+                      Детали од свадбениот ден
+                    </span>
+                  </span>
+
+                  <span class="gallery-open-icon">
+                    <i
+                      class="fa-solid fa-up-right-and-down-left-from-center"
+                    ></i>
+                  </span>
+                </span>
+              </button>
+            </article>
+
+            <!-- Gallery item 8 -->
+            <article class="gallery-item" data-category="drone">
+              <button
+                type="button"
+                class="gallery-image-button"
+                data-bs-toggle="modal"
+                data-bs-target="#galleryModal"
+                data-image="assets/images/gallery/drone-2.jpg"
+                data-title="Воздушна перспектива"
+                data-category-name="Дрон снимање"
+                aria-label="Отвори воздушна фотографија"
+              >
+                <img
+                  src="assets/images/gallery/drone-2.jpg"
+                  alt="Воздушна фотографија од локација"
+                  loading="lazy"
+                />
+
+                <span class="gallery-overlay">
+                  <span class="gallery-item-content">
+                    <span class="gallery-category"> Дрон снимање </span>
+
+                    <span class="gallery-item-title">
+                      Воздушна перспектива
+                    </span>
+                  </span>
+
+                  <span class="gallery-open-icon">
+                    <i
+                      class="fa-solid fa-up-right-and-down-left-from-center"
+                    ></i>
+                  </span>
+                </span>
+              </button>
+            </article>
+          </div>
+
+          <!-- Gallery CTA -->
+          <div class="gallery-cta">
+            <p>Сакате да создадеме вакви спомени и за вас?</p>
+
+            <a href="#contact" class="btn gallery-contact-btn">
+              Закажи фотографирање
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <!-- <a
+              href="tel:+38971282840"
+              class="btn gallery-contact-btn"
+              aria-label="Јавете се во Фото Центар"
+            >
+              <i class="fa-solid fa-phone"></i>
+              Јавете се
+            </a> -->
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================
+     GALLERY LIGHTBOX MODAL
+================================================== -->
+      <div
+        class="modal fade gallery-modal"
+        id="galleryModal"
+        tabindex="-1"
+        aria-labelledby="galleryModalTitle"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+          <div class="modal-content">
+            <button
+              type="button"
+              class="btn-close btn-close-white gallery-modal-close"
+              data-bs-dismiss="modal"
+              aria-label="Затвори фотографија"
+            ></button>
+
+            <div class="gallery-modal-image-wrapper">
+              <img
+                src=""
+                alt=""
+                class="gallery-modal-image"
+                id="galleryModalImage"
+              />
+            </div>
+
+            <div class="gallery-modal-caption">
+              <p class="gallery-modal-category" id="galleryModalCategory"></p>
+
+              <h2 class="gallery-modal-title" id="galleryModalTitle"></h2>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- =================================================
+         СЛЕДНА СЕКЦИЈА: ЗА НАС
+    ================================================== -->
+
+      <section class="about-section" id="about">
+        <div class="container">
+          <div class="row align-items-center g-5">
+            <!-- Photographer image -->
+            <div class="col-lg-5">
+              <div class="about-image-wrapper">
+                <img
+                  src="assets/images/about-photographer.jpg"
+                  alt="Фотограф од Фото Центар – Штип"
+                  class="about-image"
+                  loading="lazy"
+                />
+
+                <div class="about-image-frame"></div>
+
+                <div class="about-experience-badge">
+                  <span class="about-experience-number"> 20+ </span>
+
+                  <span class="about-experience-text">
+                    години<br />
+                    искуство
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- About content -->
+            <div class="col-lg-7">
+              <div class="about-content">
+                <p class="about-eyebrow">За нас</p>
+
+                <h2 class="about-title">
+                  Ја создаваме
+                  <br />
+                  вашата приказна
+                </h2>
+
+                <p class="about-description">
+                  Фото Центар – Штип повеќе од две децении ги овековечува
+                  најважните моменти од животот на своите клиенти.
+                </p>
+
+                <p class="about-description">
+                  Нашата мисија е едноставна – да создадеме природни фотографии
+                  и видеоприказни исполнети со емоција, кои ќе траат со
+                  генерации.
+                </p>
+
+                <!-- About features -->
+                <div class="about-features">
+                  <div class="about-feature">
+                    <div class="about-feature-icon">
+                      <i class="fa-solid fa-camera-retro"></i>
+                    </div>
+
+                    <div>
+                      <h3>Природен пристап</h3>
+
+                      <p>
+                        Ги доловуваме вистинските моменти без непотребно
+                        позирање.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="about-feature">
+                    <div class="about-feature-icon">
+                      <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+
+                    <div>
+                      <h3>Професионална обработка</h3>
+
+                      <p>
+                        Секоја фотографија внимателно ја обработуваме во
+                        препознатлив стил.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Statistics -->
+                <div class="about-statistics">
+                  <article class="about-stat-card">
+                    <i class="fa-regular fa-calendar"></i>
+
+                    <span
+                      class="about-stat-number"
+                      data-target="20"
+                      data-suffix="+"
+                    >
+                      0
+                    </span>
+
+                    <span class="about-stat-label"> години искуство </span>
+                  </article>
+
+                  <article class="about-stat-card">
+                    <i class="fa-solid fa-users"></i>
+
+                    <span
+                      class="about-stat-number"
+                      data-target="1000"
+                      data-suffix="+"
+                    >
+                      0
+                    </span>
+
+                    <span class="about-stat-label"> задоволни клиенти </span>
+                  </article>
+
+                  <article class="about-stat-card">
+                    <i class="fa-regular fa-image"></i>
+
+                    <span
+                      class="about-stat-number"
+                      data-target="5000"
+                      data-suffix="+"
+                    >
+                      0
+                    </span>
+
+                    <span class="about-stat-label">
+                      обработени фотографии
+                    </span>
+                  </article>
+
+                  <article class="about-stat-card">
+                    <i class="fa-solid fa-video"></i>
+
+                    <span
+                      class="about-stat-number"
+                      data-target="300"
+                      data-suffix="+"
+                    >
+                      0
+                    </span>
+
+                    <span class="about-stat-label"> видеопроекти </span>
+                  </article>
+                </div>
+
+                <!-- About CTA -->
+                <div class="about-actions">
+                  <a href="tel:+3897XXXXXXX" class="btn about-primary-btn">
+                    <i class="fa-solid fa-phone"></i>
+                    Јавете се
+                  </a>
+
+                  <a href="#gallery" class="btn about-secondary-btn">
+                    Нашето портфолио
+                    <i class="fa-solid fa-arrow-right"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================
+         СЛЕДНА СЕКЦИЈА: КОНТАКТ
+    ================================================== -->
+
+      <!-- =================================================
+     CONTACT SECTION
+================================================== -->
+      <section class="contact-section" id="contact">
+        <div class="container">
+          <!-- Contact heading -->
+          <div class="contact-heading">
+            <p class="contact-eyebrow">Контакт</p>
+
+            <h2 class="contact-title">
+              Да ја создадеме
+              <br />
+              вашата приказна
+            </h2>
+
+            <p class="contact-description">
+              Контактирајте нè за слободен термин, дополнителни информации или
+              понуда за фотографирање и видеоснимање.
+            </p>
+          </div>
+
+          <div class="row g-4 g-xl-5">
+            <!-- =================================================
+           CONTACT INFORMATION
+      ================================================== -->
+            <div class="col-lg-5">
+              <div class="contact-info-wrapper">
+                <h3 class="contact-info-title">Контакт информации</h3>
+
+                <p class="contact-info-description">
+                  Јавете ни се или испратете порака. Ќе ви одговориме во
+                  најкраток можен рок.
+                </p>
+
+                <!-- Phone -->
+                <a href="tel:+38970303670" class="contact-info-card">
+                  <span class="contact-info-icon">
+                    <i class="fa-solid fa-phone"></i>
+                  </span>
+
+                  <span class="contact-info-content">
+                    <span class="contact-info-label"> Телефон </span>
+
+                    <span class="contact-info-value"> 070 303 670 </span>
+                  </span>
+
+                  <i class="fa-solid fa-arrow-right contact-info-arrow"></i>
+                </a>
+
+                <!-- Email -->
+                <a
+                  href="mailto:fotocentarstip@hotmail.com"
+                  class="contact-info-card"
+                >
+                  <span class="contact-info-icon">
+                    <i class="fa-regular fa-envelope"></i>
+                  </span>
+
+                  <span class="contact-info-content">
+                    <span class="contact-info-label"> E-mail </span>
+
+                    <span class="contact-info-value">
+                      fotocentarstip@hotmail.com
+                    </span>
+                  </span>
+
+                  <i class="fa-solid fa-arrow-right contact-info-arrow"></i>
+                </a>
+
+                <!-- Location -->
+                <div class="contact-info-card">
+                  <span class="contact-info-icon">
+                    <i class="fa-solid fa-location-dot"></i>
+                  </span>
+
+                  <span class="contact-info-content">
+                    <span class="contact-info-label"> Локација </span>
+
+                    <span class="contact-info-value"> Штип, Македонија </span>
+                  </span>
+                </div>
+
+                <!-- Working hours -->
+                <div class="contact-info-card">
+                  <span class="contact-info-icon">
+                    <i class="fa-regular fa-clock"></i>
+                  </span>
+
+                  <span class="contact-info-content">
+                    <span class="contact-info-label"> Работно време </span>
+
+                    <span class="contact-info-value">
+                      Понеделник – Недела
+                      <br />
+                      09:00 – 20:00
+                    </span>
+                  </span>
+                </div>
+
+                <!-- Social media -->
+                <div class="contact-social-wrapper">
+                  <p>Следете нè</p>
+
+                  <div class="contact-social-links">
+                    <a
+                      href="https://www.instagram.com/fotocentarstip"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Instagram"
+                    >
+                      <i class="fa-brands fa-instagram"></i>
+                    </a>
+
+                    <a
+                      href="https://www.facebook.com/p/Foto-Centar-Stip-100060809630011/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Facebook"
+                    >
+                      <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+
+                    <!-- <a
+                      href="#"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="TikTok"
+                    >
+                      <i class="fa-brands fa-tiktok"></i>
+                    </a> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- =================================================
+           CONTACT FORM
+      ================================================== -->
+            <div class="col-lg-7">
+              <div class="contact-form-wrapper">
+                <div class="contact-form-heading">
+                  <p class="contact-form-eyebrow">Закажете термин</p>
+
+                  <h3>Испратете барање</h3>
+
+                  <p>
+                    Пополнете ја формата и ќе ве контактираме за потврда на
+                    терминот и дополнителни детали.
+                  </p>
+                </div>
+
+                <form class="contact-form" id="contactForm" novalidate>
+                  <div class="row g-3">
+                    <!-- Name -->
+                    <div class="col-md-6">
+                      <div class="contact-form-group">
+                        <label for="contactName">
+                          Име и презиме
+                          <span>*</span>
+                        </label>
+
+                        <div class="contact-input-wrapper">
+                          <i class="fa-regular fa-user"></i>
+
+                          <input
+                            type="text"
+                            id="contactName"
+                            name="name"
+                            placeholder="Вашето име и презиме"
+                            autocomplete="name"
+                            required
+                          />
+                        </div>
+
+                        <small class="form-error">
+                          Внесете име и презиме.
+                        </small>
+                      </div>
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="col-md-6">
+                      <div class="contact-form-group">
+                        <label for="contactPhone">
+                          Телефон
+                          <span>*</span>
+                        </label>
+
+                        <div class="contact-input-wrapper">
+                          <i class="fa-solid fa-phone"></i>
+
+                          <input
+                            type="tel"
+                            id="contactPhone"
+                            name="phone"
+                            placeholder="07X XXX XXX"
+                            autocomplete="tel"
+                            required
+                          />
+                        </div>
+
+                        <small class="form-error">
+                          Внесете телефонски број.
+                        </small>
+                      </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="col-md-6">
+                      <div class="contact-form-group">
+                        <label for="contactEmail"> E-mail </label>
+
+                        <div class="contact-input-wrapper">
+                          <i class="fa-regular fa-envelope"></i>
+
+                          <input
+                            type="email"
+                            id="contactEmail"
+                            name="email"
+                            placeholder="ime@email.com"
+                            autocomplete="email"
+                          />
+                        </div>
+
+                        <small class="form-error">
+                          Внесете правилна e-mail адреса.
+                        </small>
+                      </div>
+                    </div>
+
+                    <!-- Service -->
+                    <div class="col-md-6">
+                      <div class="contact-form-group">
+                        <label for="contactService">
+                          Услуга
+                          <span>*</span>
+                        </label>
+
+                        <div
+                          class="contact-input-wrapper contact-select-wrapper"
+                        >
+                          <i class="fa-solid fa-camera"></i>
+
+                          <select id="contactService" name="service" required>
+                            <option value="" selected disabled>
+                              Изберете услуга
+                            </option>
+
+                            <option value="Свадбена фотографија">
+                              Свадбена фотографија
+                            </option>
+
+                            <option value="Свадбена видеографија">
+                              Свадбена видеографија
+                            </option>
+
+                            <option value="Крштевка">Крштевка</option>
+
+                            <option value="Матура">Матура</option>
+
+                            <option value="Фамилијарно снимање">
+                              Фамилијарно снимање
+                            </option>
+
+                            <option value="Дрон снимање">Дрон снимање</option>
+
+                            <option value="Друго">Друго</option>
+                          </select>
+                        </div>
+
+                        <small class="form-error"> Изберете услуга. </small>
+                      </div>
+                    </div>
+
+                    <!-- Date -->
+                    <div class="col-md-6">
+                      <div class="contact-form-group">
+                        <label for="contactDate"> Посакуван датум </label>
+
+                        <div class="contact-input-wrapper">
+                          <i class="fa-regular fa-calendar"></i>
+
+                          <input type="date" id="contactDate" name="date" />
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Location -->
+                    <div class="col-md-6">
+                      <div class="contact-form-group">
+                        <label for="contactLocation"> Локација </label>
+
+                        <div class="contact-input-wrapper">
+                          <i class="fa-solid fa-location-dot"></i>
+
+                          <input
+                            type="text"
+                            id="contactLocation"
+                            name="location"
+                            placeholder="Град или локација"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Message -->
+                    <div class="col-12">
+                      <div class="contact-form-group">
+                        <label for="contactMessage">
+                          Порака
+                          <span>*</span>
+                        </label>
+
+                        <div
+                          class="contact-input-wrapper contact-textarea-wrapper"
+                        >
+                          <i class="fa-regular fa-message"></i>
+
+                          <textarea
+                            id="contactMessage"
+                            name="message"
+                            rows="5"
+                            placeholder="Напишете повеќе информации за настанот..."
+                            required
+                          ></textarea>
+                        </div>
+
+                        <small class="form-error">
+                          Напишете кратка порака.
+                        </small>
+                      </div>
+                    </div>
+
+                    <!-- Consent -->
+                    <div class="col-12">
+                      <label class="contact-checkbox">
+                        <input
+                          type="checkbox"
+                          id="contactConsent"
+                          name="consent"
+                          required
+                        />
+
+                        <span class="contact-checkbox-box">
+                          <i class="fa-solid fa-check"></i>
+                        </span>
+
+                        <span class="contact-checkbox-text">
+                          Се согласувам моите податоци да бидат искористени за
+                          одговор на ова барање.
+                        </span>
+                      </label>
+
+                      <small class="form-error consent-error">
+                        Потребно е да ја прифатите согласноста.
+                      </small>
+                    </div>
+
+                    <!-- Submit -->
+                    <div class="col-12">
+                      <button type="submit" class="btn contact-submit-btn">
+                        <span>Испрати барање</span>
+
+                        <i class="fa-solid fa-arrow-right"></i>
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Form response -->
+                  <div
+                    class="contact-form-response"
+                    id="contactFormResponse"
+                    role="status"
+                    aria-live="polite"
+                  ></div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <!-- =================================================
+         MAP
+    ================================================== -->
+          <div class="contact-map-wrapper">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2977.143289616858!2d22.196101399999996!3d41.7390021!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1355ddcf1f9b83e7%3A0x89e48959e2954766!2sfoto%20CENTAR%20-%20Stip!5e0!3m2!1sen!2smk!4v1784996547967!5m2!1sen!2smk"
+              width="600"
+              height="450"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+            ></iframe>
+
+            <div class="contact-map-card">
+              <span class="contact-map-icon">
+                <i class="fa-solid fa-location-dot"></i>
+              </span>
+
+              <div>
+                <p>Фото Центар – Штип</p>
+                <span>Штип, Македонија</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script src="./js/script.js"></script>
   </body>
 </html>
