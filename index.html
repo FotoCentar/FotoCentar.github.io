@@ -133,60 +133,42 @@
         <div class="offcanvas-body">
           <ul class="mobile-nav-list">
             <li>
-              <a
-                href="#home"
-                class="mobile-nav-link"
-              >
+              <a href="#home" class="mobile-nav-link">
                 Почетна
                 <i class="fa-solid fa-arrow-right"></i>
               </a>
             </li>
 
             <li>
-              <a
-                href="#services"
-                class="mobile-nav-link"
-              >
+              <a href="#services" class="mobile-nav-link">
                 Услуги
                 <i class="fa-solid fa-arrow-right"></i>
               </a>
             </li>
 
             <li>
-              <a
-                href="#gallery"
-                class="mobile-nav-link"
-              >
+              <a href="#gallery" class="mobile-nav-link">
                 Галерија
                 <i class="fa-solid fa-arrow-right"></i>
               </a>
             </li>
 
             <li>
-              <a
-                href="#about"
-                class="mobile-nav-link"
-              >
+              <a href="#about" class="mobile-nav-link">
                 За нас
                 <i class="fa-solid fa-arrow-right"></i>
               </a>
             </li>
 
             <li>
-              <a
-                href="#contact"
-                class="mobile-nav-link"
-              >
+              <a href="#contact" class="mobile-nav-link">
                 Контакт
                 <i class="fa-solid fa-arrow-right"></i>
               </a>
             </li>
           </ul>
 
-          <a
-            href="#contact"
-            class="btn mobile-contact-btn"
-          >
+          <a href="#contact" class="btn mobile-contact-btn">
             Контактирај нè
             <i class="fa-solid fa-arrow-right"></i>
           </a>
@@ -1136,9 +1118,9 @@
             </div>
           </div>
 
-          <!-- Gallery grid -->
+          <!-- Gallery grid: one visible cover per album -->
           <div class="gallery-grid">
-            <!-- Gallery item 1 -->
+            <!-- Wedding album cover -->
             <article
               class="gallery-item gallery-item-large"
               data-category="wedding"
@@ -1148,13 +1130,14 @@
                 class="gallery-image-button"
                 data-bs-toggle="modal"
                 data-bs-target="#galleryModal"
-                data-image="assets/images/gallery/wedding-1.jpg"
+                data-album="wedding"
+                data-image="assets/images/gallery/weddings/wedding-1.jpg"
                 data-title="Свадбена приказна"
                 data-category-name="Свадбена фотографија"
-                aria-label="Отвори фотографија од свадба"
+                aria-label="Отвори го свадбениот албум"
               >
                 <img
-                  src="assets/images/gallery/wedding-1.jpg"
+                  src="assets/images/gallery/weddings/wedding-1.jpg"
                   alt="Свадбена фотографија"
                   loading="lazy"
                 />
@@ -1175,66 +1158,31 @@
               </button>
             </article>
 
-            <!-- Gallery item 2 -->
+            <!-- Christening album cover -->
             <article
               class="gallery-item gallery-item-tall"
-              data-category="wedding"
+              data-category="christening"
             >
               <button
                 type="button"
                 class="gallery-image-button"
                 data-bs-toggle="modal"
                 data-bs-target="#galleryModal"
-                data-image="assets/images/gallery/wedding-2.jpg"
-                data-title="Емоции што остануваат"
-                data-category-name="Свадбена фотографија"
-                aria-label="Отвори свадбена фотографија"
-              >
-                <img
-                  src="assets/images/gallery/wedding-2.jpg"
-                  alt="Младоженци на свадбена фотосесија"
-                  loading="lazy"
-                />
-
-                <span class="gallery-overlay">
-                  <span class="gallery-item-content">
-                    <span class="gallery-category"> Свадбена фотографија </span>
-
-                    <span class="gallery-item-title">
-                      Емоции што остануваат
-                    </span>
-                  </span>
-
-                  <span class="gallery-open-icon">
-                    <i
-                      class="fa-solid fa-up-right-and-down-left-from-center"
-                    ></i>
-                  </span>
-                </span>
-              </button>
-            </article>
-
-            <!-- Gallery item 3 -->
-            <article class="gallery-item" data-category="christening">
-              <button
-                type="button"
-                class="gallery-image-button"
-                data-bs-toggle="modal"
-                data-bs-target="#galleryModal"
-                data-image="assets/images/gallery/christening-1.jpg"
+                data-album="christening"
+                data-image="assets/images/gallery/christenings/christening-1.jpg"
                 data-title="Посебен семеен ден"
                 data-category-name="Крштевка"
-                aria-label="Отвори фотографија од крштевка"
+                aria-label="Отвори го албумот за крштевки"
               >
                 <img
-                  src="assets/images/gallery/christening-1.jpg"
+                  src="assets/images/gallery/christenings/christening-1.jpg"
                   alt="Фотографија од крштевка"
                   loading="lazy"
                 />
 
                 <span class="gallery-overlay">
                   <span class="gallery-item-content">
-                    <span class="gallery-category"> Крштевка </span>
+                    <span class="gallery-category"> Крштевки </span>
 
                     <span class="gallery-item-title"> Посебен семеен ден </span>
                   </span>
@@ -1248,27 +1196,31 @@
               </button>
             </article>
 
-            <!-- Gallery item 4 -->
-            <article class="gallery-item" data-category="graduation">
+            <!-- Graduation album cover -->
+            <article
+              class="gallery-item gallery-item-tall"
+              data-category="graduation"
+            >
               <button
                 type="button"
                 class="gallery-image-button"
                 data-bs-toggle="modal"
                 data-bs-target="#galleryModal"
-                data-image="assets/images/gallery/graduation-1.jpg"
+                data-album="graduation"
+                data-image="assets/images/gallery/graduations/graduation-1.jpg"
                 data-title="Нов почеток"
                 data-category-name="Матурска фотографија"
-                aria-label="Отвори матурска фотографија"
+                aria-label="Отвори го матурскиот албум"
               >
                 <img
-                  src="assets/images/gallery/graduation-1.jpg"
+                  src="assets/images/gallery/graduations/graduation-1.jpg"
                   alt="Матурска фотографија"
                   loading="lazy"
                 />
 
                 <span class="gallery-overlay">
                   <span class="gallery-item-content">
-                    <span class="gallery-category"> Матурска фотографија </span>
+                    <span class="gallery-category"> Матури </span>
 
                     <span class="gallery-item-title"> Нов почеток </span>
                   </span>
@@ -1282,7 +1234,7 @@
               </button>
             </article>
 
-            <!-- Gallery item 5 -->
+            <!-- Family album cover -->
             <article
               class="gallery-item gallery-item-wide"
               data-category="family"
@@ -1292,22 +1244,21 @@
                 class="gallery-image-button"
                 data-bs-toggle="modal"
                 data-bs-target="#galleryModal"
-                data-image="assets/images/gallery/family-1.jpg"
+                data-album="family"
+                data-image="assets/images/gallery/family/family-1.jpg"
                 data-title="Семејни спомени"
                 data-category-name="Фамилијарна фотосесија"
-                aria-label="Отвори фамилијарна фотографија"
+                aria-label="Отвори го фамилијарниот албум"
               >
                 <img
-                  src="assets/images/gallery/family-1.jpg"
+                  src="assets/images/gallery/family/family-1.jpg"
                   alt="Фамилијарна фотосесија"
                   loading="lazy"
                 />
 
                 <span class="gallery-overlay">
                   <span class="gallery-item-content">
-                    <span class="gallery-category">
-                      Фамилијарна фотосесија
-                    </span>
+                    <span class="gallery-category"> Фамилијарни снимања </span>
 
                     <span class="gallery-item-title"> Семејни спомени </span>
                   </span>
@@ -1321,9 +1272,9 @@
               </button>
             </article>
 
-            <!-- Gallery item 6 -->
+            <!-- Drone album cover -->
             <article
-              class="gallery-item gallery-item-tall"
+              class="gallery-item gallery-item-wide"
               data-category="drone"
             >
               <button
@@ -1331,13 +1282,14 @@
                 class="gallery-image-button"
                 data-bs-toggle="modal"
                 data-bs-target="#galleryModal"
-                data-image="assets/images/gallery/drone-1.jpg"
+                data-album="drone"
+                data-image="assets/images/gallery/drone/drone-1.jpg"
                 data-title="Поглед од височина"
                 data-category-name="Дрон снимање"
-                aria-label="Отвори фотографија снимена со дрон"
+                aria-label="Отвори го албумот со дрон фотографии"
               >
                 <img
-                  src="assets/images/gallery/drone-1.jpg"
+                  src="assets/images/gallery/drone/drone-1.jpg"
                   alt="Воздушна фотографија снимена со дрон"
                   loading="lazy"
                 />
@@ -1357,78 +1309,108 @@
                 </span>
               </button>
             </article>
+          </div>
 
-            <!-- Gallery item 7 -->
-            <article class="gallery-item" data-category="wedding">
-              <button
-                type="button"
-                class="gallery-image-button"
-                data-bs-toggle="modal"
-                data-bs-target="#galleryModal"
-                data-image="assets/images/gallery/wedding-3.jpg"
-                data-title="Детали од свадбениот ден"
-                data-category-name="Свадбена фотографија"
-                aria-label="Отвори фотографија од свадбени детали"
-              >
-                <img
-                  src="assets/images/gallery/wedding-3.jpg"
-                  alt="Детали од свадбен ден"
-                  loading="lazy"
-                />
+          <!--
+            HIDDEN ALBUM IMAGES
 
-                <span class="gallery-overlay">
-                  <span class="gallery-item-content">
-                    <span class="gallery-category"> Свадбена фотографија </span>
+            Овие копчиња не се гледаат во главната галерија.
+            JavaScript ги вчитува во modal-от според data-album.
 
-                    <span class="gallery-item-title">
-                      Детали од свадбениот ден
-                    </span>
-                  </span>
+            За нова фотографија:
+            1. Стави ја сликата во assets/images/gallery/
+            2. Копирај едно копче подолу
+            3. Смени data-album, data-image, data-title и data-category-name
+          -->
+          <div class="gallery-album-items" hidden aria-hidden="true">
+            <!-- Additional wedding photos -->
+            <button
+              type="button"
+              class="gallery-album-image"
+              data-album="wedding"
+              data-image="assets/images/gallery/weddings/wedding-2.jpg"
+              data-title="Емоции што остануваат"
+              data-category-name="Свадбена фотографија"
+              tabindex="-1"
+            ></button>
+            <button
+              type="button"
+              class="gallery-album-image"
+              data-album="wedding"
+              data-image="assets/images/gallery/weddings/wedding-3.jpg"
+              data-title="Детали од свадбениот ден"
+              data-category-name="Свадбена фотографија"
+              tabindex="-1"
+            ></button>
 
-                  <span class="gallery-open-icon">
-                    <i
-                      class="fa-solid fa-up-right-and-down-left-from-center"
-                    ></i>
-                  </span>
-                </span>
-              </button>
-            </article>
+            <!-- Additional drone photo -->
+            <button
+              type="button"
+              class="gallery-album-image"
+              data-album="drone"
+              data-image="assets/images/gallery/drone/drone-2.jpg"
+              data-title="Воздушна перспектива"
+              data-category-name="Дрон снимање"
+              tabindex="-1"
+            ></button>
 
-            <!-- Gallery item 8 -->
-            <article class="gallery-item" data-category="drone">
-              <button
-                type="button"
-                class="gallery-image-button"
-                data-bs-toggle="modal"
-                data-bs-target="#galleryModal"
-                data-image="assets/images/gallery/drone-2.jpg"
-                data-title="Воздушна перспектива"
-                data-category-name="Дрон снимање"
-                aria-label="Отвори воздушна фотографија"
-              >
-                <img
-                  src="assets/images/gallery/drone-2.jpg"
-                  alt="Воздушна фотографија од локација"
-                  loading="lazy"
-                />
+            <!-- Additional christening photo -->
+            <button
+              type="button"
+              class="gallery-album-image"
+              data-album="christening"
+              data-image="assets/images/gallery/christenings/christening-2.jpg"
+              data-title="Семејни моменти"
+              data-category-name="Крштевка"
+              tabindex="-1"
+            ></button>
+            <button
+              type="button"
+              class="gallery-album-image"
+              data-album="christening"
+              data-image="assets/images/gallery/christenings/christening-3.jpg"
+              data-title="Крштевка слика 3"
+              data-category-name="Крштевка"
+              tabindex="-1"
+            ></button>
+            <button
+              type="button"
+              class="gallery-album-image"
+              data-album="christening"
+              data-image="assets/images/gallery/christenings/christening-4.jpg"
+              data-title="Крштевка слика 4"
+              data-category-name="Крштевка"
+              tabindex="-1"
+            ></button>
 
-                <span class="gallery-overlay">
-                  <span class="gallery-item-content">
-                    <span class="gallery-category"> Дрон снимање </span>
-
-                    <span class="gallery-item-title">
-                      Воздушна перспектива
-                    </span>
-                  </span>
-
-                  <span class="gallery-open-icon">
-                    <i
-                      class="fa-solid fa-up-right-and-down-left-from-center"
-                    ></i>
-                  </span>
-                </span>
-              </button>
-            </article>
+            <!-- Additional graduation photo -->
+             <button
+              type="button"
+              class="gallery-album-image"
+              data-album="graduation"
+              data-image="assets/images/gallery/graduations/graduation-2.jpg"
+              data-title="Матура слика 2"
+              data-category-name="Матурска фотографија"
+              tabindex="-1"
+            ></button>
+            <button
+              type="button"
+              class="gallery-album-image"
+              data-album="graduation"
+              data-image="assets/images/gallery/graduations/graduation-3.jpg"
+              data-title="Матура слика 3"
+              data-category-name="Матурска фотографија"
+              tabindex="-1"
+            ></button>
+            <button
+              type="button"
+              class="gallery-album-image"
+              data-album="graduation"
+              data-image="assets/images/gallery/graduations/graduation-4.jpg"
+              data-title="Матура слика 4"
+              data-category-name="Матурска фотографија"
+              tabindex="-1"
+            ></button>
           </div>
 
           <!-- Gallery CTA -->
@@ -1452,7 +1434,7 @@
       </section>
 
       <!-- =================================================
-     GALLERY LIGHTBOX MODAL
+     GALLERY LIGHTBOX MODAL WITH ARROWS
 ================================================== -->
       <div
         class="modal fade gallery-modal"
@@ -1471,18 +1453,46 @@
             ></button>
 
             <div class="gallery-modal-image-wrapper">
+              <button
+                type="button"
+                class="gallery-modal-nav gallery-modal-prev"
+                id="galleryModalPrev"
+                aria-label="Претходна фотографија"
+                hidden
+              >
+                <i class="fa-solid fa-chevron-left"></i>
+              </button>
+
               <img
                 src=""
                 alt=""
                 class="gallery-modal-image"
                 id="galleryModalImage"
               />
+
+              <button
+                type="button"
+                class="gallery-modal-nav gallery-modal-next"
+                id="galleryModalNext"
+                aria-label="Следна фотографија"
+                hidden
+              >
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
             </div>
 
             <div class="gallery-modal-caption">
-              <p class="gallery-modal-category" id="galleryModalCategory"></p>
+              <div class="gallery-modal-caption-text">
+                <p class="gallery-modal-category" id="galleryModalCategory"></p>
 
-              <h2 class="gallery-modal-title" id="galleryModalTitle"></h2>
+                <h2 class="gallery-modal-title" id="galleryModalTitle"></h2>
+              </div>
+
+              <span
+                class="gallery-modal-counter"
+                id="galleryModalCounter"
+                aria-live="polite"
+              ></span>
             </div>
           </div>
         </div>
@@ -1891,6 +1901,23 @@
         </div>
       </section>
     </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-bottom">
+          <p>
+            &copy;
+            <span id="currentYear">2026</span>
+            Фото Центар – Штип. Сите права се задржани.
+          </p>
+
+          <a href="#home" class="footer-back-to-top">
+            Назад на почеток
+            <i class="fa-solid fa-arrow-up"></i>
+          </a>
+        </div>
+      </div>
+    </footer>
 
     <!-- Bootstrap JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

@@ -165,6 +165,47 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* =====================================================
+     SERVICE MODAL CONTACT BUTTONS
+  ===================================================== */
+
+  const modalContactButtons = document.querySelectorAll(".modal-contact-btn");
+
+  modalContactButtons.forEach((button) => {
+    /*
+     * Го отстрануваме Bootstrap автоматското dismiss
+     * за ние да го контролираме редоследот:
+     * 1. затвори modal
+     * 2. скролај до контакт секцијата
+     */
+    button.removeAttribute("data-bs-dismiss");
+
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+
+      const targetSelector = button.getAttribute("href") || "#contact";
+      const modalElement = button.closest(".modal");
+
+      if (!modalElement || typeof bootstrap === "undefined") {
+        scrollToSection(targetSelector);
+        return;
+      }
+
+      const modalInstance = bootstrap.Modal.getOrCreateInstance(modalElement);
+
+      modalElement.addEventListener(
+        "hidden.bs.modal",
+        () => {
+          scrollToSection(targetSelector);
+          setActiveNavLink(targetSelector);
+        },
+        { once: true },
+      );
+
+      modalInstance.hide();
+    });
+  });
+
+  /* =====================================================
      GALLERY ELEMENTS
   ===================================================== */
 
@@ -180,6 +221,71 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const galleryModalCategory = document.getElementById("galleryModalCategory");
 
+  const galleryModalImageWrapper = document.querySelector(
+    ".gallery-modal-image-wrapper",
+  );
+
+  /*
+   * Ги креираме стрелките и бројачот автоматски
+   * ако случајно сè уште се користи постар index.html.
+   */
+  let galleryModalPreviousButton = document.getElementById("galleryModalPrev");
+
+  let galleryModalNextButton = document.getElementById("galleryModalNext");
+
+  let galleryModalCounter = document.getElementById("galleryModalCounter");
+
+  if (galleryModalImageWrapper && !galleryModalPreviousButton) {
+    galleryModalPreviousButton = document.createElement("button");
+
+    galleryModalPreviousButton.type = "button";
+    galleryModalPreviousButton.id = "galleryModalPrev";
+    galleryModalPreviousButton.className =
+      "gallery-modal-nav gallery-modal-prev";
+    galleryModalPreviousButton.setAttribute(
+      "aria-label",
+      "Претходна фотографија",
+    );
+    galleryModalPreviousButton.innerHTML =
+      '<i class="fa-solid fa-chevron-left"></i>';
+
+    galleryModalImageWrapper.prepend(galleryModalPreviousButton);
+  }
+
+  if (galleryModalImageWrapper && !galleryModalNextButton) {
+    galleryModalNextButton = document.createElement("button");
+
+    galleryModalNextButton.type = "button";
+    galleryModalNextButton.id = "galleryModalNext";
+    galleryModalNextButton.className = "gallery-modal-nav gallery-modal-next";
+    galleryModalNextButton.setAttribute("aria-label", "Следна фотографија");
+    galleryModalNextButton.innerHTML =
+      '<i class="fa-solid fa-chevron-right"></i>';
+
+    galleryModalImageWrapper.append(galleryModalNextButton);
+  }
+
+  if (!galleryModalCounter) {
+    const galleryModalCaption = document.querySelector(
+      ".gallery-modal-caption",
+    );
+
+    if (galleryModalCaption) {
+      galleryModalCounter = document.createElement("span");
+
+      galleryModalCounter.id = "galleryModalCounter";
+      galleryModalCounter.className = "gallery-modal-counter";
+      galleryModalCounter.setAttribute("aria-live", "polite");
+
+      galleryModalCaption.append(galleryModalCounter);
+    }
+  }
+
+  let currentGalleryImages = [];
+  let currentGalleryIndex = 0;
+  let galleryTouchStartX = 0;
+  let galleryImageChangeTimer = null;
+
   /* =====================================================
      5. GALLERY FILTERING
   ===================================================== */
@@ -188,15 +294,11 @@ document.addEventListener("DOMContentLoaded", () => {
     button.addEventListener("click", () => {
       const selectedFilter = button.dataset.filter || "all";
 
-      /* Active filter button */
-
       galleryFilterButtons.forEach((filterButton) => {
         filterButton.classList.remove("active");
       });
 
       button.classList.add("active");
-
-      /* Filter gallery items */
 
       galleryItems.forEach((item) => {
         const itemCategory = item.dataset.category || "";
@@ -209,10 +311,6 @@ document.addEventListener("DOMContentLoaded", () => {
         if (shouldShow) {
           item.classList.remove("gallery-hidden");
 
-          /*
-           * Го принудуваме browser-от повторно
-           * да ја активира reveal-анимацијата.
-           */
           void item.offsetWidth;
 
           item.classList.add("gallery-visible");
@@ -224,25 +322,67 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* =====================================================
-     6. GALLERY LIGHTBOX MODAL
+     6. UNIVERSAL GALLERY ALBUM LIGHTBOX
   ===================================================== */
 
-  if (galleryModal) {
-    galleryModal.addEventListener("show.bs.modal", (event) => {
-      const clickedButton = event.relatedTarget;
+  const getGalleryGroup = (clickedButton) => {
+    /*
+     * Новиот album систем користи data-album.
+     */
+    const selectedAlbum = clickedButton.dataset.album || "";
 
-      if (!clickedButton) return;
+    if (selectedAlbum) {
+      return Array.from(
+        document.querySelectorAll(
+          `[data-album="${CSS.escape(selectedAlbum)}"][data-image]`,
+        ),
+      );
+    }
 
-      const imageSource = clickedButton.dataset.image || "";
+    /*
+     * Fallback за стариот HTML:
+     * ги групира сите видливи gallery картички
+     * што имаат исто data-category.
+     */
+    const clickedGalleryItem = clickedButton.closest(".gallery-item");
 
-      const imageTitle = clickedButton.dataset.title || "Фотографија";
+    const selectedCategory = clickedGalleryItem?.dataset.category || "";
 
-      const categoryName = clickedButton.dataset.categoryName || "";
+    if (!selectedCategory) {
+      return [clickedButton];
+    }
 
-      if (galleryModalImage) {
-        galleryModalImage.src = imageSource;
-        galleryModalImage.alt = imageTitle;
-      }
+    return Array.from(
+      document.querySelectorAll(
+        `.gallery-item[data-category="${CSS.escape(selectedCategory)}"] .gallery-image-button[data-image]`,
+      ),
+    );
+  };
+
+  const updateGalleryModal = () => {
+    if (currentGalleryImages.length === 0 || !galleryModalImage) {
+      return;
+    }
+
+    const currentImage = currentGalleryImages[currentGalleryIndex];
+
+    if (!currentImage) return;
+
+    const imageSource = currentImage.dataset.image || "";
+
+    const imageTitle = currentImage.dataset.title || "Фотографија";
+
+    const categoryName = currentImage.dataset.categoryName || "";
+
+    if (galleryImageChangeTimer) {
+      window.clearTimeout(galleryImageChangeTimer);
+    }
+
+    galleryModalImage.classList.add("is-changing");
+
+    galleryImageChangeTimer = window.setTimeout(() => {
+      galleryModalImage.src = imageSource;
+      galleryModalImage.alt = imageTitle;
 
       if (galleryModalTitle) {
         galleryModalTitle.textContent = imageTitle;
@@ -251,18 +391,85 @@ document.addEventListener("DOMContentLoaded", () => {
       if (galleryModalCategory) {
         galleryModalCategory.textContent = categoryName;
       }
+
+      if (galleryModalCounter) {
+        galleryModalCounter.textContent = `${currentGalleryIndex + 1} / ${currentGalleryImages.length}`;
+      }
+
+      const hasMultipleImages = currentGalleryImages.length > 1;
+
+      if (galleryModalPreviousButton) {
+        galleryModalPreviousButton.hidden = !hasMultipleImages;
+      }
+
+      if (galleryModalNextButton) {
+        galleryModalNextButton.hidden = !hasMultipleImages;
+      }
+
+      window.requestAnimationFrame(() => {
+        galleryModalImage.classList.remove("is-changing");
+      });
+
+      galleryImageChangeTimer = null;
+    }, 100);
+  };
+
+  const showPreviousGalleryImage = () => {
+    if (currentGalleryImages.length < 2) return;
+
+    currentGalleryIndex =
+      (currentGalleryIndex - 1 + currentGalleryImages.length) %
+      currentGalleryImages.length;
+
+    updateGalleryModal();
+  };
+
+  const showNextGalleryImage = () => {
+    if (currentGalleryImages.length < 2) return;
+
+    currentGalleryIndex =
+      (currentGalleryIndex + 1) % currentGalleryImages.length;
+
+    updateGalleryModal();
+  };
+
+  if (galleryModal) {
+    galleryModal.addEventListener("show.bs.modal", (event) => {
+      const clickedButton = event.relatedTarget;
+
+      if (
+        !clickedButton ||
+        !clickedButton.matches(".gallery-image-button[data-image]")
+      ) {
+        return;
+      }
+
+      currentGalleryImages = getGalleryGroup(clickedButton);
+
+      currentGalleryIndex = currentGalleryImages.indexOf(clickedButton);
+
+      if (currentGalleryIndex < 0) {
+        currentGalleryIndex = 0;
+      }
+
+      updateGalleryModal();
     });
 
-    /*
-     * Го празниме src кога modal-от ќе се затвори,
-     * за старата фотографија да не се прикаже накратко
-     * при следното отворање.
-     */
-
     galleryModal.addEventListener("hidden.bs.modal", () => {
+      if (galleryImageChangeTimer) {
+        window.clearTimeout(galleryImageChangeTimer);
+
+        galleryImageChangeTimer = null;
+      }
+
+      currentGalleryImages = [];
+      currentGalleryIndex = 0;
+
       if (galleryModalImage) {
         galleryModalImage.src = "";
         galleryModalImage.alt = "";
+
+        galleryModalImage.classList.remove("is-changing");
       }
 
       if (galleryModalTitle) {
@@ -272,8 +479,75 @@ document.addEventListener("DOMContentLoaded", () => {
       if (galleryModalCategory) {
         galleryModalCategory.textContent = "";
       }
+
+      if (galleryModalCounter) {
+        galleryModalCounter.textContent = "";
+      }
+
+      if (galleryModalPreviousButton) {
+        galleryModalPreviousButton.hidden = true;
+      }
+
+      if (galleryModalNextButton) {
+        galleryModalNextButton.hidden = true;
+      }
     });
   }
+
+  galleryModalPreviousButton?.addEventListener(
+    "click",
+    showPreviousGalleryImage,
+  );
+
+  galleryModalNextButton?.addEventListener("click", showNextGalleryImage);
+
+  document.addEventListener("keydown", (event) => {
+    if (!galleryModal?.classList.contains("show")) {
+      return;
+    }
+
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      showPreviousGalleryImage();
+    }
+
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      showNextGalleryImage();
+    }
+  });
+
+  galleryModalImageWrapper?.addEventListener(
+    "touchstart",
+    (event) => {
+      galleryTouchStartX = event.changedTouches[0].clientX;
+    },
+    {
+      passive: true,
+    },
+  );
+
+  galleryModalImageWrapper?.addEventListener(
+    "touchend",
+    (event) => {
+      const galleryTouchEndX = event.changedTouches[0].clientX;
+
+      const swipeDistance = galleryTouchEndX - galleryTouchStartX;
+
+      if (Math.abs(swipeDistance) < 50) {
+        return;
+      }
+
+      if (swipeDistance > 0) {
+        showPreviousGalleryImage();
+      } else {
+        showNextGalleryImage();
+      }
+    },
+    {
+      passive: true,
+    },
+  );
 
   /* =====================================================
      7. KEYBOARD ACCESSIBILITY FOR FILTERS
@@ -415,4 +689,10 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("resize", () => {
     updateActiveNavigation();
   });
+
+  const currentYear = document.getElementById("currentYear");
+
+  if (currentYear) {
+    currentYear.textContent = new Date().getFullYear();
+  }
 });
