@@ -4521,3 +4521,138 @@ a.contact-info-card:hover .contact-info-arrow {
     font-size: 0.62rem;
   }
 }
+
+/* =========================================================
+   MOBILE GALLERY MODAL CLOSE BUTTON
+========================================================= */
+
+@media (max-width: 767.98px) {
+  .gallery-modal-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 20;
+
+    display: block;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+
+    background-color: rgba(5, 5, 5, 0.9);
+    background-image: none;
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    border-radius: 50%;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55);
+
+    opacity: 1;
+  }
+
+  /* Првата линија од X */
+  .gallery-modal-close::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    width: 19px;
+    height: 2px;
+
+    background-color: #ffffff;
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  /* Втората линија од X */
+  .gallery-modal-close::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    width: 19px;
+    height: 2px;
+
+    background-color: #ffffff;
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+
+  .gallery-modal-close:hover,
+  .gallery-modal-close:focus-visible {
+    background-color: var(--color-gold);
+    border-color: var(--color-gold);
+    opacity: 1;
+  }
+
+  .gallery-modal-close:hover::before,
+  .gallery-modal-close:hover::after,
+  .gallery-modal-close:focus-visible::before,
+  .gallery-modal-close:focus-visible::after {
+    background-color: var(--color-black);
+  }
+
+  .gallery-modal-close:focus-visible {
+    outline: 2px solid var(--color-white);
+    outline-offset: 3px;
+  }
+}
+
+
+/* =========================================================
+   CENTERED MOBILE FOOTER
+========================================================= */
+
+@media (max-width: 767.98px) {
+  .site-footer .container {
+    padding-inline: 15px;
+  }
+
+  .footer-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 13px;
+    min-height: auto;
+    padding: 25px 0;
+
+    text-align: center;
+  }
+
+  .footer-bottom p {
+    width: 100%;
+    margin: 0;
+
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.68rem;
+    line-height: 1.7;
+    letter-spacing: 0.02em;
+    text-align: center;
+  }
+
+  .footer-back-to-top {
+    justify-content: center;
+    margin-inline: auto;
+  }
+}
+
+
+/* Многу мали телефони */
+
+@media (max-width: 359.98px) {
+  .gallery-modal-close {
+    top: 9px;
+    right: 9px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .gallery-modal-close::before,
+  .gallery-modal-close::after {
+    width: 17px;
+  }
+
+  .footer-bottom p {
+    max-width: 280px;
+    font-size: 0.64rem;
+  }
+}
