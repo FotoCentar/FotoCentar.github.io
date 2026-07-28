@@ -165,68 +165,12 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* =====================================================
-   CLICKABLE SERVICE CARDS
-===================================================== */
-
-  const serviceCards = document.querySelectorAll(".service-card");
-
-  serviceCards.forEach((card) => {
-    const modalTrigger = card.querySelector(".service-link[data-bs-target]");
-
-    if (!modalTrigger) return;
-
-    const modalSelector = modalTrigger.getAttribute("data-bs-target");
-
-    const modalElement = document.querySelector(modalSelector);
-
-    if (!modalElement) return;
-
-    /*
-     * Ја правиме целата картичка достапна
-     * и преку тастатура.
-     */
-    card.setAttribute("role", "button");
-    card.setAttribute("tabindex", "0");
-    card.setAttribute("aria-haspopup", "dialog");
-    card.setAttribute("aria-controls", modalElement.id);
-
-    const openServiceModal = () => {
-      if (typeof bootstrap === "undefined") {
-        return;
-      }
-
-      const modalInstance = bootstrap.Modal.getOrCreateInstance(modalElement);
-
-      modalInstance.show();
-    };
-
-    card.addEventListener("click", (event) => {
-      /*
-       * Копчето „Дознај повеќе“ веќе има
-       * Bootstrap функционалност, па не го
-       * активираме modal-от двапати.
-       */
-      if (event.target.closest(".service-link")) {
-        return;
-      }
-
-      openServiceModal();
-    });
-
-    card.addEventListener("keydown", (event) => {
-      if (event.target !== card) return;
-
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        openServiceModal();
-      }
-    });
-  });
-  /* =====================================================
      SERVICE MODAL CONTACT BUTTONS
   ===================================================== */
 
-  const modalContactButtons = document.querySelectorAll(".modal-contact-btn");
+  const modalContactButtons = document.querySelectorAll(
+    ".modal-contact-btn",
+  );
 
   modalContactButtons.forEach((button) => {
     /*
@@ -248,7 +192,8 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      const modalInstance = bootstrap.Modal.getOrCreateInstance(modalElement);
+      const modalInstance =
+        bootstrap.Modal.getOrCreateInstance(modalElement);
 
       modalElement.addEventListener(
         "hidden.bs.modal",
@@ -267,37 +212,52 @@ document.addEventListener("DOMContentLoaded", () => {
      GALLERY ELEMENTS
   ===================================================== */
 
-  const galleryFilterButtons = document.querySelectorAll(".gallery-filter");
+  const galleryFilterButtons =
+    document.querySelectorAll(".gallery-filter");
 
-  const galleryItems = document.querySelectorAll(".gallery-item");
+  const galleryItems =
+    document.querySelectorAll(".gallery-item");
 
-  const galleryModal = document.getElementById("galleryModal");
+  const galleryModal =
+    document.getElementById("galleryModal");
 
-  const galleryModalImage = document.getElementById("galleryModalImage");
+  const galleryModalImage =
+    document.getElementById("galleryModalImage");
 
-  const galleryModalTitle = document.getElementById("galleryModalTitle");
+  const galleryModalTitle =
+    document.getElementById("galleryModalTitle");
 
-  const galleryModalCategory = document.getElementById("galleryModalCategory");
+  const galleryModalCategory =
+    document.getElementById("galleryModalCategory");
 
-  const galleryModalImageWrapper = document.querySelector(
-    ".gallery-modal-image-wrapper",
-  );
+  const galleryModalImageWrapper =
+    document.querySelector(
+      ".gallery-modal-image-wrapper",
+    );
 
   /*
    * Ги креираме стрелките и бројачот автоматски
    * ако случајно сè уште се користи постар index.html.
    */
-  let galleryModalPreviousButton = document.getElementById("galleryModalPrev");
+  let galleryModalPreviousButton =
+    document.getElementById("galleryModalPrev");
 
-  let galleryModalNextButton = document.getElementById("galleryModalNext");
+  let galleryModalNextButton =
+    document.getElementById("galleryModalNext");
 
-  let galleryModalCounter = document.getElementById("galleryModalCounter");
+  let galleryModalCounter =
+    document.getElementById("galleryModalCounter");
 
-  if (galleryModalImageWrapper && !galleryModalPreviousButton) {
-    galleryModalPreviousButton = document.createElement("button");
+  if (
+    galleryModalImageWrapper &&
+    !galleryModalPreviousButton
+  ) {
+    galleryModalPreviousButton =
+      document.createElement("button");
 
     galleryModalPreviousButton.type = "button";
-    galleryModalPreviousButton.id = "galleryModalPrev";
+    galleryModalPreviousButton.id =
+      "galleryModalPrev";
     galleryModalPreviousButton.className =
       "gallery-modal-nav gallery-modal-prev";
     galleryModalPreviousButton.setAttribute(
@@ -307,35 +267,57 @@ document.addEventListener("DOMContentLoaded", () => {
     galleryModalPreviousButton.innerHTML =
       '<i class="fa-solid fa-chevron-left"></i>';
 
-    galleryModalImageWrapper.prepend(galleryModalPreviousButton);
+    galleryModalImageWrapper.prepend(
+      galleryModalPreviousButton,
+    );
   }
 
-  if (galleryModalImageWrapper && !galleryModalNextButton) {
-    galleryModalNextButton = document.createElement("button");
+  if (
+    galleryModalImageWrapper &&
+    !galleryModalNextButton
+  ) {
+    galleryModalNextButton =
+      document.createElement("button");
 
     galleryModalNextButton.type = "button";
-    galleryModalNextButton.id = "galleryModalNext";
-    galleryModalNextButton.className = "gallery-modal-nav gallery-modal-next";
-    galleryModalNextButton.setAttribute("aria-label", "Следна фотографија");
+    galleryModalNextButton.id =
+      "galleryModalNext";
+    galleryModalNextButton.className =
+      "gallery-modal-nav gallery-modal-next";
+    galleryModalNextButton.setAttribute(
+      "aria-label",
+      "Следна фотографија",
+    );
     galleryModalNextButton.innerHTML =
       '<i class="fa-solid fa-chevron-right"></i>';
 
-    galleryModalImageWrapper.append(galleryModalNextButton);
+    galleryModalImageWrapper.append(
+      galleryModalNextButton,
+    );
   }
 
   if (!galleryModalCounter) {
-    const galleryModalCaption = document.querySelector(
-      ".gallery-modal-caption",
-    );
+    const galleryModalCaption =
+      document.querySelector(
+        ".gallery-modal-caption",
+      );
 
     if (galleryModalCaption) {
-      galleryModalCounter = document.createElement("span");
+      galleryModalCounter =
+        document.createElement("span");
 
-      galleryModalCounter.id = "galleryModalCounter";
-      galleryModalCounter.className = "gallery-modal-counter";
-      galleryModalCounter.setAttribute("aria-live", "polite");
+      galleryModalCounter.id =
+        "galleryModalCounter";
+      galleryModalCounter.className =
+        "gallery-modal-counter";
+      galleryModalCounter.setAttribute(
+        "aria-live",
+        "polite",
+      );
 
-      galleryModalCaption.append(galleryModalCounter);
+      galleryModalCaption.append(
+        galleryModalCounter,
+      );
     }
   }
 
@@ -348,35 +330,88 @@ document.addEventListener("DOMContentLoaded", () => {
      5. GALLERY FILTERING
   ===================================================== */
 
+  const applyGalleryFilter = (selectedFilter) => {
+    const shownCategories = new Set();
+
+    galleryItems.forEach((item) => {
+      const itemCategory =
+        item.dataset.category || "";
+
+      let shouldShow = false;
+
+      /*
+       * Кога е избрано „Сите“:
+       * прикажуваме само една, односно првата
+       * картичка од секоја категорија.
+       */
+      if (selectedFilter === "all") {
+        if (
+          itemCategory &&
+          !shownCategories.has(itemCategory)
+        ) {
+          shouldShow = true;
+          shownCategories.add(itemCategory);
+        }
+      } else {
+        /*
+         * Кога е избрана конкретна категорија:
+         * ги прикажуваме сите фотографии од неа.
+         */
+        shouldShow =
+          selectedFilter === itemCategory;
+      }
+
+      item.classList.remove("gallery-visible");
+
+      if (shouldShow) {
+        item.classList.remove("gallery-hidden");
+        item.setAttribute("aria-hidden", "false");
+
+        void item.offsetWidth;
+
+        item.classList.add("gallery-visible");
+      } else {
+        item.classList.add("gallery-hidden");
+        item.setAttribute("aria-hidden", "true");
+      }
+    });
+  };
+
   galleryFilterButtons.forEach((button) => {
     button.addEventListener("click", () => {
-      const selectedFilter = button.dataset.filter || "all";
+      const selectedFilter =
+        button.dataset.filter || "all";
 
-      galleryFilterButtons.forEach((filterButton) => {
-        filterButton.classList.remove("active");
-      });
+      galleryFilterButtons.forEach(
+        (filterButton) => {
+          filterButton.classList.remove("active");
+          filterButton.setAttribute(
+            "aria-pressed",
+            "false",
+          );
+        },
+      );
 
       button.classList.add("active");
+      button.setAttribute("aria-pressed", "true");
 
-      galleryItems.forEach((item) => {
-        const itemCategory = item.dataset.category || "";
-
-        const shouldShow =
-          selectedFilter === "all" || selectedFilter === itemCategory;
-
-        item.classList.remove("gallery-visible");
-
-        if (shouldShow) {
-          item.classList.remove("gallery-hidden");
-
-          void item.offsetWidth;
-
-          item.classList.add("gallery-visible");
-        } else {
-          item.classList.add("gallery-hidden");
-        }
-      });
+      applyGalleryFilter(selectedFilter);
     });
+  });
+
+  /*
+   * Почетна состојба:
+   * само една картичка од секоја категорија.
+   */
+  applyGalleryFilter("all");
+
+  galleryFilterButtons.forEach((button) => {
+    button.setAttribute(
+      "aria-pressed",
+      button.classList.contains("active")
+        ? "true"
+        : "false",
+    );
   });
 
   /* =====================================================
@@ -387,7 +422,8 @@ document.addEventListener("DOMContentLoaded", () => {
     /*
      * Новиот album систем користи data-album.
      */
-    const selectedAlbum = clickedButton.dataset.album || "";
+    const selectedAlbum =
+      clickedButton.dataset.album || "";
 
     if (selectedAlbum) {
       return Array.from(
@@ -402,9 +438,11 @@ document.addEventListener("DOMContentLoaded", () => {
      * ги групира сите видливи gallery картички
      * што имаат исто data-category.
      */
-    const clickedGalleryItem = clickedButton.closest(".gallery-item");
+    const clickedGalleryItem =
+      clickedButton.closest(".gallery-item");
 
-    const selectedCategory = clickedGalleryItem?.dataset.category || "";
+    const selectedCategory =
+      clickedGalleryItem?.dataset.category || "";
 
     if (!selectedCategory) {
       return [clickedButton];
@@ -418,19 +456,26 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const updateGalleryModal = () => {
-    if (currentGalleryImages.length === 0 || !galleryModalImage) {
+    if (
+      currentGalleryImages.length === 0 ||
+      !galleryModalImage
+    ) {
       return;
     }
 
-    const currentImage = currentGalleryImages[currentGalleryIndex];
+    const currentImage =
+      currentGalleryImages[currentGalleryIndex];
 
     if (!currentImage) return;
 
-    const imageSource = currentImage.dataset.image || "";
+    const imageSource =
+      currentImage.dataset.image || "";
 
-    const imageTitle = currentImage.dataset.title || "Фотографија";
+    const imageTitle =
+      currentImage.dataset.title || "Фотографија";
 
-    const categoryName = currentImage.dataset.categoryName || "";
+    const categoryName =
+      currentImage.dataset.categoryName || "";
 
     if (galleryImageChangeTimer) {
       window.clearTimeout(galleryImageChangeTimer);
@@ -447,25 +492,32 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       if (galleryModalCategory) {
-        galleryModalCategory.textContent = categoryName;
+        galleryModalCategory.textContent =
+          categoryName;
       }
 
       if (galleryModalCounter) {
-        galleryModalCounter.textContent = `${currentGalleryIndex + 1} / ${currentGalleryImages.length}`;
+        galleryModalCounter.textContent =
+          `${currentGalleryIndex + 1} / ${currentGalleryImages.length}`;
       }
 
-      const hasMultipleImages = currentGalleryImages.length > 1;
+      const hasMultipleImages =
+        currentGalleryImages.length > 1;
 
       if (galleryModalPreviousButton) {
-        galleryModalPreviousButton.hidden = !hasMultipleImages;
+        galleryModalPreviousButton.hidden =
+          !hasMultipleImages;
       }
 
       if (galleryModalNextButton) {
-        galleryModalNextButton.hidden = !hasMultipleImages;
+        galleryModalNextButton.hidden =
+          !hasMultipleImages;
       }
 
       window.requestAnimationFrame(() => {
-        galleryModalImage.classList.remove("is-changing");
+        galleryModalImage.classList.remove(
+          "is-changing",
+        );
       });
 
       galleryImageChangeTimer = null;
@@ -476,8 +528,11 @@ document.addEventListener("DOMContentLoaded", () => {
     if (currentGalleryImages.length < 2) return;
 
     currentGalleryIndex =
-      (currentGalleryIndex - 1 + currentGalleryImages.length) %
-      currentGalleryImages.length;
+      (
+        currentGalleryIndex -
+        1 +
+        currentGalleryImages.length
+      ) % currentGalleryImages.length;
 
     updateGalleryModal();
   };
@@ -486,70 +541,88 @@ document.addEventListener("DOMContentLoaded", () => {
     if (currentGalleryImages.length < 2) return;
 
     currentGalleryIndex =
-      (currentGalleryIndex + 1) % currentGalleryImages.length;
+      (
+        currentGalleryIndex + 1
+      ) % currentGalleryImages.length;
 
     updateGalleryModal();
   };
 
   if (galleryModal) {
-    galleryModal.addEventListener("show.bs.modal", (event) => {
-      const clickedButton = event.relatedTarget;
+    galleryModal.addEventListener(
+      "show.bs.modal",
+      (event) => {
+        const clickedButton = event.relatedTarget;
 
-      if (
-        !clickedButton ||
-        !clickedButton.matches(".gallery-image-button[data-image]")
-      ) {
-        return;
-      }
+        if (
+          !clickedButton ||
+          !clickedButton.matches(
+            ".gallery-image-button[data-image]",
+          )
+        ) {
+          return;
+        }
 
-      currentGalleryImages = getGalleryGroup(clickedButton);
+        currentGalleryImages =
+          getGalleryGroup(clickedButton);
 
-      currentGalleryIndex = currentGalleryImages.indexOf(clickedButton);
+        currentGalleryIndex =
+          currentGalleryImages.indexOf(
+            clickedButton,
+          );
 
-      if (currentGalleryIndex < 0) {
+        if (currentGalleryIndex < 0) {
+          currentGalleryIndex = 0;
+        }
+
+        updateGalleryModal();
+      },
+    );
+
+    galleryModal.addEventListener(
+      "hidden.bs.modal",
+      () => {
+        if (galleryImageChangeTimer) {
+          window.clearTimeout(
+            galleryImageChangeTimer,
+          );
+
+          galleryImageChangeTimer = null;
+        }
+
+        currentGalleryImages = [];
         currentGalleryIndex = 0;
-      }
 
-      updateGalleryModal();
-    });
+        if (galleryModalImage) {
+          galleryModalImage.src = "";
+          galleryModalImage.alt = "";
 
-    galleryModal.addEventListener("hidden.bs.modal", () => {
-      if (galleryImageChangeTimer) {
-        window.clearTimeout(galleryImageChangeTimer);
+          galleryModalImage.classList.remove(
+            "is-changing",
+          );
+        }
 
-        galleryImageChangeTimer = null;
-      }
+        if (galleryModalTitle) {
+          galleryModalTitle.textContent = "";
+        }
 
-      currentGalleryImages = [];
-      currentGalleryIndex = 0;
+        if (galleryModalCategory) {
+          galleryModalCategory.textContent = "";
+        }
 
-      if (galleryModalImage) {
-        galleryModalImage.src = "";
-        galleryModalImage.alt = "";
+        if (galleryModalCounter) {
+          galleryModalCounter.textContent = "";
+        }
 
-        galleryModalImage.classList.remove("is-changing");
-      }
+        if (galleryModalPreviousButton) {
+          galleryModalPreviousButton.hidden = true;
+        }
 
-      if (galleryModalTitle) {
-        galleryModalTitle.textContent = "";
-      }
-
-      if (galleryModalCategory) {
-        galleryModalCategory.textContent = "";
-      }
-
-      if (galleryModalCounter) {
-        galleryModalCounter.textContent = "";
-      }
-
-      if (galleryModalPreviousButton) {
-        galleryModalPreviousButton.hidden = true;
-      }
-
-      if (galleryModalNextButton) {
-        galleryModalNextButton.hidden = true;
-      }
-    });
+        if (galleryModalNextButton) {
+          galleryModalNextButton.hidden = true;
+        }
+      },
+    );
   }
 
   galleryModalPreviousButton?.addEventListener(
@@ -557,7 +630,10 @@ document.addEventListener("DOMContentLoaded", () => {
     showPreviousGalleryImage,
   );
 
-  galleryModalNextButton?.addEventListener("click", showNextGalleryImage);
+  galleryModalNextButton?.addEventListener(
+    "click",
+    showNextGalleryImage,
+  );
 
   document.addEventListener("keydown", (event) => {
     if (!galleryModal?.classList.contains("show")) {
@@ -578,7 +654,8 @@ document.addEventListener("DOMContentLoaded", () => {
   galleryModalImageWrapper?.addEventListener(
     "touchstart",
     (event) => {
-      galleryTouchStartX = event.changedTouches[0].clientX;
+      galleryTouchStartX =
+        event.changedTouches[0].clientX;
     },
     {
       passive: true,
@@ -588,9 +665,12 @@ document.addEventListener("DOMContentLoaded", () => {
   galleryModalImageWrapper?.addEventListener(
     "touchend",
     (event) => {
-      const galleryTouchEndX = event.changedTouches[0].clientX;
+      const galleryTouchEndX =
+        event.changedTouches[0].clientX;
 
-      const swipeDistance = galleryTouchEndX - galleryTouchStartX;
+      const swipeDistance =
+        galleryTouchEndX -
+        galleryTouchStartX;
 
       if (Math.abs(swipeDistance) < 50) {
         return;
@@ -747,10 +827,4 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("resize", () => {
     updateActiveNavigation();
   });
-
-  const currentYear = document.getElementById("currentYear");
-
-  if (currentYear) {
-    currentYear.textContent = new Date().getFullYear();
-  }
 });
