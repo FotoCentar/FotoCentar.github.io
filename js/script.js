@@ -165,6 +165,91 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* =====================================================
+     CLICKABLE SERVICE CARDS
+  ===================================================== */
+
+  const serviceCards =
+    document.querySelectorAll(".service-card");
+
+  serviceCards.forEach((card) => {
+    const modalTrigger = card.querySelector(
+      ".service-link[data-bs-target]",
+    );
+
+    if (!modalTrigger) return;
+
+    const modalSelector =
+      modalTrigger.getAttribute("data-bs-target");
+
+    if (
+      !modalSelector ||
+      !modalSelector.startsWith("#")
+    ) {
+      return;
+    }
+
+    const modalElement =
+      document.querySelector(modalSelector);
+
+    if (!modalElement) return;
+
+    card.setAttribute("role", "button");
+    card.setAttribute("tabindex", "0");
+    card.setAttribute("aria-haspopup", "dialog");
+    card.setAttribute(
+      "aria-controls",
+      modalElement.id,
+    );
+
+    const openServiceModal = () => {
+      if (typeof bootstrap === "undefined") {
+        console.warn("Bootstrap не е вчитан.");
+        return;
+      }
+
+      const modalInstance =
+        bootstrap.Modal.getOrCreateInstance(
+          modalElement,
+        );
+
+      modalInstance.show();
+    };
+
+    card.addEventListener("click", (event) => {
+      /*
+       * Кога е кликнато на „Дознај повеќе“,
+       * спречуваме двојно отворање.
+       */
+      if (event.target.closest(".service-link")) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+
+      if (
+        event.target.closest(
+          "a[href]:not(.service-link)",
+        )
+      ) {
+        return;
+      }
+
+      openServiceModal();
+    });
+
+    card.addEventListener("keydown", (event) => {
+      if (
+        event.key !== "Enter" &&
+        event.key !== " "
+      ) {
+        return;
+      }
+
+      event.preventDefault();
+      openServiceModal();
+    });
+  });
+
+  /* =====================================================
      SERVICE MODAL CONTACT BUTTONS
   ===================================================== */
 

@@ -4673,3 +4673,12 @@ a.contact-info-card:hover .contact-info-arrow {
 .service-card[role="button"]:active {
   transform: translateY(-3px);
 }
+
+.service-card {
+  cursor: pointer;
+}
+
+.service-card[role="button"]:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 4px;
+}
