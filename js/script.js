@@ -165,6 +165,64 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* =====================================================
+   CLICKABLE SERVICE CARDS
+===================================================== */
+
+  const serviceCards = document.querySelectorAll(".service-card");
+
+  serviceCards.forEach((card) => {
+    const modalTrigger = card.querySelector(".service-link[data-bs-target]");
+
+    if (!modalTrigger) return;
+
+    const modalSelector = modalTrigger.getAttribute("data-bs-target");
+
+    const modalElement = document.querySelector(modalSelector);
+
+    if (!modalElement) return;
+
+    /*
+     * Ја правиме целата картичка достапна
+     * и преку тастатура.
+     */
+    card.setAttribute("role", "button");
+    card.setAttribute("tabindex", "0");
+    card.setAttribute("aria-haspopup", "dialog");
+    card.setAttribute("aria-controls", modalElement.id);
+
+    const openServiceModal = () => {
+      if (typeof bootstrap === "undefined") {
+        return;
+      }
+
+      const modalInstance = bootstrap.Modal.getOrCreateInstance(modalElement);
+
+      modalInstance.show();
+    };
+
+    card.addEventListener("click", (event) => {
+      /*
+       * Копчето „Дознај повеќе“ веќе има
+       * Bootstrap функционалност, па не го
+       * активираме modal-от двапати.
+       */
+      if (event.target.closest(".service-link")) {
+        return;
+      }
+
+      openServiceModal();
+    });
+
+    card.addEventListener("keydown", (event) => {
+      if (event.target !== card) return;
+
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openServiceModal();
+      }
+    });
+  });
+  /* =====================================================
      SERVICE MODAL CONTACT BUTTONS
   ===================================================== */
 

@@ -4656,3 +4656,20 @@ a.contact-info-card:hover .contact-info-arrow {
     font-size: 0.64rem;
   }
 }
+
+/* =========================================================
+   CLICKABLE SERVICE CARDS
+========================================================= */
+
+.service-card[role="button"] {
+  cursor: pointer;
+}
+
+.service-card[role="button"]:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 4px;
+}
+
+.service-card[role="button"]:active {
+  transform: translateY(-3px);
+}
