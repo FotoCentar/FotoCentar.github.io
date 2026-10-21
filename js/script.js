@@ -557,7 +557,7 @@ document.addEventListener("DOMContentLoaded", () => {
       currentImage.dataset.image || "";
 
     const imageTitle =
-      currentImage.dataset.title || "Фотографија";
+      currentImage.dataset.title || " ";
 
     const categoryName =
       currentImage.dataset.categoryName || "";
