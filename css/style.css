@@ -4700,7 +4700,7 @@ a.contact-info-card:hover .contact-info-arrow {
   color: var(--color-gold); background: var(--color-black); font-size: 1.45rem;
 }
 .digital-invitation-copy { flex: 1; }
-.digital-invitation-eyebrow { margin: 0 0 7px; color: #9b7738; font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.digital-invitation-eyebrow { margin: 0 0 7px; color: #9b7738; font-size: .68rem; font-weight: 700; letter-spacing: .12em; }
 .digital-invitation-copy h3 { margin: 0 0 9px; color: var(--color-black); font-family: var(--font-heading); font-size: clamp(1.35rem, 2.2vw, 2rem); font-weight: 400; }
 .digital-invitation-copy p:last-child { margin: 0; color: #686868; font-size: .86rem; line-height: 1.7; }
 .digital-invitation-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; flex-shrink: 0; padding: 14px 18px; color: var(--color-white); background: var(--color-black); border: 1px solid var(--color-black); font-size: .78rem; text-decoration: none; transition: .25s ease; }
