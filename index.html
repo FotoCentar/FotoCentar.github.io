@@ -99,6 +99,13 @@
               <i class="fa-solid fa-arrow-right"></i>
             </a>
           </div>
+
+          <!-- Language switcher: right aligned on desktop, beside menu on mobile -->
+          <button type="button" class="language-toggle" id="languageToggle" aria-label="Switch to English" title="Switch language">
+            <span class="language-option language-option-active">MK</span>
+            <span class="language-divider">/</span>
+            <span class="language-option">EN</span>
+          </button>
         </div>
       </nav>
 
@@ -180,9 +187,14 @@
               <span>070 303 670</span>
             </a>
 
-            <a href="mailto:fotocentarstip@hotmail.com">
+            <a href="tel:+38971282840">
+              <i class="fa-solid fa-phone"></i>
+              <span>071 282 840</span>
+            </a>
+
+            <a href="mailto:fotocentarstip@gmail.com">
               <i class="fa-regular fa-envelope"></i>
-              <span>fotocentarstip@hotmail.com</span>
+              <span>fotocentarstip@gmail.com</span>
             </a>
 
             <p>
@@ -344,7 +356,7 @@
           <div class="row g-3 g-lg-4 services-grid">
             <!-- Service 1 -->
             <div class="col-6 col-md-4 col-xl-2">
-              <article class="service-card">
+              <article class="service-card" role="button" tabindex="0" data-modal-target="#weddingPhotographyModal">
                 <div class="service-icon">
                   <i class="fa-solid fa-camera"></i>
                 </div>
@@ -369,7 +381,7 @@
 
             <!-- Service 2 -->
             <div class="col-6 col-md-4 col-xl-2">
-              <article class="service-card">
+              <article class="service-card" role="button" tabindex="0" data-modal-target="#weddingVideographyModal">
                 <div class="service-icon">
                   <i class="fa-solid fa-video"></i>
                 </div>
@@ -394,7 +406,7 @@
 
             <!-- Service 3 -->
             <div class="col-6 col-md-4 col-xl-2">
-              <article class="service-card">
+              <article class="service-card" role="button" tabindex="0" data-modal-target="#christeningModal">
                 <div class="service-icon">
                   <i class="fa-solid fa-cross"></i>
                 </div>
@@ -419,7 +431,7 @@
 
             <!-- Service 4 -->
             <div class="col-6 col-md-4 col-xl-2">
-              <article class="service-card">
+              <article class="service-card" role="button" tabindex="0" data-modal-target="#graduationModal">
                 <div class="service-icon">
                   <i class="fa-solid fa-graduation-cap"></i>
                 </div>
@@ -444,7 +456,7 @@
 
             <!-- Service 5 -->
             <div class="col-6 col-md-4 col-xl-2">
-              <article class="service-card">
+              <article class="service-card" role="button" tabindex="0" data-modal-target="#familyModal">
                 <div class="service-icon">
                   <i class="fa-solid fa-people-roof"></i>
                 </div>
@@ -469,7 +481,7 @@
 
             <!-- Service 6 -->
             <div class="col-6 col-md-4 col-xl-2">
-              <article class="service-card">
+              <article class="service-card" role="button" tabindex="0" data-modal-target="#droneModal">
                 <div class="service-icon">
                   <i class="fa-solid fa-helicopter"></i>
                 </div>
@@ -491,6 +503,22 @@
                 </button>
               </article>
             </div>
+          </div>
+
+          <!-- Digital invitations in collaboration with eMPe Digital -->
+          <div class="digital-invitation-promo">
+            <div class="digital-invitation-icon" aria-hidden="true">
+              <i class="fa-solid fa-envelope-open-text"></i>
+            </div>
+            <div class="digital-invitation-copy">
+              <p class="digital-invitation-eyebrow">Во соработка со eMPe Digital</p>
+              <h3>Дигитални покани за вашите посебни моменти</h3>
+              <p>Персонализирани дигитални покани за свадби, родендени, крштевки и други настани — модерно, интерактивно и по ваша желба.</p>
+            </div>
+            <a href="https://www.instagram.com/empe.digital/" target="_blank" rel="noopener noreferrer" class="digital-invitation-btn">
+              <span>Погледни на Instagram</span>
+              <i class="fa-brands fa-instagram"></i>
+            </a>
           </div>
 
           <!-- Main services CTA -->
@@ -552,6 +580,11 @@
               <ul class="service-modal-list">
                 <li>
                   <i class="fa-solid fa-check"></i>
+                  Целодневна покриеност со фотографи на вашата свадбена веселба
+                </li>
+
+                <!-- <li>
+                  <i class="fa-solid fa-check"></i>
                   Фотографирање на подготовките
                 </li>
 
@@ -562,12 +595,12 @@
 
                 <li>
                   <i class="fa-solid fa-check"></i>
-                  Свадбена фотосесија
-                </li>
+                  Фотографирање на прославата
+                </li> -->
 
                 <li>
                   <i class="fa-solid fa-check"></i>
-                  Фотографирање на прославата
+                  Свадбена фотосесија на посебни локации
                 </li>
 
                 <li>
@@ -648,18 +681,23 @@
               <ul class="service-modal-list">
                 <li>
                   <i class="fa-solid fa-check"></i>
+                  Целодневна покриеност со видеографи на вашата свадбена веселба
+                </li>
+
+                <!-- <li>
+                  <i class="fa-solid fa-check"></i>
                   Снимање на подготовките
                 </li>
 
                 <li>
                   <i class="fa-solid fa-check"></i>
                   Снимање на церемонијата
-                </li>
+                </li> -->
 
-                <li>
+                <!-- <li>
                   <i class="fa-solid fa-check"></i>
                   Снимање на прославата
-                </li>
+                </li> -->
 
                 <li>
                   <i class="fa-solid fa-check"></i>
@@ -668,12 +706,17 @@
 
                 <li>
                   <i class="fa-solid fa-check"></i>
-                  Целосен свадбен филм
+                  Целодневен свадбен филм
                 </li>
 
                 <li>
                   <i class="fa-solid fa-check"></i>
-                  Професионална монтажа и обработка
+                  Професионална обработка и монтажа
+                </li>
+
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  Снимање со дрон
                 </li>
               </ul>
             </div>
@@ -766,6 +809,11 @@
                   <i class="fa-solid fa-check"></i>
                   Обработка на избраните фотографии
                 </li>
+
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  Дигитална галерија за преземање
+                </li>
               </ul>
             </div>
 
@@ -839,6 +887,11 @@
                 <li>
                   <i class="fa-solid fa-check"></i>
                   Групно фотографирање
+                </li>
+
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  Студиска фотосесија
                 </li>
 
                 <li>
@@ -945,6 +998,11 @@
                 <li>
                   <i class="fa-solid fa-check"></i>
                   Професионална обработка
+                </li>
+
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  Дигитална галерија за преземање
                 </li>
               </ul>
             </div>
@@ -1151,7 +1209,6 @@
                 data-bs-target="#galleryModal"
                 data-album="wedding"
                 data-image="assets/images/gallery/weddings/wedding-1.jpg"
-                
                 data-category-name="Свадбена фотографија"
                 aria-label="Отвори: Свадбена приказна"
               >
@@ -1189,9 +1246,8 @@
                 data-album="wedding"
                 data-image="assets/images/gallery/weddings/wedding-2.jpg"
                 data-category-name="Свадбена фотографија"
-                
               >
-              <!-- data-title="Емоции што остануваат"
+                <!-- data-title="Емоции што остануваат"
                 aria-label="Отвори: Емоции што остануваат" -->
                 <img
                   src="assets/images/gallery/weddings/wedding-2.jpg"
@@ -1226,11 +1282,10 @@
                 data-album="wedding"
                 data-image="assets/images/gallery/weddings/wedding-3.jpg"
                 data-category-name="Свадбена фотографија"
-                
               >
-              <!-- data-title="Детали од свадбениот ден"
+                <!-- data-title="Детали од свадбениот ден"
                 aria-label="Отвори: Детали од свадбениот ден"   -->
-              <img
+                <img
                   src="assets/images/gallery/weddings/wedding-3.jpg"
                   alt="Свадбени детали"
                   loading="lazy"
@@ -1263,11 +1318,10 @@
                 data-album="wedding"
                 data-image="assets/images/gallery/weddings/wedding-4.jpg"
                 data-category-name="Свадбена фотографија"
-                
               >
-              <!-- data-title="Детали од свадбениот ден"
+                <!-- data-title="Детали од свадбениот ден"
                 aria-label="Отвори: Детали од свадбениот ден"   -->
-              <img
+                <img
                   src="assets/images/gallery/weddings/wedding-4.jpg"
                   alt="Свадбени детали"
                   loading="lazy"
@@ -1300,11 +1354,10 @@
                 data-album="wedding"
                 data-image="assets/images/gallery/weddings/wedding-5.jpg"
                 data-category-name="Свадбена фотографија"
-                
               >
-              <!-- data-title="Детали од свадбениот ден"
+                <!-- data-title="Детали од свадбениот ден"
                 aria-label="Отвори: Детали од свадбениот ден"   -->
-              <img
+                <img
                   src="assets/images/gallery/weddings/wedding-5.jpg"
                   alt="Свадбени детали"
                   loading="lazy"
@@ -1337,11 +1390,10 @@
                 data-album="wedding"
                 data-image="assets/images/gallery/weddings/wedding-6.jpg"
                 data-category-name="Свадбена фотографија"
-                
               >
-              <!-- data-title="Детали од свадбениот ден"
+                <!-- data-title="Детали од свадбениот ден"
                 aria-label="Отвори: Детали од свадбениот ден"   -->
-              <img
+                <img
                   src="assets/images/gallery/weddings/wedding-6.jpg"
                   alt="Свадбени детали"
                   loading="lazy"
@@ -1373,11 +1425,10 @@
                 data-album="wedding"
                 data-image="assets/images/gallery/weddings/wedding-7.jpg"
                 data-category-name="Свадбена фотографија"
-                
               >
-              <!-- data-title="Детали од свадбениот ден"
+                <!-- data-title="Детали од свадбениот ден"
                 aria-label="Отвори: Детали од свадбениот ден"   -->
-              <img
+                <img
                   src="assets/images/gallery/weddings/wedding-7.jpg"
                   alt="Свадбени детали"
                   loading="lazy"
@@ -1409,11 +1460,10 @@
                 data-album="wedding"
                 data-image="assets/images/gallery/weddings/wedding-8.jpg"
                 data-category-name="Свадбена фотографија"
-                
               >
-              <!-- data-title="Детали од свадбениот ден"
+                <!-- data-title="Детали од свадбениот ден"
                 aria-label="Отвори: Детали од свадбениот ден"   -->
-              <img
+                <img
                   src="assets/images/gallery/weddings/wedding-8.jpg"
                   alt="Свадбени детали"
                   loading="lazy"
@@ -1445,11 +1495,10 @@
                 data-album="wedding"
                 data-image="assets/images/gallery/weddings/wedding-9.jpg"
                 data-category-name="Свадбена фотографија"
-                
               >
-              <!-- data-title="Детали од свадбениот ден"
+                <!-- data-title="Детали од свадбениот ден"
                 aria-label="Отвори: Детали од свадбениот ден"   -->
-              <img
+                <img
                   src="assets/images/gallery/weddings/wedding-9.jpg"
                   alt="Свадбени детали"
                   loading="lazy"
@@ -1481,11 +1530,10 @@
                 data-album="wedding"
                 data-image="assets/images/gallery/weddings/wedding-10.jpg"
                 data-category-name="Свадбена фотографија"
-                
               >
-              <!-- data-title="Детали од свадбениот ден"
+                <!-- data-title="Детали од свадбениот ден"
                 aria-label="Отвори: Детали од свадбениот ден"   -->
-              <img
+                <img
                   src="assets/images/gallery/weddings/wedding-10.jpg"
                   alt="Свадбени детали"
                   loading="lazy"
@@ -1517,11 +1565,10 @@
                 data-album="wedding"
                 data-image="assets/images/gallery/weddings/wedding-11.jpg"
                 data-category-name="Свадбена фотографија"
-                
               >
-              <!-- data-title="Детали од свадбениот ден"
+                <!-- data-title="Детали од свадбениот ден"
                 aria-label="Отвори: Детали од свадбениот ден"   -->
-              <img
+                <img
                   src="assets/images/gallery/weddings/wedding-11.jpg"
                   alt="Свадбени детали"
                   loading="lazy"
@@ -1553,11 +1600,10 @@
                 data-album="wedding"
                 data-image="assets/images/gallery/weddings/wedding-12.jpg"
                 data-category-name="Свадбена фотографија"
-                
               >
-              <!-- data-title="Детали од свадбениот ден"
+                <!-- data-title="Детали од свадбениот ден"
                 aria-label="Отвори: Детали од свадбениот ден"   -->
-              <img
+                <img
                   src="assets/images/gallery/weddings/wedding-12.jpg"
                   alt="Свадбени детали"
                   loading="lazy"
@@ -1589,11 +1635,10 @@
                 data-album="wedding"
                 data-image="assets/images/gallery/weddings/wedding-13.jpg"
                 data-category-name="Свадбена фотографија"
-                
               >
-              <!-- data-title="Детали од свадбениот ден"
+                <!-- data-title="Детали од свадбениот ден"
                 aria-label="Отвори: Детали од свадбениот ден"   -->
-              <img
+                <img
                   src="assets/images/gallery/weddings/wedding-13.jpg"
                   alt="Свадбени детали"
                   loading="lazy"
@@ -1625,11 +1670,10 @@
                 data-album="wedding"
                 data-image="assets/images/gallery/weddings/wedding-14.jpg"
                 data-category-name="Свадбена фотографија"
-                
               >
-              <!-- data-title="Детали од свадбениот ден"
+                <!-- data-title="Детали од свадбениот ден"
                 aria-label="Отвори: Детали од свадбениот ден"   -->
-              <img
+                <img
                   src="assets/images/gallery/weddings/wedding-14.jpg"
                   alt="Свадбени детали"
                   loading="lazy"
@@ -1661,11 +1705,10 @@
                 data-album="wedding"
                 data-image="assets/images/gallery/weddings/wedding-15.jpg"
                 data-category-name="Свадбена фотографија"
-                
               >
-              <!-- data-title="Детали од свадбениот ден"
+                <!-- data-title="Детали од свадбениот ден"
                 aria-label="Отвори: Детали од свадбениот ден"   -->
-              <img
+                <img
                   src="assets/images/gallery/weddings/wedding-15.jpg"
                   alt="Свадбени детали"
                   loading="lazy"
@@ -1697,11 +1740,10 @@
                 data-album="wedding"
                 data-image="assets/images/gallery/weddings/wedding-16.jpg"
                 data-category-name="Свадбена фотографија"
-                
               >
-              <!-- data-title="Детали од свадбениот ден"
+                <!-- data-title="Детали од свадбениот ден"
                 aria-label="Отвори: Детали од свадбениот ден"   -->
-              <img
+                <img
                   src="assets/images/gallery/weddings/wedding-16.jpg"
                   alt="Свадбени детали"
                   loading="lazy"
@@ -1733,11 +1775,10 @@
                 data-album="wedding"
                 data-image="assets/images/gallery/weddings/wedding-17.jpg"
                 data-category-name="Свадбена фотографија"
-                
               >
-              <!-- data-title="Детали од свадбениот ден"
+                <!-- data-title="Детали од свадбениот ден"
                 aria-label="Отвори: Детали од свадбениот ден"   -->
-              <img
+                <img
                   src="assets/images/gallery/weddings/wedding-17.jpg"
                   alt="Свадбени детали"
                   loading="lazy"
@@ -1769,11 +1810,10 @@
                 data-album="wedding"
                 data-image="assets/images/gallery/weddings/wedding-18.jpg"
                 data-category-name="Свадбена фотографија"
-                
               >
-              <!-- data-title="Детали од свадбениот ден"
+                <!-- data-title="Детали од свадбениот ден"
                 aria-label="Отвори: Детали од свадбениот ден"   -->
-              <img
+                <img
                   src="assets/images/gallery/weddings/wedding-18.jpg"
                   alt="Свадбени детали"
                   loading="lazy"
@@ -1805,11 +1845,10 @@
                 data-album="wedding"
                 data-image="assets/images/gallery/weddings/wedding-19.jpg"
                 data-category-name="Свадбена фотографија"
-                
               >
-              <!-- data-title="Детали од свадбениот ден"
+                <!-- data-title="Детали од свадбениот ден"
                 aria-label="Отвори: Детали од свадбениот ден"   -->
-              <img
+                <img
                   src="assets/images/gallery/weddings/wedding-19.jpg"
                   alt="Свадбени детали"
                   loading="lazy"
@@ -1841,11 +1880,10 @@
                 data-album="wedding"
                 data-image="assets/images/gallery/weddings/wedding-20.jpg"
                 data-category-name="Свадбена фотографија"
-                
               >
-              <!-- data-title="Детали од свадбениот ден"
+                <!-- data-title="Детали од свадбениот ден"
                 aria-label="Отвори: Детали од свадбениот ден"   -->
-              <img
+                <img
                   src="assets/images/gallery/weddings/wedding-20.jpg"
                   alt="Свадбени детали"
                   loading="lazy"
@@ -1881,9 +1919,8 @@
                 data-album="children"
                 data-image="assets/images/gallery/children/children-1.jpg"
                 data-category-name="Детска фотосесија"
-                
               >
-              <!-- data-title="Мали моменти, големи спомени"
+                <!-- data-title="Мали моменти, големи спомени"
                 aria-label="Отвори: Мали моменти, големи спомени" -->
                 <img
                   src="assets/images/gallery/children/children-1.jpg"
@@ -1918,9 +1955,8 @@
                 data-album="children"
                 data-image="assets/images/gallery/children/children-2.jpg"
                 data-category-name="Детска фотосесија"
-                
               >
-              <!-- data-title="Детски свет"
+                <!-- data-title="Детски свет"
                 aria-label="Отвори: Детски свет" -->
                 <img
                   src="assets/images/gallery/children/children-2.jpg"
@@ -1954,7 +1990,7 @@
                 data-image="assets/images/gallery/children/children-3.jpg"
                 data-category-name="Детска фотосесија"
               >
-              <!-- data-title="Едноставно, слатко, незаборавно"
+                <!-- data-title="Едноставно, слатко, незаборавно"
                aria-label="Отвори: Едноставно, слатко, незаборавно" -->
                 <img
                   src="assets/images/gallery/children/children-3.jpg"
@@ -2045,7 +2081,7 @@
                 </span>
               </button>
             </article>
-<!-- fashion -->
+            <!-- fashion -->
             <article class="gallery-item" data-category="fashion">
               <button
                 type="button"
@@ -2056,8 +2092,7 @@
                 data-image="assets/images/gallery/fashion/fashion-1.jpg"
                 data-category-name="Модна фотографија"
               >
-
-              <!-- data-title="Стил во фокус"
+                <!-- data-title="Стил во фокус"
                 aria-label="Отвори: Стил во фокус" -->
                 <img
                   src="assets/images/gallery/fashion/fashion-1.jpg"
@@ -2090,9 +2125,8 @@
                 data-album="fashion"
                 data-image="assets/images/gallery/fashion/fashion-2.jpg"
                 data-category-name="Модна фотографија"
-                
               >
-              <!-- data-title="Повеќе од портрет"
+                <!-- data-title="Повеќе од портрет"
                 aria-label="Отвори: Повеќе од портрет" -->
                 <img
                   src="assets/images/gallery/fashion/fashion-2.jpg"
@@ -2125,9 +2159,8 @@
                 data-album="fashion"
                 data-image="assets/images/gallery/fashion/fashion-3.jpg"
                 data-category-name="Модна фотографија"
-                
               >
-              <!-- data-title="Повеќе од портрет"
+                <!-- data-title="Повеќе од портрет"
                 aria-label="Отвори: Повеќе од портрет" -->
                 <img
                   src="assets/images/gallery/fashion/fashion-3.jpg"
@@ -2160,9 +2193,8 @@
                 data-album="fashion"
                 data-image="assets/images/gallery/fashion/fashion-4.jpg"
                 data-category-name="Модна фотографија"
-                
               >
-              <!-- data-title="Повеќе од портрет"
+                <!-- data-title="Повеќе од портрет"
                 aria-label="Отвори: Повеќе од портрет" -->
                 <img
                   src="assets/images/gallery/fashion/fashion-4.jpg"
@@ -2196,10 +2228,9 @@
                 data-album="drone"
                 data-image="assets/images/gallery/drone/drone-1.jpg"
                 data-category-name="Дрон снимање"
-                
                 aria-label="Отвори: Поглед од височина"
               >
-              <!-- data-title="Поглед од височина" -->
+                <!-- data-title="Поглед од височина" -->
                 <img
                   src="assets/images/gallery/drone/drone-1.jpg"
                   alt="Воздушна фотографија снимена со дрон"
@@ -2232,11 +2263,10 @@
                 data-bs-target="#galleryModal"
                 data-album="drone"
                 data-image="assets/images/gallery/drone/drone-2.jpg"
-                
                 data-category-name="Дрон снимање"
                 aria-label="Отвори: Воздушна перспектива"
               >
-              <!-- data-title="Воздушна перспектива" -->
+                <!-- data-title="Воздушна перспектива" -->
                 <img
                   src="assets/images/gallery/drone/drone-2.jpg"
                   alt="Воздушна фотографија од локација"
@@ -2247,9 +2277,9 @@
                   <span class="gallery-item-content">
                     <span class="gallery-category"> Дрон снимање </span>
 
-                    <span class="gallery-item-title">
+                    <!-- <span class="gallery-item-title">
                       Воздушна перспектива
-                    </span>
+                    </span> -->
                   </span>
 
                   <span class="gallery-open-icon">
@@ -2284,7 +2314,7 @@
                   <span class="gallery-item-content">
                     <span class="gallery-category"> Дрон снимање </span>
 
-                    <span class="gallery-item-title"> Поглед од височина </span>
+                    <!-- <span class="gallery-item-title"> Поглед од височина </span> -->
                   </span>
 
                   <span class="gallery-open-icon">
@@ -2319,9 +2349,9 @@
                   <span class="gallery-item-content">
                     <span class="gallery-category"> Дрон снимање </span>
 
-                    <span class="gallery-item-title">
+                    <!-- <span class="gallery-item-title">
                       Воздушна перспектива
-                    </span>
+                    </span> -->
                   </span>
 
                   <span class="gallery-open-icon">
@@ -2356,9 +2386,9 @@
                   <span class="gallery-item-content">
                     <span class="gallery-category"> Дрон снимање </span>
 
-                    <span class="gallery-item-title">
+                    <!-- <span class="gallery-item-title">
                       Воздушна перспектива
-                    </span>
+                    </span> -->
                   </span>
 
                   <span class="gallery-open-icon">
@@ -2392,8 +2422,8 @@
                 <span class="gallery-overlay">
                   <span class="gallery-item-content">
                     <span class="gallery-category"> Дрон снимање </span>
-
-                    <span class="gallery-item-title"> Поглед од височина </span>
+                    <!-- 
+                    <span class="gallery-item-title"> Поглед од височина </span> -->
                   </span>
 
                   <span class="gallery-open-icon">
@@ -2428,9 +2458,9 @@
                   <span class="gallery-item-content">
                     <span class="gallery-category"> Дрон снимање </span>
 
-                    <span class="gallery-item-title">
+                    <!-- <span class="gallery-item-title">
                       Воздушна перспектива
-                    </span>
+                    </span> -->
                   </span>
 
                   <span class="gallery-open-icon">
@@ -2465,9 +2495,9 @@
                   <span class="gallery-item-content">
                     <span class="gallery-category"> Дрон снимање </span>
 
-                    <span class="gallery-item-title">
+                    <!-- <span class="gallery-item-title">
                       Воздушна перспектива
-                    </span>
+                    </span> -->
                   </span>
 
                   <span class="gallery-open-icon">
@@ -2502,9 +2532,9 @@
                   <span class="gallery-item-content">
                     <span class="gallery-category"> Дрон снимање </span>
 
-                    <span class="gallery-item-title">
+                    <!-- <span class="gallery-item-title">
                       Воздушна перспектива
-                    </span>
+                    </span> -->
                   </span>
 
                   <span class="gallery-open-icon">
@@ -2539,9 +2569,9 @@
                   <span class="gallery-item-content">
                     <span class="gallery-category"> Дрон снимање </span>
 
-                    <span class="gallery-item-title">
+                    <!-- <span class="gallery-item-title">
                       Воздушна перспектива
-                    </span>
+                    </span> -->
                   </span>
 
                   <span class="gallery-open-icon">
@@ -2553,7 +2583,7 @@
               </button>
             </article>
             <!-- familijarna fotosesija -->
-             <article
+            <article
               class="gallery-item gallery-item-wide"
               data-category="family"
             >
@@ -2863,8 +2893,14 @@
                 </h2>
 
                 <p class="about-description">
-                  Фото Центар – Штип повеќе од две децении ги овековечува
-                  најважните моменти од животот на своите клиенти.
+                  Фото Центар – Штип е бренд кој е создаден во 2002 година и во
+                  повеќе од две децении ги овековечува најважните моменти од
+                  животот на своите клиенти.
+                </p>
+                <p class="about-description">
+                  Со нашата посветеност, долгогодишно ускуство, и следењето на
+                  светските трендови низ сите овие години достигнуваме големи
+                  успеси.
                 </p>
 
                 <p class="about-description">
@@ -2927,7 +2963,7 @@
 
                     <span
                       class="about-stat-number"
-                      data-target="1000"
+                      data-target="2000"
                       data-suffix="+"
                     >
                       0
@@ -2941,7 +2977,7 @@
 
                     <span
                       class="about-stat-number"
-                      data-target="5000"
+                      data-target="100000"
                       data-suffix="+"
                     >
                       0
@@ -2957,7 +2993,7 @@
 
                     <span
                       class="about-stat-number"
-                      data-target="300"
+                      data-target="500"
                       data-suffix="+"
                     >
                       0
@@ -2969,7 +3005,7 @@
 
                 <!-- About CTA -->
                 <div class="about-actions">
-                  <a href="tel:+3897XXXXXXX" class="btn about-primary-btn">
+                  <a href="tel:+38970303670" class="btn about-primary-btn">
                     <i class="fa-solid fa-phone"></i>
                     Јавете се
                   </a>
@@ -2982,6 +3018,33 @@
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <!-- =================================================
+         НАШИ СОРАБОТНИЦИ
+    ================================================== -->
+      <section class="partners-section" aria-labelledby="partnersTitle">
+        <div class="container">
+          <div class="partners-heading">
+            <p class="section-eyebrow">Заедно создаваме повеќе</p>
+            <h2 class="section-title" id="partnersTitle">Наши соработници</h2>
+            <p class="section-description">Брендови и креативци со кои ги правиме вашите посебни моменти уште поубави.</p>
+          </div>
+
+          <div class="partners-carousel" aria-label="Логоа на наши соработници">
+            <div class="partners-track">
+              <div class="partner-logo partner-logo-script"><span>PARTNER</span><strong>ONE</strong></div>
+              <div class="partner-logo partner-logo-serif"><span>STUDIO</span><strong>FORMA</strong></div>
+              <div class="partner-logo partner-logo-modern"><strong>nōva</strong><span>CREATIVE</span></div>
+              <div class="partner-logo partner-logo-monogram"><strong> A </strong><span>ATELIER</span></div>
+              <div class="partner-logo partner-logo-script"><span>PARTNER</span><strong>ONE</strong></div>
+              <div class="partner-logo partner-logo-serif"><span>STUDIO</span><strong>FORMA</strong></div>
+              <div class="partner-logo partner-logo-modern"><strong>nōva</strong><span>CREATIVE</span></div>
+              <div class="partner-logo partner-logo-monogram"><strong> A </strong><span>ATELIER</span></div>
+            </div>
+          </div>
+          <p class="partners-placeholder-note">Примерен приказ на логоа — ќе ги замениме со вистинските логоа на вашите партнери.</p>
         </div>
       </section>
 
@@ -3034,9 +3097,21 @@
                   <i class="fa-solid fa-arrow-right contact-info-arrow"></i>
                 </a>
 
+                <!-- Second phone -->
+                <a href="tel:+38971282840" class="contact-info-card">
+                  <span class="contact-info-icon">
+                    <i class="fa-solid fa-phone"></i>
+                  </span>
+                  <span class="contact-info-content">
+                    <span class="contact-info-label">Телефон 2</span>
+                    <span class="contact-info-value">071 282 840</span>
+                  </span>
+                  <i class="fa-solid fa-arrow-right contact-info-arrow"></i>
+                </a>
+
                 <!-- Email -->
                 <a
-                  href="mailto:fotocentarstip@hotmail.com"
+                  href="mailto:fotocentarstip@gmail.com"
                   class="contact-info-card"
                 >
                   <span class="contact-info-icon">
@@ -3047,7 +3122,7 @@
                     <span class="contact-info-label"> E-mail </span>
 
                     <span class="contact-info-value">
-                      fotocentarstip@hotmail.com
+                      fotocentarstip@gmail.com
                     </span>
                   </span>
 
@@ -3147,7 +3222,15 @@
                     </a>
 
                     <a
-                      href="mailto:fotocentarstip@hotmail.com"
+                      href="tel:+38971282840"
+                      class="btn contact-quick-secondary"
+                    >
+                      <i class="fa-solid fa-phone"></i>
+                      <span>Јавете се: 071 282 840</span>
+                    </a>
+
+                    <a
+                      href="mailto:fotocentarstip@gmail.com"
                       class="btn contact-quick-secondary"
                     >
                       <i class="fa-regular fa-envelope"></i>
@@ -3159,23 +3242,38 @@
                     <span>или</span>
                   </div>
 
-                  <a
-                    href="https://www.instagram.com/fotocentarstip"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="contact-instagram-card"
-                  >
-                    <span class="contact-instagram-icon">
-                      <i class="fa-brands fa-instagram"></i>
-                    </span>
+                  <div class="contact-messaging-list">
+                    <a
+                      href="https://www.instagram.com/fotocentarstip/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="contact-instagram-card"
+                    >
+                      <span class="contact-instagram-icon"><i class="fa-brands fa-instagram"></i></span>
+                      <span><strong>Пишете ни на Instagram</strong><small>@fotocentarstip</small></span>
+                      <i class="fa-solid fa-arrow-right"></i>
+                    </a>
 
-                    <span>
-                      <strong>Пишете ни на Instagram</strong>
-                      <small>@fotocentarstip</small>
-                    </span>
+                    <a
+                      href="https://wa.me/38970303670"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="contact-instagram-card messaging-whatsapp"
+                    >
+                      <span class="contact-instagram-icon"><i class="fa-brands fa-whatsapp"></i></span>
+                      <span><strong>Пишете ни на WhatsApp</strong><small>070 303 670</small></span>
+                      <i class="fa-solid fa-arrow-right"></i>
+                    </a>
 
-                    <i class="fa-solid fa-arrow-right"></i>
-                  </a>
+                    <a
+                      href="viber://chat?number=%2B38970303670"
+                      class="contact-instagram-card messaging-viber"
+                    >
+                      <span class="contact-instagram-icon"><i class="fa-brands fa-viber"></i></span>
+                      <span><strong>Пишете ни на Viber</strong><small>070 303 670</small></span>
+                      <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                  </div>
                 </div>
 
                 <div class="contact-quick-benefits">
@@ -3246,6 +3344,9 @@
 
     <!-- Bootstrap JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Macedonian / English language switcher -->
+    <script src="./js/i18n.js"></script>
 
     <!-- Custom JavaScript -->
     <script src="./js/script.js"></script>

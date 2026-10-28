@@ -4682,3 +4682,117 @@ a.contact-info-card:hover .contact-info-arrow {
   outline: 2px solid var(--color-gold);
   outline-offset: 4px;
 }
+
+/* =========================================================
+   DIGITAL INVITATIONS PROMO - eMPe Digital
+========================================================= */
+.digital-invitation-promo {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 42px;
+  padding: 30px 34px;
+  border: 1px solid rgba(200, 154, 75, 0.38);
+  background: linear-gradient(115deg, rgba(200,154,75,.10), rgba(255,255,255,.72));
+}
+.digital-invitation-icon {
+  display: grid; flex: 0 0 62px; place-items: center; width: 62px; height: 62px;
+  color: var(--color-gold); background: var(--color-black); font-size: 1.45rem;
+}
+.digital-invitation-copy { flex: 1; }
+.digital-invitation-eyebrow { margin: 0 0 7px; color: #9b7738; font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.digital-invitation-copy h3 { margin: 0 0 9px; color: var(--color-black); font-family: var(--font-heading); font-size: clamp(1.35rem, 2.2vw, 2rem); font-weight: 400; }
+.digital-invitation-copy p:last-child { margin: 0; color: #686868; font-size: .86rem; line-height: 1.7; }
+.digital-invitation-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; flex-shrink: 0; padding: 14px 18px; color: var(--color-white); background: var(--color-black); border: 1px solid var(--color-black); font-size: .78rem; text-decoration: none; transition: .25s ease; }
+.digital-invitation-btn:hover { color: var(--color-black); background: var(--color-gold); border-color: var(--color-gold); }
+
+/* =========================================================
+   PARTNERS LOGO CAROUSEL
+========================================================= */
+.partners-section { position: relative; overflow: hidden; padding: 88px 0 76px; color: var(--color-black); background: #f7f5f0; border-top: 1px solid rgba(5,5,5,.07); border-bottom: 1px solid rgba(5,5,5,.07); }
+.partners-heading { max-width: 680px; margin: 0 auto 38px; text-align: center; }
+.partners-heading .section-eyebrow { margin-bottom: 12px; color: #9b7738; font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; }
+.partners-heading .section-title { margin-bottom: 14px; color: var(--color-black); font-family: var(--font-heading); font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 400; }
+.partners-heading .section-description { margin: 0 auto; max-width: 590px; color: #686868; font-size: .9rem; line-height: 1.7; }
+.partners-carousel { position: relative; overflow: hidden; width: 100%; -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent); }
+.partners-track { display: flex; align-items: center; gap: 22px; width: max-content; animation: partners-scroll 32s linear infinite; }
+.partners-carousel:hover .partners-track { animation-play-state: paused; }
+.partner-logo { display: flex; flex: 0 0 210px; flex-direction: column; align-items: center; justify-content: center; gap: 5px; height: 112px; padding: 18px; color: #44413c; background: rgba(255,255,255,.7); border: 1px solid rgba(5,5,5,.09); text-align: center; }
+.partner-logo span { font-size: .58rem; letter-spacing: .22em; }
+.partner-logo strong { font-size: 1.5rem; font-weight: 500; letter-spacing: .04em; }
+.partner-logo-script strong { font-family: var(--font-heading); font-style: italic; font-weight: 400; letter-spacing: .02em; }
+.partner-logo-serif strong { font-family: Georgia, serif; letter-spacing: .13em; }
+.partner-logo-modern strong { font-size: 2rem; letter-spacing: -.08em; }
+.partner-logo-monogram { flex-direction: row; gap: 12px; }
+.partner-logo-monogram strong { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid #9b7738; border-radius: 50%; font-family: Georgia, serif; }
+.partners-placeholder-note { margin: 20px 0 0; color: #8b8882; font-size: .7rem; text-align: center; }
+@keyframes partners-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.contact-messaging-list { display: grid; gap: 12px; }
+.contact-messaging-list .contact-instagram-card { margin: 0; }
+.contact-messaging-list .messaging-whatsapp .contact-instagram-icon { color: #fff; background: #25a45a; }
+.contact-messaging-list .messaging-viber .contact-instagram-icon { color: #fff; background: #7360a8; }
+@media (max-width: 767.98px) {
+  .digital-invitation-promo { align-items: flex-start; flex-wrap: wrap; gap: 16px; padding: 23px 20px; }
+  .digital-invitation-icon { flex-basis: 50px; width: 50px; height: 50px; }
+  .digital-invitation-copy { flex: 1 1 calc(100% - 70px); }
+  .digital-invitation-btn { width: 100%; }
+  .partners-section { padding: 66px 0 56px; }
+  .partner-logo { flex-basis: 175px; height: 96px; }
+  .partners-track { gap: 14px; animation-duration: 26s; }
+}
+@media (prefers-reduced-motion: reduce) { .partners-track { animation: none; } }
+
+
+/* Language switcher */
+.language-toggle { flex: 0 0 auto; margin-left: 14px; padding: 7px 11px; color: var(--color-white); background: transparent; border: 1px solid rgba(255,255,255,.45); border-radius: 2px; font-size: .72rem; font-weight: 700; letter-spacing: .08em; line-height: 1; transition: .2s ease; }
+.language-toggle:hover, .language-toggle:focus-visible { color: var(--color-black); background: var(--color-gold); border-color: var(--color-gold); outline: none; }
+@media (max-width: 991.98px) { .language-toggle { margin-left: auto; margin-right: 10px; } .site-header .navbar > .container { display: flex; flex-wrap: nowrap; } }
+
+
+
+/* =========================================================
+   REFINEMENTS: LANGUAGE SWITCHER, GALLERY PREVIEWS & MODALS
+========================================================= */
+.site-header .navbar > .container { position: relative; gap: 18px; }
+.site-header .navbar-collapse { flex: 1 1 auto; min-width: 0; }
+.language-toggle {
+  display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+  flex: 0 0 auto; margin: 0 0 0 12px; padding: 6px 8px; min-width: 76px;
+  color: rgba(255,255,255,.72); background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.28); border-radius: 999px;
+  font: inherit; font-size: .7rem; font-weight: 700; letter-spacing: .08em; line-height: 1;
+  transition: background .25s ease, border-color .25s ease, color .25s ease, box-shadow .25s ease;
+}
+.language-toggle:hover, .language-toggle:focus-visible {
+  color: #fff; background: rgba(200,154,75,.13); border-color: var(--color-gold);
+  box-shadow: 0 0 0 3px rgba(200,154,75,.12); outline: none;
+}
+.language-option { display: inline-flex; align-items: center; justify-content: center; min-width: 22px; min-height: 22px; border-radius: 999px; transition: color .2s ease, background .2s ease; }
+.language-option-active { color: #111; background: var(--color-gold); }
+.language-divider { color: rgba(255,255,255,.35); font-weight: 400; }
+.gallery-item[hidden] { display: none !important; }
+.service-card[role="button"] { cursor: pointer; }
+.service-card[role="button"]:focus-visible { outline: 2px solid var(--color-gold); outline-offset: 4px; }
+.service-modal .modal-content { position: relative; }
+.service-modal .modal-header { padding-right: 72px; }
+.service-modal .modal-header .btn-close {
+  position: absolute; top: 18px; right: 18px; z-index: 20;
+  flex: 0 0 auto; margin: 0; padding: 8px; opacity: .9;
+}
+.service-modal .modal-header .btn-close:hover, .service-modal .modal-header .btn-close:focus { opacity: 1; }
+@media (max-width: 991.98px) {
+  .site-header .navbar > .container { gap: 0; }
+  .site-header .navbar-brand { order: 0; }
+  .language-toggle { order: 1; margin: 0 10px 0 auto; min-width: 76px; padding: 5px 7px; }
+  .site-header .navbar-toggler { order: 2; flex: 0 0 auto; margin-left: 0; }
+  .site-header .navbar-collapse { order: 3; display: none !important; }
+}
+@media (min-width: 992px) {
+  .language-toggle { margin-left: 18px; }
+}
+@media (max-width: 575.98px) {
+  .language-toggle { min-width: 70px; gap: 5px; font-size: .66rem; }
+  .language-option { min-width: 20px; min-height: 20px; }
+  .service-modal .modal-header { padding-right: 58px; }
+  .service-modal .modal-header .btn-close { top: 12px; right: 12px; }
+}

@@ -1,915 +1,117 @@
-document.addEventListener("DOMContentLoaded", () => {
-  /* =====================================================
-     NAVBAR ELEMENTS
-  ===================================================== */
-
-  const navbar = document.getElementById("mainNavbar");
-
-  const desktopNavLinks = document.querySelectorAll("#mainNavbar .nav-link");
-
-  const mobileNavLinks = document.querySelectorAll(".mobile-nav-link");
-
-  const allNavLinks = [...desktopNavLinks, ...mobileNavLinks];
-
-  const sections = allNavLinks
-    .map((link) => {
-      const sectionId = link.getAttribute("href");
-
-      if (!sectionId || !sectionId.startsWith("#")) {
-        return null;
-      }
-
-      return document.querySelector(sectionId);
-    })
-    .filter((section, index, array) => {
-      return section !== null && array.indexOf(section) === index;
-    });
-
-  let scrollAnimationRunning = false;
-
-  /* =====================================================
-     1. NAVBAR BACKGROUND ON SCROLL
-  ===================================================== */
-
-  const updateNavbarBackground = () => {
-    if (!navbar) return;
-
-    navbar.classList.toggle("navbar-scrolled", window.scrollY > 40);
+document.addEventListener('DOMContentLoaded', () => {
+  const navbar = document.getElementById('mainNavbar');
+  const navLinks = [...document.querySelectorAll('.navbar-nav .nav-link, .mobile-nav-link')];
+  const sections = [...document.querySelectorAll('main section[id]')];
+  const updateNavbar = () => { if (navbar) navbar.classList.toggle('navbar-scrolled', window.scrollY > 35); };
+  updateNavbar(); window.addEventListener('scroll', updateNavbar, {passive:true});
+  navLinks.forEach(link => link.addEventListener('click', () => {
+    const menu = document.getElementById('mobileMenu');
+    if (menu && menu.classList.contains('show') && window.bootstrap) bootstrap.Offcanvas.getInstance(menu)?.hide();
+  }));
+  const setActive = () => {
+    let current = 'home';
+    sections.forEach(section => { if (window.scrollY >= section.offsetTop - 160) current = section.id; });
+    document.querySelectorAll('.navbar-nav .nav-link').forEach(link => link.classList.toggle('active', link.getAttribute('href') === `#${current}`));
   };
-
-  /* =====================================================
-     2. ACTIVE NAVIGATION LINK
-  ===================================================== */
-
-  const updateActiveNavigation = () => {
-    if (!navbar || sections.length === 0) return;
-
-    const navbarHeight = navbar.offsetHeight;
-    const scrollPosition = window.scrollY + navbarHeight + 120;
-
-    let currentSectionId = sections[0].id;
-
-    sections.forEach((section) => {
-      if (scrollPosition >= section.offsetTop) {
-        currentSectionId = section.id;
-      }
-    });
-
-    allNavLinks.forEach((link) => {
-      const linkTarget = link.getAttribute("href");
-
-      link.classList.toggle("active", linkTarget === `#${currentSectionId}`);
-    });
-  };
-
-  /* =====================================================
-     3. OPTIMIZED SCROLL HANDLER
-  ===================================================== */
-
-  const handleScroll = () => {
-    if (scrollAnimationRunning) return;
-
-    scrollAnimationRunning = true;
-
-    window.requestAnimationFrame(() => {
-      updateNavbarBackground();
-      updateActiveNavigation();
-
-      scrollAnimationRunning = false;
-    });
-  };
-
-  /* =====================================================
-     4. NAVIGATION CLICK
-  ===================================================== */
-
-  const setActiveNavLink = (targetSelector) => {
-    allNavLinks.forEach((navLink) => {
-      navLink.classList.toggle(
-        "active",
-        navLink.getAttribute("href") === targetSelector,
-      );
-    });
-  };
-
-  const scrollToSection = (targetSelector) => {
-    if (!targetSelector || !targetSelector.startsWith("#")) return;
-
-    const targetSection = document.querySelector(targetSelector);
-
-    if (!targetSection) {
-      console.warn(`Не постои секција: ${targetSelector}`);
-      return;
-    }
-
-    const navbarHeight = navbar?.offsetHeight || 0;
-
-    const targetPosition =
-      targetSection.getBoundingClientRect().top +
-      window.scrollY -
-      navbarHeight +
-      1;
-
-    window.scrollTo({
-      top: targetPosition,
-      behavior: "smooth",
-    });
-
-    window.history.replaceState(null, "", targetSelector);
-  };
-
-  /* Desktop navigation */
-
-  desktopNavLinks.forEach((link) => {
-    link.addEventListener("click", () => {
-      setActiveNavLink(link.getAttribute("href"));
-    });
-  });
-
-  /* Mobile navigation */
-
-  const mobileMenu = document.getElementById("mobileMenu");
-
-  const mobileOffcanvas =
-    mobileMenu && typeof bootstrap !== "undefined"
-      ? bootstrap.Offcanvas.getOrCreateInstance(mobileMenu)
-      : null;
-
-  const mobileMenuLinks = document.querySelectorAll(
-    ".mobile-nav-link, .mobile-contact-btn, .mobile-menu-logo",
-  );
-
-  mobileMenuLinks.forEach((link) => {
-    link.addEventListener("click", (event) => {
-      const targetSelector = link.getAttribute("href");
-
-      if (!targetSelector || !targetSelector.startsWith("#")) return;
-
-      event.preventDefault();
-      setActiveNavLink(targetSelector);
-
-      if (mobileMenu?.classList.contains("show") && mobileOffcanvas) {
-        mobileMenu.addEventListener(
-          "hidden.bs.offcanvas",
-          () => {
-            scrollToSection(targetSelector);
-          },
-          { once: true },
-        );
-
-        mobileOffcanvas.hide();
-      } else {
-        scrollToSection(targetSelector);
-      }
-    });
-  });
-
-  /* =====================================================
-     CLICKABLE SERVICE CARDS
-  ===================================================== */
-
-  const serviceCards =
-    document.querySelectorAll(".service-card");
-
-  serviceCards.forEach((card) => {
-    const modalTrigger = card.querySelector(
-      ".service-link[data-bs-target]",
-    );
-
-    if (!modalTrigger) return;
-
-    const modalSelector =
-      modalTrigger.getAttribute("data-bs-target");
-
-    if (
-      !modalSelector ||
-      !modalSelector.startsWith("#")
-    ) {
-      return;
-    }
-
-    const modalElement =
-      document.querySelector(modalSelector);
-
-    if (!modalElement) return;
-
-    card.setAttribute("role", "button");
-    card.setAttribute("tabindex", "0");
-    card.setAttribute("aria-haspopup", "dialog");
-    card.setAttribute(
-      "aria-controls",
-      modalElement.id,
-    );
-
-    const openServiceModal = () => {
-      if (typeof bootstrap === "undefined") {
-        console.warn("Bootstrap не е вчитан.");
-        return;
-      }
-
-      const modalInstance =
-        bootstrap.Modal.getOrCreateInstance(
-          modalElement,
-        );
-
-      modalInstance.show();
-    };
-
-    card.addEventListener("click", (event) => {
-      /*
-       * Кога е кликнато на „Дознај повеќе“,
-       * спречуваме двојно отворање.
-       */
-      if (event.target.closest(".service-link")) {
-        event.preventDefault();
-        event.stopPropagation();
-      }
-
-      if (
-        event.target.closest(
-          "a[href]:not(.service-link)",
-        )
-      ) {
-        return;
-      }
-
-      openServiceModal();
-    });
-
-    card.addEventListener("keydown", (event) => {
-      if (
-        event.key !== "Enter" &&
-        event.key !== " "
-      ) {
-        return;
-      }
-
-      event.preventDefault();
-      openServiceModal();
-    });
-  });
-
-  /* =====================================================
-     SERVICE MODAL CONTACT BUTTONS
-  ===================================================== */
-
-  const modalContactButtons = document.querySelectorAll(
-    ".modal-contact-btn",
-  );
-
-  modalContactButtons.forEach((button) => {
-    /*
-     * Го отстрануваме Bootstrap автоматското dismiss
-     * за ние да го контролираме редоследот:
-     * 1. затвори modal
-     * 2. скролај до контакт секцијата
-     */
-    button.removeAttribute("data-bs-dismiss");
-
-    button.addEventListener("click", (event) => {
-      event.preventDefault();
-
-      const targetSelector = button.getAttribute("href") || "#contact";
-      const modalElement = button.closest(".modal");
-
-      if (!modalElement || typeof bootstrap === "undefined") {
-        scrollToSection(targetSelector);
-        return;
-      }
-
-      const modalInstance =
-        bootstrap.Modal.getOrCreateInstance(modalElement);
-
-      modalElement.addEventListener(
-        "hidden.bs.modal",
-        () => {
-          scrollToSection(targetSelector);
-          setActiveNavLink(targetSelector);
-        },
-        { once: true },
-      );
-
-      modalInstance.hide();
-    });
-  });
-
-  /* =====================================================
-     GALLERY ELEMENTS
-  ===================================================== */
-
-  const galleryFilterButtons =
-    document.querySelectorAll(".gallery-filter");
-
-  const galleryItems =
-    document.querySelectorAll(".gallery-item");
-
-  const galleryModal =
-    document.getElementById("galleryModal");
-
-  const galleryModalImage =
-    document.getElementById("galleryModalImage");
-
-  const galleryModalTitle =
-    document.getElementById("galleryModalTitle");
-
-  const galleryModalCategory =
-    document.getElementById("galleryModalCategory");
-
-  const galleryModalImageWrapper =
-    document.querySelector(
-      ".gallery-modal-image-wrapper",
-    );
-
-  /*
-   * Ги креираме стрелките и бројачот автоматски
-   * ако случајно сè уште се користи постар index.html.
-   */
-  let galleryModalPreviousButton =
-    document.getElementById("galleryModalPrev");
-
-  let galleryModalNextButton =
-    document.getElementById("galleryModalNext");
-
-  let galleryModalCounter =
-    document.getElementById("galleryModalCounter");
-
-  if (
-    galleryModalImageWrapper &&
-    !galleryModalPreviousButton
-  ) {
-    galleryModalPreviousButton =
-      document.createElement("button");
-
-    galleryModalPreviousButton.type = "button";
-    galleryModalPreviousButton.id =
-      "galleryModalPrev";
-    galleryModalPreviousButton.className =
-      "gallery-modal-nav gallery-modal-prev";
-    galleryModalPreviousButton.setAttribute(
-      "aria-label",
-      "Претходна фотографија",
-    );
-    galleryModalPreviousButton.innerHTML =
-      '<i class="fa-solid fa-chevron-left"></i>';
-
-    galleryModalImageWrapper.prepend(
-      galleryModalPreviousButton,
-    );
-  }
-
-  if (
-    galleryModalImageWrapper &&
-    !galleryModalNextButton
-  ) {
-    galleryModalNextButton =
-      document.createElement("button");
-
-    galleryModalNextButton.type = "button";
-    galleryModalNextButton.id =
-      "galleryModalNext";
-    galleryModalNextButton.className =
-      "gallery-modal-nav gallery-modal-next";
-    galleryModalNextButton.setAttribute(
-      "aria-label",
-      "Следна фотографија",
-    );
-    galleryModalNextButton.innerHTML =
-      '<i class="fa-solid fa-chevron-right"></i>';
-
-    galleryModalImageWrapper.append(
-      galleryModalNextButton,
-    );
-  }
-
-  if (!galleryModalCounter) {
-    const galleryModalCaption =
-      document.querySelector(
-        ".gallery-modal-caption",
-      );
-
-    if (galleryModalCaption) {
-      galleryModalCounter =
-        document.createElement("span");
-
-      galleryModalCounter.id =
-        "galleryModalCounter";
-      galleryModalCounter.className =
-        "gallery-modal-counter";
-      galleryModalCounter.setAttribute(
-        "aria-live",
-        "polite",
-      );
-
-      galleryModalCaption.append(
-        galleryModalCounter,
-      );
-    }
-  }
-
-  let currentGalleryImages = [];
-  let currentGalleryIndex = 0;
-  let galleryTouchStartX = 0;
-  let galleryImageChangeTimer = null;
-
-  /* =====================================================
-     5. GALLERY FILTERING
-  ===================================================== */
-
-  const applyGalleryFilter = (selectedFilter) => {
-    const shownCategories = new Set();
-
-    galleryItems.forEach((item) => {
-      const itemCategory =
-        item.dataset.category || "";
-
-      let shouldShow = false;
-
-      /*
-       * Кога е избрано „Сите“:
-       * прикажуваме само една, односно првата
-       * картичка од секоја категорија.
-       */
-      if (selectedFilter === "all") {
-        if (
-          itemCategory &&
-          !shownCategories.has(itemCategory)
-        ) {
-          shouldShow = true;
-          shownCategories.add(itemCategory);
-        }
-      } else {
-        /*
-         * Кога е избрана конкретна категорија:
-         * ги прикажуваме сите фотографии од неа.
-         */
-        shouldShow =
-          selectedFilter === itemCategory;
-      }
-
-      item.classList.remove("gallery-visible");
-
-      if (shouldShow) {
-        item.classList.remove("gallery-hidden");
-        item.setAttribute("aria-hidden", "false");
-
-        void item.offsetWidth;
-
-        item.classList.add("gallery-visible");
-      } else {
-        item.classList.add("gallery-hidden");
-        item.setAttribute("aria-hidden", "true");
-      }
-    });
-  };
-
-  galleryFilterButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const selectedFilter =
-        button.dataset.filter || "all";
-
-      galleryFilterButtons.forEach(
-        (filterButton) => {
-          filterButton.classList.remove("active");
-          filterButton.setAttribute(
-            "aria-pressed",
-            "false",
-          );
-        },
-      );
-
-      button.classList.add("active");
-      button.setAttribute("aria-pressed", "true");
-
-      applyGalleryFilter(selectedFilter);
-    });
-  });
-
-  /*
-   * Почетна состојба:
-   * само една картичка од секоја категорија.
-   */
-  applyGalleryFilter("all");
-
-  galleryFilterButtons.forEach((button) => {
-    button.setAttribute(
-      "aria-pressed",
-      button.classList.contains("active")
-        ? "true"
-        : "false",
-    );
-  });
-
-  /* =====================================================
-     6. UNIVERSAL GALLERY ALBUM LIGHTBOX
-  ===================================================== */
-
-  const getGalleryGroup = (clickedButton) => {
-    /*
-     * Новиот album систем користи data-album.
-     */
-    const selectedAlbum =
-      clickedButton.dataset.album || "";
-
-    if (selectedAlbum) {
-      return Array.from(
-        document.querySelectorAll(
-          `[data-album="${CSS.escape(selectedAlbum)}"][data-image]`,
-        ),
-      );
-    }
-
-    /*
-     * Fallback за стариот HTML:
-     * ги групира сите видливи gallery картички
-     * што имаат исто data-category.
-     */
-    const clickedGalleryItem =
-      clickedButton.closest(".gallery-item");
-
-    const selectedCategory =
-      clickedGalleryItem?.dataset.category || "";
-
-    if (!selectedCategory) {
-      return [clickedButton];
-    }
-
-    return Array.from(
-      document.querySelectorAll(
-        `.gallery-item[data-category="${CSS.escape(selectedCategory)}"] .gallery-image-button[data-image]`,
-      ),
-    );
-  };
-
-  const updateGalleryModal = () => {
-    if (
-      currentGalleryImages.length === 0 ||
-      !galleryModalImage
-    ) {
-      return;
-    }
-
-    const currentImage =
-      currentGalleryImages[currentGalleryIndex];
-
-    if (!currentImage) return;
-
-    const imageSource =
-      currentImage.dataset.image || "";
-
-    const imageTitle =
-      currentImage.dataset.title || " ";
-
-    const categoryName =
-      currentImage.dataset.categoryName || "";
-
-    if (galleryImageChangeTimer) {
-      window.clearTimeout(galleryImageChangeTimer);
-    }
-
-    galleryModalImage.classList.add("is-changing");
-
-    galleryImageChangeTimer = window.setTimeout(() => {
-      galleryModalImage.src = imageSource;
-      galleryModalImage.alt = imageTitle;
-
-      if (galleryModalTitle) {
-        galleryModalTitle.textContent = imageTitle;
-      }
-
-      if (galleryModalCategory) {
-        galleryModalCategory.textContent =
-          categoryName;
-      }
-
-      if (galleryModalCounter) {
-        galleryModalCounter.textContent =
-          `${currentGalleryIndex + 1} / ${currentGalleryImages.length}`;
-      }
-
-      const hasMultipleImages =
-        currentGalleryImages.length > 1;
-
-      if (galleryModalPreviousButton) {
-        galleryModalPreviousButton.hidden =
-          !hasMultipleImages;
-      }
-
-      if (galleryModalNextButton) {
-        galleryModalNextButton.hidden =
-          !hasMultipleImages;
-      }
-
-      window.requestAnimationFrame(() => {
-        galleryModalImage.classList.remove(
-          "is-changing",
-        );
+  window.addEventListener('scroll', setActive, {passive:true}); setActive();
+  const galleryItems = [...document.querySelectorAll('.gallery-item')];
+  const galleryFilters = [...document.querySelectorAll('.gallery-filter')];
+  const applyGalleryFilter = (filter) => {
+    galleryFilters.forEach(button => button.classList.toggle('active', button.dataset.filter === filter));
+    if (filter === 'all') {
+      // In “All”, show one preview card for every category. Opening it still reveals the full album.
+      const seenCategories = new Set();
+      galleryItems.forEach(item => {
+        const category = item.dataset.category;
+        item.hidden = seenCategories.has(category);
+        seenCategories.add(category);
       });
-
-      galleryImageChangeTimer = null;
-    }, 100);
-  };
-
-  const showPreviousGalleryImage = () => {
-    if (currentGalleryImages.length < 2) return;
-
-    currentGalleryIndex =
-      (
-        currentGalleryIndex -
-        1 +
-        currentGalleryImages.length
-      ) % currentGalleryImages.length;
-
-    updateGalleryModal();
-  };
-
-  const showNextGalleryImage = () => {
-    if (currentGalleryImages.length < 2) return;
-
-    currentGalleryIndex =
-      (
-        currentGalleryIndex + 1
-      ) % currentGalleryImages.length;
-
-    updateGalleryModal();
-  };
-
-  if (galleryModal) {
-    galleryModal.addEventListener(
-      "show.bs.modal",
-      (event) => {
-        const clickedButton = event.relatedTarget;
-
-        if (
-          !clickedButton ||
-          !clickedButton.matches(
-            ".gallery-image-button[data-image]",
-          )
-        ) {
-          return;
-        }
-
-        currentGalleryImages =
-          getGalleryGroup(clickedButton);
-
-        currentGalleryIndex =
-          currentGalleryImages.indexOf(
-            clickedButton,
-          );
-
-        if (currentGalleryIndex < 0) {
-          currentGalleryIndex = 0;
-        }
-
-        updateGalleryModal();
-      },
-    );
-
-    galleryModal.addEventListener(
-      "hidden.bs.modal",
-      () => {
-        if (galleryImageChangeTimer) {
-          window.clearTimeout(
-            galleryImageChangeTimer,
-          );
-
-          galleryImageChangeTimer = null;
-        }
-
-        currentGalleryImages = [];
-        currentGalleryIndex = 0;
-
-        if (galleryModalImage) {
-          galleryModalImage.src = "";
-          galleryModalImage.alt = "";
-
-          galleryModalImage.classList.remove(
-            "is-changing",
-          );
-        }
-
-        if (galleryModalTitle) {
-          galleryModalTitle.textContent = "";
-        }
-
-        if (galleryModalCategory) {
-          galleryModalCategory.textContent = "";
-        }
-
-        if (galleryModalCounter) {
-          galleryModalCounter.textContent = "";
-        }
-
-        if (galleryModalPreviousButton) {
-          galleryModalPreviousButton.hidden = true;
-        }
-
-        if (galleryModalNextButton) {
-          galleryModalNextButton.hidden = true;
-        }
-      },
-    );
-  }
-
-  galleryModalPreviousButton?.addEventListener(
-    "click",
-    showPreviousGalleryImage,
-  );
-
-  galleryModalNextButton?.addEventListener(
-    "click",
-    showNextGalleryImage,
-  );
-
-  document.addEventListener("keydown", (event) => {
-    if (!galleryModal?.classList.contains("show")) {
       return;
     }
+    galleryItems.forEach(item => { item.hidden = item.dataset.category !== filter; });
+  };
+  galleryFilters.forEach(button => button.addEventListener('click', () => applyGalleryFilter(button.dataset.filter)));
+  applyGalleryFilter(document.querySelector('.gallery-filter.active')?.dataset.filter || 'all');
 
-    if (event.key === "ArrowLeft") {
-      event.preventDefault();
-      showPreviousGalleryImage();
-    }
-
-    if (event.key === "ArrowRight") {
-      event.preventDefault();
-      showNextGalleryImage();
-    }
-  });
-
-  galleryModalImageWrapper?.addEventListener(
-    "touchstart",
-    (event) => {
-      galleryTouchStartX =
-        event.changedTouches[0].clientX;
-    },
-    {
-      passive: true,
-    },
-  );
-
-  galleryModalImageWrapper?.addEventListener(
-    "touchend",
-    (event) => {
-      const galleryTouchEndX =
-        event.changedTouches[0].clientX;
-
-      const swipeDistance =
-        galleryTouchEndX -
-        galleryTouchStartX;
-
-      if (Math.abs(swipeDistance) < 50) {
-        return;
-      }
-
-      if (swipeDistance > 0) {
-        showPreviousGalleryImage();
-      } else {
-        showNextGalleryImage();
-      }
-    },
-    {
-      passive: true,
-    },
-  );
-
-  /* =====================================================
-     7. KEYBOARD ACCESSIBILITY FOR FILTERS
-  ===================================================== */
-
-  galleryFilterButtons.forEach((button, index) => {
-    button.addEventListener("keydown", (event) => {
-      let nextIndex = index;
-
-      if (event.key === "ArrowRight") {
-        nextIndex = (index + 1) % galleryFilterButtons.length;
-      } else if (event.key === "ArrowLeft") {
-        nextIndex =
-          (index - 1 + galleryFilterButtons.length) %
-          galleryFilterButtons.length;
-      } else {
-        return;
-      }
-
-      event.preventDefault();
-
-      galleryFilterButtons[nextIndex].focus();
-      galleryFilterButtons[nextIndex].click();
-    });
-  });
-
-  /* =====================================================
-   ABOUT COUNTER ELEMENTS
-===================================================== */
-
-  const aboutStatistics = document.querySelector(".about-statistics");
-
-  const aboutStatNumbers = document.querySelectorAll(".about-stat-number");
-
-  let aboutCountersStarted = false;
-
-  /* =====================================================
-   ABOUT COUNTER ANIMATION
-===================================================== */
-
-  const animateAboutCounter = (counter) => {
-    const target = Number(counter.dataset.target);
-    const suffix = counter.dataset.suffix || "";
-
-    /*
-     * Времетраење на анимацијата во милисекунди.
-     */
-    const duration = 1800;
-    const startTime = performance.now();
-
-    if (!Number.isFinite(target)) {
-      counter.textContent = `0${suffix}`;
-      return;
-    }
-
-    const updateCounter = (currentTime) => {
-      const elapsedTime = currentTime - startTime;
-
-      const progress = Math.min(elapsedTime / duration, 1);
-
-      /*
-       * Ease-out ефект:
-       * бројките започнуваат побрзо,
-       * а завршуваат постепено.
-       */
-      const easedProgress = 1 - Math.pow(1 - progress, 3);
-
-      const currentValue = Math.round(target * easedProgress);
-
-      counter.textContent = `${currentValue.toLocaleString("mk-MK")}${suffix}`;
-
-      if (progress < 1) {
-        window.requestAnimationFrame(updateCounter);
-      } else {
-        counter.textContent = `${target.toLocaleString("mk-MK")}${suffix}`;
-      }
+  // Make the entire service card open its associated details modal.
+  document.querySelectorAll('.service-card[data-modal-target]').forEach(card => {
+    const openServiceModal = () => {
+      const target = document.querySelector(card.dataset.modalTarget);
+      if (target && window.bootstrap) bootstrap.Modal.getOrCreateInstance(target).show();
     };
-
-    window.requestAnimationFrame(updateCounter);
-  };
-
-  /* =====================================================
-   START ALL ABOUT COUNTERS
-===================================================== */
-
-  const startAboutCounters = () => {
-    if (aboutCountersStarted) return;
-
-    aboutCountersStarted = true;
-
-    aboutStatNumbers.forEach((counter) => {
-      animateAboutCounter(counter);
+    card.addEventListener('click', event => {
+      if (event.target.closest('a, button')) return; // Keep the existing CTA button behavior.
+      openServiceModal();
     });
+    card.addEventListener('keydown', event => {
+      if (event.target !== card || !['Enter', ' '].includes(event.key)) return;
+      event.preventDefault();
+      openServiceModal();
+    });
+  });
+  document.querySelectorAll('.modal-contact-btn').forEach(button => button.addEventListener('click', () => {
+    const modal = button.closest('.modal');
+    if (modal && window.bootstrap) bootstrap.Modal.getInstance(modal)?.hide();
+  }));
+  const year = document.getElementById('currentYear'); if (year) year.textContent = new Date().getFullYear();
+  const statObserver = ('IntersectionObserver' in window) ? new IntersectionObserver(entries => entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    const el = entry.target; if (el.dataset.counted) return; el.dataset.counted = 'true';
+    const target = Number(el.dataset.target || 0), suffix = el.dataset.suffix || ''; const duration = 1100; const start = performance.now();
+    const tick = now => { const progress = Math.min((now-start)/duration,1); el.textContent = Math.floor(target * (1-Math.pow(1-progress,3))).toLocaleString('en-US') + suffix; if (progress < 1) requestAnimationFrame(tick); };
+    requestAnimationFrame(tick); statObserver.unobserve(el);
+  }), {threshold:.25}) : null;
+  document.querySelectorAll('.about-stat-number').forEach(el => { if (statObserver) statObserver.observe(el); else el.textContent = (el.dataset.target || '0') + (el.dataset.suffix || ''); });
+  // Bootstrap gallery modal and album navigation.
+  const galleryModal = document.getElementById('galleryModal');
+  const galleryButtons = [...document.querySelectorAll('.gallery-image-button')];
+  let activeAlbumButtons = [];
+  let activeGalleryIndex = 0;
+  const modalImage = document.getElementById('galleryModalImage');
+  const modalCategory = document.getElementById('galleryModalCategory');
+  const modalTitle = document.getElementById('galleryModalTitle');
+  const modalCounter = document.getElementById('galleryModalCounter');
+  const modalPrev = document.getElementById('galleryModalPrev');
+  const modalNext = document.getElementById('galleryModalNext');
+  const currentLanguage = () => document.documentElement.lang === 'en';
+  const translateGalleryLabel = (mk) => {
+    if (!currentLanguage()) return mk;
+    const map = {'Свадбена фотографија':'Wedding photography','Детска фотосесија':'Children’s photoshoot','Модна фотографија':'Fashion photography','Дрон снимање':'Drone photography','Фамилијарна фотосесија':'Family photoshoot','Крштевка':'Baptism','Свадбена приказна':'A wedding story','Емоции што остануваат':'Emotions that last','Детали од свадбениот ден':'Wedding day details','Мали моменти, големи спомени':'Little moments, big memories','Детски свет':'A child’s world','Едноставно, слатко, незаборавно':'Simple, sweet, unforgettable','Стил во фокус':'Style in focus','Повеќе од портрет':'More than a portrait','Поглед од височина':'A view from above','Воздушна перспектива':'An aerial perspective','Семејни спомени':'Family memories','Посебен семеен ден':'A special family day','Момент на нежност':'A tender moment','Семеен портрет':'Family portrait','Златна црковна светлина':'Golden church light'};
+    return map[mk] || mk;
   };
-
-  /* =====================================================
-   OBSERVE ABOUT STATISTICS
-===================================================== */
-
-  if (
-    aboutStatistics &&
-    aboutStatNumbers.length > 0 &&
-    "IntersectionObserver" in window
-  ) {
-    const aboutCounterObserver = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-
-          startAboutCounters();
-          observer.unobserve(entry.target);
-        });
-      },
-      {
-        threshold: 0.35,
-        rootMargin: "0px 0px -40px 0px",
-      },
-    );
-
-    aboutCounterObserver.observe(aboutStatistics);
-  } else if (aboutStatNumbers.length > 0) {
-    /*
-     * Fallback за постари browser-и.
-     */
-    startAboutCounters();
-  }
-
-  /* =====================================================
-     8. INITIAL FUNCTIONS
-  ===================================================== */
-
-  updateNavbarBackground();
-  updateActiveNavigation();
-
-  window.addEventListener("scroll", handleScroll, {
-    passive: true,
+  const updateGalleryModal = () => {
+    if (!activeAlbumButtons.length) return;
+    const button = activeAlbumButtons[activeGalleryIndex];
+    const image = button.querySelector('img');
+    if (!image || !modalImage) return;
+    modalImage.classList.add('is-changing');
+    const src = button.dataset.image || image.currentSrc || image.src;
+    modalImage.src = src;
+    modalImage.alt = image.alt || '';
+    const category = button.dataset.categoryName || button.querySelector('.gallery-category')?.textContent.trim() || '';
+    const title = button.querySelector('.gallery-item-title')?.textContent.trim() || image.alt || '';
+    if (modalCategory) modalCategory.textContent = translateGalleryLabel(category);
+    if (modalTitle) modalTitle.textContent = translateGalleryLabel(title);
+    if (modalCounter) modalCounter.textContent = `${activeGalleryIndex + 1} / ${activeAlbumButtons.length}`;
+    if (modalPrev) modalPrev.hidden = activeAlbumButtons.length < 2;
+    if (modalNext) modalNext.hidden = activeAlbumButtons.length < 2;
+    window.setTimeout(() => modalImage.classList.remove('is-changing'), 120);
+  };
+  galleryModal?.addEventListener('show.bs.modal', event => {
+    const trigger = event.relatedTarget;
+    if (!trigger) return;
+    const album = trigger.dataset.album;
+    activeAlbumButtons = galleryButtons.filter(button => button.dataset.album === album);
+    if (!activeAlbumButtons.length) activeAlbumButtons = [trigger];
+    activeGalleryIndex = Math.max(0, activeAlbumButtons.indexOf(trigger));
+    updateGalleryModal();
   });
-
-  window.addEventListener("resize", () => {
-    updateActiveNavigation();
+  modalPrev?.addEventListener('click', () => { if (!activeAlbumButtons.length) return; activeGalleryIndex = (activeGalleryIndex - 1 + activeAlbumButtons.length) % activeAlbumButtons.length; updateGalleryModal(); });
+  modalNext?.addEventListener('click', () => { if (!activeAlbumButtons.length) return; activeGalleryIndex = (activeGalleryIndex + 1) % activeAlbumButtons.length; updateGalleryModal(); });
+  document.addEventListener('keydown', event => {
+    if (!galleryModal?.classList.contains('show')) return;
+    if (event.key === 'ArrowLeft') modalPrev?.click();
+    if (event.key === 'ArrowRight') modalNext?.click();
   });
+  galleryModal?.addEventListener('hidden.bs.modal', () => { if (modalImage) modalImage.removeAttribute('src'); });
 });
