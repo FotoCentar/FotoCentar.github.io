@@ -4694,8 +4694,7 @@ a.contact-info-card:hover .contact-info-arrow {
   padding: 30px 34px;
   border: 1px solid rgba(200, 154, 75, 0.38);
   background: linear-gradient(115deg, rgba(200,154,75,.10), rgba(255,255,255,.72));
-}
-.digital-invitation-icon {
+}.digital-invitation-icon {
   display: grid; flex: 0 0 62px; place-items: center; width: 62px; height: 62px;
   color: var(--color-gold); background: var(--color-black); font-size: 1.45rem;
 }
