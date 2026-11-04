@@ -217,7 +217,7 @@
     "вашата приказна": "your story",
     "Фото Центар – Штип е бренд кој е создаден во 2002 година и во повеќе од две децении ги овековечува најважните моменти од животот на своите клиенти.":
       "Photo Center – Štip was established in 2002 and has spent more than two decades preserving the most important moments in its clients’ lives.",
-    "Со нашата посветеност, долгогодишно ускуство, и следењето на светските трендови низ сите овие години достигнуваме големи успеси.":
+    "Со нашата посветеност, долгогодишно искуство, и следењето на светските трендови низ сите овие години достигнуваме големи успеси.":
       "Through dedication, years of experience and by following global trends, we have achieved a great deal over the years.",
     "Нашата мисија е едноставна – да создадеме природни фотографии и видеоприказни исполнети со емоција, кои ќе траат со генерации.":
       "Our mission is simple — to create natural photographs and video stories filled with emotion that will last for generations.",
