@@ -4795,3 +4795,33 @@ a.contact-info-card:hover .contact-info-arrow {
   .service-modal .modal-header { padding-right: 58px; }
   .service-modal .modal-header .btn-close { top: 12px; right: 12px; }
 }
+
+
+
+/* Trusted Craftsman Seal */
+.about-seal {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 25px 0 10px;
+}
+
+.about-seal img {
+  width: 125px;
+  height: auto;
+  max-width: 35%;
+  object-fit: contain;
+  display: block;
+}
+
+@media (max-width: 576px) {
+  .about-seal {
+    justify-content: center;
+    margin: 22px 0;
+  }
+
+  .about-seal img {
+    width: 115px;
+    max-width: 40%;
+  }
+}
