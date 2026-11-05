@@ -4916,10 +4916,12 @@ a.contact-info-card:hover .contact-info-arrow {
   right: 22px;
   margin: 0 !important;
   padding: 10px;
-  background-color: #252525;
-  border: 1px solid rgba(200, 154, 75, 0.3);
-  border-radius: 50%;
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: 0;
   opacity: 1;
+  filter: invert(1) grayscale(100%) brightness(200%);
+  box-shadow: none !important;
   z-index: 5;
 }
 
