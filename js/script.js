@@ -244,4 +244,21 @@ document.addEventListener("DOMContentLoaded", () => {
   galleryModal?.addEventListener("hidden.bs.modal", () => {
     if (modalImage) modalImage.removeAttribute("src");
   });
+
+  // HERO AUTOMATIC SLIDESHOW
+  const heroSlides = document.querySelectorAll(
+    ".hero-slideshow .hero-background",
+  );
+
+  if (heroSlides.length > 1) {
+    let currentSlide = 0;
+
+    setInterval(() => {
+      heroSlides[currentSlide].classList.remove("active");
+
+      currentSlide = (currentSlide + 1) % heroSlides.length;
+
+      heroSlides[currentSlide].classList.add("active");
+    }, 6000);
+  }
 });
