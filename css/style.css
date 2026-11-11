@@ -5476,63 +5476,54 @@ a.contact-info-card:hover .contact-info-arrow {
   }
 }
 
-.gallery-modal-close {
-  position: absolute;
-  top: 18px;
-  right: 18px;
-  z-index: 5;
-  width: 42px;
-  height: 42px;
-  margin: 0;
-  padding: 11px;
-  background: transparent !important;
-  border: none !important;
-  border-radius: 0;
-  opacity: 1;
-  box-shadow: none !important;
-  filter: none;
-}
-
-.gallery-modal-close:hover,
-.gallery-modal-close:focus {
-  background: transparent !important;
-  opacity: 0.7;
-  box-shadow: none !important;
-  outline: none;
-}
+/* GALLERY MODAL CLOSE BUTTON */
 
 .gallery-modal-close {
   position: absolute;
   top: 18px;
   right: 18px;
-  z-index: 5;
+  z-index: 10;
+
   width: 42px;
   height: 42px;
   margin: 0;
   padding: 0;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   background: transparent !important;
   background-image: none !important;
   border: none !important;
-  box-shadow: none !important;
-  opacity: 1;
+  border-radius: 50%;
 
-  color: #fff !important;
+  color: #ffffff !important;
+  opacity: 1 !important;
+  box-shadow: none !important;
   filter: none !important;
+
+  cursor: pointer;
 }
 
-/* .gallery-modal-close::before {
+/* X симбол */
+.gallery-modal-close::before {
   content: "×";
   display: block;
-  color: #fff;
-  font-size: 36px;
+
+  color: #ffffff !important;
+  font-size: 38px;
   font-weight: 300;
   line-height: 1;
-} */
+}
 
-.gallery-modal-close:hover,
-.gallery-modal-close:focus {
+/* Hover */
+.gallery-modal-close:hover {
+  opacity: 0.7 !important;
   background: transparent !important;
-  opacity: 0.7;
+}
+
+.gallery-modal-close:focus {
   outline: none;
+  box-shadow: none !important;
 }
