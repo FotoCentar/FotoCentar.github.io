@@ -5475,3 +5475,64 @@ a.contact-info-card:hover .contact-info-arrow {
     border-radius: 14px;
   }
 }
+
+.gallery-modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 5;
+  width: 42px;
+  height: 42px;
+  margin: 0;
+  padding: 11px;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0;
+  opacity: 1;
+  box-shadow: none !important;
+  filter: none;
+}
+
+.gallery-modal-close:hover,
+.gallery-modal-close:focus {
+  background: transparent !important;
+  opacity: 0.7;
+  box-shadow: none !important;
+  outline: none;
+}
+
+.gallery-modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 5;
+  width: 42px;
+  height: 42px;
+  margin: 0;
+  padding: 0;
+
+  background: transparent !important;
+  background-image: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  opacity: 1;
+
+  color: #fff !important;
+  filter: none !important;
+}
+
+/* .gallery-modal-close::before {
+  content: "×";
+  display: block;
+  color: #fff;
+  font-size: 36px;
+  font-weight: 300;
+  line-height: 1;
+} */
+
+.gallery-modal-close:hover,
+.gallery-modal-close:focus {
+  background: transparent !important;
+  opacity: 0.7;
+  outline: none;
+}
