@@ -5521,14 +5521,14 @@ a.contact-info-card:hover .contact-info-arrow {
   filter: none !important;
 }
 
-.gallery-modal-close::before {
+/* .gallery-modal-close::before {
   content: "×";
   display: block;
   color: #fff;
   font-size: 36px;
   font-weight: 300;
   line-height: 1;
-}
+} */
 
 .gallery-modal-close:hover,
 .gallery-modal-close:focus {
